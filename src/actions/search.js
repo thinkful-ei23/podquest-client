@@ -34,10 +34,10 @@ export const getPostcastSuccess = podcast =>({
 	podcast
 })
 
-export const getPodcasts = (searchTerm, attr = false) => dispatch => {
+export const getPodcasts = (searchTerm,offset, attr = false) => dispatch => {
 	dispatch(getPodcastRequest());
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`, {
+		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&limit=10&offset=${offset}&attribute=${attr}`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' }
 	})

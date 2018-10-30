@@ -10,7 +10,7 @@ export class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null
+			selectedOption: null,
 		};
 	}
 
@@ -50,7 +50,10 @@ export class Dashboard extends React.Component {
 				/>
 				{(this.props.podcasts)?
 					[...Array(this.props.podcasts.length).keys()].map((index) =>  
-						<SearchResults key={this.props.podcasts[index].id} podcast={this.props.podcasts[index]}/>) :''}
+						<SearchResults 
+							key={this.props.podcasts[index].id}
+							resultNumber={index+1}
+							podcast={this.props.podcasts[index]}/>) :''}
 			</div>
 		);
 	}
