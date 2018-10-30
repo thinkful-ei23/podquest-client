@@ -43,7 +43,6 @@ export class Dashboard extends React.Component {
 				<div className="dashboard-username">
 					Username: {this.props.username}
 				</div>
-
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
