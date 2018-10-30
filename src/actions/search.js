@@ -3,48 +3,35 @@ import { normalizeResponseErrors } from './utils';
 
 export const GET_CHANNEL_REQUEST = 'GET_CHANNEL_REQUEST';
 export const getChannelRequest = () => ({
-    type: GET_CHANNEL_REQUEST
+	type: GET_CHANNEL_REQUEST
 });
 
 export const GET_CHANNEL_SUCCESS = 'GET_CHANNEL_SUCCESS';
 export const getChannelSuccess = channelInfo => ({
-    type: GET_CHANNEL_SUCCESS,
-    channelInfo
+	type: GET_CHANNEL_SUCCESS,
+	channelInfo
 });
 
 export const GET_CHANNEL_ERROR = 'GET_CHANNEL_ERROR';
 export const getChannelError = error => ({
-    type: GET_CHANNEL_ERROR,
-    error
+	type: GET_CHANNEL_ERROR,
+	error
 });
-export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS'
-export const getPostcastSuccess = podcast =>({
+export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS';
+export const getPostcastSuccess = podcast => ({
 	type: GET_PODCAST_SUCCESS,
 	podcast
-})
+});
 
 export const getPodcasts = (searchTerm, attr = false) => dispatch => {
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`, {
-		method: 'GET',
-		headers: { 'Content-Type': 'application/json' }
-	})
-		.then(res => {
-			if (!res.ok) {
-				if (
-					res.headers.has('content-type') &&
-					res.headers.get('content-type').startsWith('application/json')
-				) {
-					console.log(res.json());
-					return res.json().then(err => Promise.reject(err));
-				}
-				return Promise.reject({
-					code: res.status,
-					message: res.statusText
-				});
-			}
-			return res.json();
-		})
+		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
+		{
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' }
+		}
+	)
+		.then(res => normalizeResponseErrors(res))
 		.then(res => {
 			let response = res.results.map(result => {
 				return {
@@ -55,7 +42,7 @@ export const getPodcasts = (searchTerm, attr = false) => dispatch => {
 				};
 			});
 			//keep artistId, collectionName, feedUrl, artworkUrl100
-			dispatch(getPostcastSuccess(response))
+			dispatch(getPostcastSuccess(response));
 		});
 };
 
