@@ -1,16 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-function SearchResults(props){
+export default function SearchResults(props){
         return(
-            <div>
-
-            </div>
+            <Link
+                to={{
+                    pathname:`/channel/${props.podcast.id}` }}>
+                {props.podcast.collection}
+            </Link>
         )
 }
 
-const mapStateToProps = state =>({
-    
-})
-
-export default connect()(SearchResults)

@@ -32,7 +32,6 @@ export default function reducer(state = initialState, action) {
         loading: false
       });
   } else if (action.type === GET_PODCAST_SUCCESS){
-    console.log(action)    
     return Object.assign({},{
       podcasts: action.podcast,
       loading: false
