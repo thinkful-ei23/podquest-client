@@ -10,10 +10,10 @@ export default function SearchForm(props) {
 				props.onSubmit(input.value);
 			}}
 		>
-			<label htmlFor="search-genre">Genre: </label>
+			<label htmlFor="search-input">Search: </label>
 			<input
-				id="search-genre"
-				name="genre"
+				id="search-input"
+				name="search"
 				placeholder="Health, Fitness, Finanace, etc."
 				ref={search => (input = search)}
 			/>
