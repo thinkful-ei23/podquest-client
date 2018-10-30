@@ -6,13 +6,34 @@ import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 
 export class Dashboard extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedOption: null
+		};
+	}
+
 	componentDidMount() {
 		this.props.dispatch(fetchProtectedData());
 	}
 
+	handleOptionChange(e) {
+		console.log(e.target.value);
+		this.setState({
+			selectedOption: e.target.value
+		});
+	}
+
 	onSubmit(e) {
-		console.log(e);
-		this.props.dispatch(getPodcasts(e));
+		// console.log(e);
+		if (this.state.selectedOption) {
+			// console.log('option is', this.state.selectedOption);
+			this.props
+				.dispatch(getPodcasts(e, this.state.selectedOption))
+				.then(() => this.SearchForm.reset());
+		} else {
+			this.props.dispatch(getPodcasts(e));
+		}
 	}
 
 	render() {
@@ -21,7 +42,10 @@ export class Dashboard extends React.Component {
 				<div className="dashboard-username">
 					Username: {this.props.username}
 				</div>
-				<SearchForm onSubmit={e => this.onSubmit(e)} />
+				<SearchForm
+					handleOptionChange={e => this.handleOptionChange(e)}
+					onSubmit={e => this.onSubmit(e)}
+				/>
 			</div>
 		);
 	}
