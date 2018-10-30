@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
 import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
+import SearchResults from './searchResults';
 
 export class Dashboard extends React.Component {
 	constructor(props) {
@@ -25,6 +26,7 @@ export class Dashboard extends React.Component {
 	}
 
 	onSubmit(e) {
+
 		// console.log(e);
 		if (this.state.selectedOption) {
 			// console.log('option is', this.state.selectedOption);
@@ -41,10 +43,14 @@ export class Dashboard extends React.Component {
 				<div className="dashboard-username">
 					Username: {this.props.username}
 				</div>
+
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
 				/>
+				{(this.props.podcasts)?
+					[...Array(this.props.podcasts.length).keys()].map((index) =>  
+						<SearchResults key={this.props.podcasts[index].id} podcast={this.props.podcasts[index]}/>) :''}
 			</div>
 		);
 	}
@@ -55,7 +61,8 @@ const mapStateToProps = state => {
 	return {
 		username: state.auth.currentUser.username,
 		name: `${currentUser.name} `,
-		protectedData: state.protectedData.data
+		protectedData: state.protectedData.data,
+		podcasts: state.search.podcasts
 	};
 };
 
