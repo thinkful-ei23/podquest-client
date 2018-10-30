@@ -17,7 +17,11 @@ export const getChannelError = error => ({
     type: GET_CHANNEL_ERROR,
     error
 });
-
+export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS'
+export const getPostcastSuccess = podcast =>({
+	type: GET_PODCAST_SUCCESS,
+	podcast
+})
 export const getPodcasts = searchTerm => dispatch => {
 	return fetch(`${ITUNES_API}/search?term=${searchTerm}&entity=podcast`, {
 		method: 'GET',
@@ -49,8 +53,7 @@ export const getPodcasts = searchTerm => dispatch => {
 				};
 			});
 			//keep artistId, collectionName, feedUrl, artworkUrl100
-
-			console.log(response);
+			dispatch(getPostcastSuccess(response))
 		});
 };
 
