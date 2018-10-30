@@ -1,10 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-
-export default function SearchResults(props){
+import { getChannel } from '../actions/search';
+import {connect} from 'react-redux'
+function SearchResults(props){
         return(
             <div>
+                {props.resultNumber +': '}
                 <Link
+                    onClick={()=>props.dispatch(getChannel(props.podcast.xml))}
                     to={{
                         pathname:`/channel/${props.podcast.id}` }}>
                     {props.podcast.collection}
@@ -14,3 +17,4 @@ export default function SearchResults(props){
         )
 }
 
+export default connect()(SearchResults)

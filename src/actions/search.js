@@ -34,6 +34,7 @@ export const getPostcastSuccess = podcast => ({
 	podcast
 });
 
+
 export const getPodcasts = (searchTerm, attr = ' ') => dispatch => {
 	dispatch(getPodcastRequest());
 	return fetch(

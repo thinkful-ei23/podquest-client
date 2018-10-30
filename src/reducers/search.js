@@ -3,7 +3,8 @@ import {
 	GET_CHANNEL_SUCCESS,
 	GET_CHANNEL_ERROR,
 	GET_PODCAST_SUCCESS,
-	GET_PODCAST_REQUEST
+	GET_PODCAST_REQUEST,
+  GET_PODCAST_ERROR
 } from '../actions/search';
 
 const initialState = {
@@ -37,14 +38,23 @@ export default function reducer(state = initialState, action) {
 			error: action.error,
 			loading: false
 		});
-	} else if (action.type === GET_PODCAST_SUCCESS) {
+  } else if(action.type === GET_PODCAST_REQUEST){
+    return Object.assign({},state,{
+      error:null,
+      loading:true
+    })
+  } else if (action.type === GET_PODCAST_SUCCESS) {
 		return Object.assign(
-			{},
-			{
+			{},state,{
 				podcasts: action.podcast,
 				loading: false
 			}
 		);
-	}
+	} else if(action.type === GET_PODCAST_ERROR){
+    return Object.assign({},state,{
+      loading:false,
+      error:action.error
+    })
+  }
 	return state;
 }
