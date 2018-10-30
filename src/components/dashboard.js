@@ -26,7 +26,6 @@ export class Dashboard extends React.Component {
 	}
 
 	onSubmit(e) {
-
 		// console.log(e);
 		if (this.state.selectedOption) {
 			// console.log('option is', this.state.selectedOption);
@@ -47,13 +46,18 @@ export class Dashboard extends React.Component {
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
+					selectedOption={this.state.selectedOption}
 				/>
-				{(this.props.podcasts)?
-					[...Array(this.props.podcasts.length).keys()].map((index) =>  
-						<SearchResults 
-							key={this.props.podcasts[index].id}
-							resultNumber={index+1}
-							podcast={this.props.podcasts[index]}/>) :''}
+
+				{this.props.podcasts
+					? [...Array(this.props.podcasts.length).keys()].map(index => (
+							<SearchResults
+								key={this.props.podcasts[index].id}
+								resultNumber={index+1}
+								podcast={this.props.podcasts[index]}
+							/>
+					))
+					: ''}
 			</div>
 		);
 	}
