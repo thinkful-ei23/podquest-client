@@ -18,5 +18,5 @@ export const normalizeResponseErrors = res => {
 			message: res.statusText
 		});
 	}
-	return res.json();
+	return res;
 };

@@ -34,7 +34,7 @@ export const getPostcastSuccess = podcast => ({
 	podcast
 });
 
-export const getPodcasts = (searchTerm, attr = false) => dispatch => {
+export const getPodcasts = (searchTerm, attr = ' ') => dispatch => {
 	dispatch(getPodcastRequest());
 	return fetch(
 		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
@@ -43,7 +43,22 @@ export const getPodcasts = (searchTerm, attr = false) => dispatch => {
 			headers: { 'Content-Type': 'application/json' }
 		}
 	)
-		.then(res => normalizeResponseErrors(res))
+		.then(res => {
+			if (!res.ok) {
+				if (
+					res.headers.has('content-type') &&
+					res.headers.get('content-type').startsWith('application/json')
+				) {
+					console.log(res.json());
+					return res.json().then(err => Promise.reject(err));
+				}
+				return Promise.reject({
+					code: res.status,
+					message: res.statusText
+				});
+			}
+			return res.json();
+		})
 		.then(res => {
 			let response = res.results.map(result => {
 				return {
