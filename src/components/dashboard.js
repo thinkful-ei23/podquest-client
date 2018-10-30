@@ -9,7 +9,7 @@ export class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: ''
+			selectedOption: null
 		};
 	}
 
@@ -25,8 +25,15 @@ export class Dashboard extends React.Component {
 	}
 
 	onSubmit(e) {
-		console.log(e);
-		this.props.dispatch(getPodcasts(e));
+		// console.log(e);
+		if (this.state.selectedOption) {
+			// console.log('option is', this.state.selectedOption);
+			this.props
+				.dispatch(getPodcasts(e, this.state.selectedOption))
+				.then(() => this.SearchForm.reset());
+		} else {
+			this.props.dispatch(getPodcasts(e));
+		}
 	}
 
 	render() {
