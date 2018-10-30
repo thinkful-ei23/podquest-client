@@ -16,7 +16,7 @@ class Channel extends React.Component{
 const mapStateToProps = state => {
     console.log('state', state);
     return {
-        image: state.search
+        image: state.search.podcasts
     }
 }
 
