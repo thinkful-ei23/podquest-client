@@ -28,9 +28,8 @@ export class Dashboard extends React.Component {
 		// console.log(e);
 		if (this.state.selectedOption) {
 			// console.log('option is', this.state.selectedOption);
-			this.props
-				.dispatch(getPodcasts(e, this.state.selectedOption))
-				.then(() => this.SearchForm.reset());
+			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
+			// .then(() => this.SearchForm.reset());
 		} else {
 			this.props.dispatch(getPodcasts(e));
 		}
