@@ -10,12 +10,47 @@ export default function SearchForm(props) {
 				props.onSubmit(input.value);
 			}}
 		>
-			<label htmlFor="search-input">Search: </label>
+			<label htmlFor="search-genre">Genre: </label>
 			<input
-				id="search-input"
-				placeholder="Title,Description,etc."
+				id="search-genre"
+				name="genre"
+				placeholder="Health, Fitness, Finanace, etc."
 				ref={search => (input = search)}
 			/>
+			<label>
+				<input
+					type="radio"
+					id="radio-search"
+					name="title"
+					value="titleTerm"
+					checked={props.selectedOption === 'titleTerm'}
+					onChange={e => props.handleOptionChange(e)}
+				/>
+				Title
+			</label>
+			<label>
+				<input
+					type="radio"
+					id="radio-genre"
+					name="genre"
+					value="genreIndex"
+					checked={props.selectedOption === 'genreIndex'}
+					onChange={e => props.handleOptionChange(e)}
+				/>
+				Genre
+			</label>
+			<label>
+				<input
+					type="radio"
+					id="radio-desc"
+					name="desc"
+					value="descriptionTerm"
+					checked={(true, props.selectedOption === 'descriptionTerm')}
+					onChange={e => props.handleOptionChange(e)}
+				/>
+				Description
+			</label>
+
 			<button className="search-button">Search</button>
 		</form>
 	);
