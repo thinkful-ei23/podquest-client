@@ -1,13 +1,34 @@
-import { ITUNES_API } from '../config';
+import { API_BASE_URL, ITUNES_API } from '../config';
+import { normalizeResponseErrors } from './utils';
+
+export const GET_CHANNEL_REQUEST = 'GET_CHANNEL_REQUEST';
+export const getChannelRequest = () => ({
+    type: GET_CHANNEL_REQUEST
+});
+
+export const GET_CHANNEL_SUCCESS = 'GET_CHANNEL_SUCCESS';
+export const getChannelSuccess = channelInfo => ({
+    type: GET_CHANNEL_SUCCESS,
+    channelInfo
+});
+
+export const GET_CHANNEL_ERROR = 'GET_CHANNEL_ERROR';
+export const getChannelError = error => ({
+    type: GET_CHANNEL_ERROR,
+    error
+});
+export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS'
+export const getPostcastSuccess = podcast =>({
+	type: GET_PODCAST_SUCCESS,
+	podcast
+})
 
 export const getPodcasts = (searchTerm, attr = false) => dispatch => {
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
-		{
-			method: 'GET',
-			headers: { 'Content-Type': 'application/json' }
-		}
-	)
+		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`, {
+		method: 'GET',
+		headers: { 'Content-Type': 'application/json' }
+	})
 		.then(res => {
 			if (!res.ok) {
 				if (
@@ -34,7 +55,24 @@ export const getPodcasts = (searchTerm, attr = false) => dispatch => {
 				};
 			});
 			//keep artistId, collectionName, feedUrl, artworkUrl100
+			dispatch(getPostcastSuccess(response))
+		});
+};
 
-			console.log(response);
+export const getChannel = feedUrl => dispatch => {
+	dispatch(getChannelRequest());
+	return fetch(`${API_BASE_URL}/podcast`, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ feedUrl })
+	})
+		.then(res => normalizeResponseErrors(res))
+		.then(res => res.json())
+		.then(channelInfo => {
+			// console.log(channelInfo);
+			dispatch(getChannelSuccess(channelInfo));
+		})
+		.catch(err => {
+			dispatch(getChannelError(err));
 		});
 };
