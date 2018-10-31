@@ -18,10 +18,21 @@ class Channel extends React.Component{
         }
         console.log('props', this.props); // see podcasts
         const podcast = this.props.podcast
+        // loops through episodes
+        const optionEpisode = podcast.episodes.map((episode, index) => {
+            return <option key={index}>{episode.title}</option>
+        })
+        console.log(podcast.episodes[0].enclosure[0].$.url);
         return(
             <div>
                 <h1>{podcast.title}</h1>
-                {/* <img src= alt="podcast wallpaper" height={200}/> */}
+                <img src={podcast.image} alt="podcast wallpaper" height={200}/>
+                <p>{podcast.description}</p>
+                <button>Subscribe to channel</button>
+                <select>
+                    <option selected="defaultValue" >Select episode</option>
+                    {optionEpisode}
+                </select>
             </div>
         )
     }
