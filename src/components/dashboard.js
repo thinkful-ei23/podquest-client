@@ -11,7 +11,7 @@ export class Dashboard extends React.Component {
 		super(props);
 		this.state = {
 			selectedOption: null,
-			offset: 2
+			offset: 1
 		};
 	}
 
@@ -26,21 +26,51 @@ export class Dashboard extends React.Component {
 		});
 	}
 
+	handlePrev(e) {
+		// dispatch the same GET from iTunes or a new action?
+		// requires the original input query + attr (if attr exists)
+		// current offset + 1, current offset starts at 2
+		console.log('Prev button clicked');
+		const input = e.target.value;
+		this.setState(
+			{
+				offset: this.state.offset - 10
+			},
+			() => {
+				this.state.selectedOption
+					? this.props.dispatch(
+							getPodcasts(input, this.state.selectedOption, this.state.offset)
+					  )
+					: this.props.dispatch(getPodcasts(input, '', this.state.offset));
+			}
+		);
+		// console.log('Prev', this.state.offset);
+		// this.state.selectedOption
+		// 	? this.props.dispatch(
+		// 			getPodcasts(input, this.state.selectedOption, this.state.offset)
+		// 	  )
+		// 	: this.props.dispatch(getPodcasts(input, '', this.state.offset));
+	}
+
 	handleNext(e) {
 		// dispatch the same GET from iTunes or a new action?
 		// requires the original input query + attr (if attr exists)
 		// current offset + 1, current offset starts at 2
 		console.log('Next button clicked');
 		const input = e.target.value;
-		this.setState({
-			offset: this.state.offset + 1
-		});
-		console.log(this.state.offset);
-		this.state.selectedOption
-			? this.props.dispatch(
-					getPodcasts(input, this.state.selectedOption, this.state.offset)
-			  )
-			: this.props.dispatch(getPodcasts(input, '', this.state.offset));
+		this.setState(
+			{
+				offset: this.state.offset + 10
+			},
+			() => {
+				// console.log('Next', this.state.offset);
+				this.state.selectedOption
+					? this.props.dispatch(
+							getPodcasts(input, this.state.selectedOption, this.state.offset)
+					  )
+					: this.props.dispatch(getPodcasts(input, '', this.state.offset));
+			}
+		);
 	}
 
 	onSubmit(e) {
@@ -77,6 +107,14 @@ export class Dashboard extends React.Component {
 							/>
 					  ))
 					: ''}
+				{this.state.offset > 10 ? (
+					<button
+						onClick={e => this.handlePrev(e)}
+						value={this.props.initialInput}
+					>
+						Show Previous Results
+					</button>
+				) : null}
 				{this.props.podcasts ? (
 					<button
 						onClick={e => this.handleNext(e)}
