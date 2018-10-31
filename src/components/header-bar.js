@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import { Link } from 'react-router-dom';
+import './header-bar.css';
 
 export class HeaderBar extends React.Component {
 	logOut() {
@@ -10,21 +11,21 @@ export class HeaderBar extends React.Component {
 		clearAuthToken();
 	}
 
-	render() {
-		// Only render the log out button if we are logged in
-		let logOutButton;
-		if (this.props.loggedIn) {
-			logOutButton = <button onClick={() => this.logOut()}>Log out</button>;
-		}
-		return (
-			<div className="header-bar">
-				<h1>
-					<Link to="/">podQuest</Link>
-				</h1>
-				{logOutButton}
-			</div>
-		);
-	}
+    render() {
+        // Only render the log out button if we are logged in
+        let logOutButton;
+        if (this.props.loggedIn) {
+            logOutButton = (
+                <button onClick={() => this.logOut()}>Log out</button>
+            );
+        }
+        return (
+            <div className="header-bar">
+                <h1 id="header-title">podQuest</h1>
+                {logOutButton}
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => ({

@@ -12,9 +12,9 @@ export function RegistrationPage(props) {
 	}
 	return (
 		<div className="home">
-			<h2>Register for Foo App</h2>
+			 <h2>Register for PodQuest</h2>
 			<RegistrationForm />
-			<Link to="/login">Login</Link>
+    <p className="link link-reg">Already have an account?&nbsp;Click here to&nbsp;<Link to="/login">Login</Link></p>
 		</div>
 	);
 }

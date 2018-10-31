@@ -1,0 +1,46 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* text */
+	/* other */
+
+.login-form {
+	/* positioning */
+	/* display + box model */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* color */
+	/* TODO 252 = #fcfcfc */
+	/* background-color: rgba(252, 252, 252, .6); */
+	/* TODO 252 = #ffffff */
+	background-color: rgba(255, 255, 255, .6);
+	/* text */
+	/* other */
+	border: transparent;
+	/* 2px solid #222222; */
+	padding: 2rem;
+}
+.btn-form {
+justify-content: center;
+margin-top: 3rem;
+}
+.input-label {
+	align-items: flex-start;
+	margin: 3rem 0 .5rem 0;
+}
+
+Input {
+	align-items: flex-start;
+	margin: 0 0 0 0;
+}
+#password,
+#username {
+width: 30rem;
+line-height: 3rem;
+padding: .5rem;
+justify-content: center;
+}
