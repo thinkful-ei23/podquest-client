@@ -128,9 +128,9 @@ export class MediaPlayer extends React.Component {
   
           <p>
             {'Status: '}
-            {(this.state.seek !== undefined) ? this.state.seek.toFixed(2) : '0.00'}
+            {(this.state.seek !== undefined) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '0:00'}
             {' / '}
-            {(this.state.duration) ? this.state.duration.toFixed(2) : 'NaN'}
+            {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '0:00'}
           </p>
   
           <div className='volume'>
@@ -147,8 +147,12 @@ export class MediaPlayer extends React.Component {
                   style={{verticalAlign: 'bottom'}}
                 />
               </span>
-              {this.state.volume.toFixed(2)}
+              {(this.state.volume * 100).toFixed(0)}
             </label>
+          </div>
+
+          <div className='progress'>
+
           </div>
   
           <button onClick={this.handleToggle} disabled={!this.state.loaded}>
