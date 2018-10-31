@@ -1,14 +1,29 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import requiresLogin from './requires-login';
+import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
+import { setEpisode } from '../actions/media-player'
 
 class Channel extends React.Component{
-    
 
     componentDidMount(){
         const channelUrl = localStorage.getItem('podcastChannel');
         console.log('channelUrl', channelUrl);
         this.props.dispatch(getChannel(channelUrl))
+    }
+
+    handleSelectEpisode(e) {
+        const episodeTitle = e.target.value;
+        let episodeUrl;
+        this.props.podcast.episodes.forEach(episode => {
+            if (episode.title[0] === episodeTitle) {
+                episodeUrl = episode.enclosure[0].$.url;
+            }
+        })
+        if (episodeUrl) {
+            this.props.dispatch(setEpisode(episodeUrl));
+        }
     }
 
     render(){
@@ -29,10 +44,11 @@ class Channel extends React.Component{
                 <img src={podcast.image} alt="podcast wallpaper" height={200}/>
                 <p>{podcast.description}</p>
                 <button>Subscribe to channel</button>
-                <select>
+                <select onChange={(e) => this.handleSelectEpisode(e)}>
                     <option selected="defaultValue" >Select episode</option>
                     {optionEpisode}
                 </select>
+                <MediaPlayer />
             </div>
         )
     }
@@ -45,4 +61,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Channel)
+export default requiresLogin()(connect(mapStateToProps)(Channel));
