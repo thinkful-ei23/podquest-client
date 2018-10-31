@@ -35,6 +35,7 @@ export const getPostcastSuccess = (input, podcast) => ({
 	input
 });
 
+
 export const getPodcasts = (searchTerm, attr = '', offset = 1) => dispatch => {
 	dispatch(getPodcastRequest());
 	return fetch(
