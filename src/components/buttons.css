@@ -1,0 +1,112 @@
+
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* text */
+	/* other */
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* root font size declared below to allow use of rem's  62.5% = 10px*/
+html{
+    font-size: 62.5%;
+}
+.btn {
+	/* positioning */
+	/* display + box model */
+	padding: 1rem 0;
+	margin: 2rem;
+	/* color */
+	box-shadow: 0 .4rem .6rem 0 rgba(0, 0, 0, 0.2);
+	/* text */
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.7rem;
+	text-transform: uppercase;
+	/* other */
+	border: transparent;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+.btn-small {
+	/* positioning */
+	/* display + box model */
+	width: 10rem;
+	/* color */
+	background-color: bisque;
+	/* text */
+	/* other */
+}
+.btn-med {
+	/* positioning */
+	/* display + box model */
+	width: 15rem;
+	/* color */
+	/* text */
+	/* other */
+	transform: translateY(4px);
+}
+.btn-large {
+	/* positioning */
+	/* display + box model */
+	width: 30rem;
+	/* color */
+	/* text */
+	/* other */
+	border-radius: 0;
+}
+.btn-blue {
+	background-color:#122375;
+
+	background-color: rgba(18, 35, 117, .7);
+	color: #FCFCFC;
+}
+.btn-blue:hover,
+.btn-blue:active {
+	background-color:#FCFCFC;
+	color: #122375;
+}
+.btn-green {
+	background-color: #42623E;
+	background-color:	rgba(66, 98, 62, .7);
+	color: #FCFCFC;
+	}
+.btn-green:hover,
+.btn-green:active {
+	background-color:#FCFCFC;
+	color: #42623E;
+}
+.btn-yellow1 {
+		background-color: #766016;
+		color: #FCFCFC;
+	}
+.btn-yellow1:hover,
+.btn-yellow1:active {
+	background-color:#FCFCFC;
+	color: #766016;
+}
+.btn-yellow2{
+		background-color:#DBBC34;
+		color: #122375;
+	}
+.btn-yellow2:hover,
+.btn-yellow2:active {
+	background-color: #122375;
+	color: #DBBC34;
+}
+.btn-white {
+		background-color: #FCFCFC;
+		color: #122375;
+}
+.btn-white:hover,
+.btn-white:active {
+	background-color: #122375;
+	color: #FCFCFC;
+}
+.disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}

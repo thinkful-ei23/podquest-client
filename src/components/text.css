@@ -1,0 +1,50 @@
+
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* text */
+	/* other */
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* root font size declared below to allow use of rem's  62.5% = 10px*/
+html{
+    font-size: 62.5%;
+}
+/* font-family: 'Bai Jamjuree', sans-serif;  body */
+/* font-family: 'Montserrat', sans-serif;  titles and headers*/
+
+/* logo fonts
+	/* font-family: 'Audiowide', cursive; */
+	/* font-family: 'Baloo Chettan', cursive; */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+}
+h1 {
+	font-size: 4rem;
+}
+h2 {
+	font-size: 3.5rem;
+}
+h3 {
+	font-size: 3rem;
+}
+p {
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+}
+.input-label {
+	color: #122375;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 2.5rem;
+}
+.link > Link {
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 5.5rem;
+}
