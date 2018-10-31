@@ -29,48 +29,37 @@ export const getPodcastError = error => ({
 });
 
 export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS';
-export const getPostcastSuccess = podcast => ({
+export const getPostcastSuccess = (input, podcast) => ({
 	type: GET_PODCAST_SUCCESS,
-	podcast
+	podcast,
+	input
 });
 
 
-export const getPodcasts = (searchTerm, attr = ' ') => dispatch => {
+export const getPodcasts = (searchTerm, attr = '', offset = 1) => dispatch => {
 	dispatch(getPodcastRequest());
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
+		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}&offset=${offset}&limit=10`,
 		{
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' }
 		}
 	)
-		.then(res => {
-			if (!res.ok) {
-				if (
-					res.headers.has('content-type') &&
-					res.headers.get('content-type').startsWith('application/json')
-				) {
-					console.log(res.json());
-					return res.json().then(err => Promise.reject(err));
-				}
-				return Promise.reject({
-					code: res.status,
-					message: res.statusText
+		.then(res => normalizeResponseErrors(res))
+		.then(res => res.json())
+		.then(response => {
+			// console.log(response);
+			let filteredResponse = response.results
+				.filter(index => index.feedUrl)
+				.map(result => {
+					return {
+						id: result.collectionId,
+						collection: result.collectionName,
+						xml: result.feedUrl,
+						image: result.artworkUrl100
+					};
 				});
-			}
-			return res.json();
-		})
-		.then(res => {
-			let response = res.results.map(result => {
-				return {
-					id: result.collectionId,
-					collection: result.collectionName,
-					xml: result.feedUrl,
-					image: result.artworkUrl100
-				};
-			});
-			//keep artistId, collectionName, feedUrl, artworkUrl100
-			dispatch(getPostcastSuccess(response));
+			dispatch(getPostcastSuccess(searchTerm, filteredResponse));
 		})
 		.catch(err => {
 			dispatch(getPodcastError(err));
