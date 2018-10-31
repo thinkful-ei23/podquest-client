@@ -7,24 +7,21 @@ class Channel extends React.Component{
 
     componentDidMount(){
         const channelUrl = localStorage.getItem('podcastChannel');
+        console.log('channelUrl', channelUrl);
         this.props.dispatch(getChannel(channelUrl))
     }
 
     render(){
-        console.log('props', this.props); // see podcasts
-        if (!this.props.podcasts) {
-            return <div>Loading...</div>;
+
+        if(!this.props.podcast) {
+            return <div>Loading...</div>
         }
-        const podcast = this.props.podcasts.find(podcast =>  {
-            // console.log(typeof podcast.id)  // Type of is different so we used just ==
-            // console.log('this.props.match.params.id', typeof this.props.match.params.id);
-            return podcast.id === Number(this.props.match.params.id)
-        })
-        console.log('podcast', podcast);
+        console.log('props', this.props); // see podcasts
+        const podcast = this.props.podcast
         return(
             <div>
-                <span>{podcast.collection}</span>
-                <img src={podcast.image} alt="podcast wallpaper" height={200}/>
+                <h1>{podcast.title}</h1>
+                {/* <img src= alt="podcast wallpaper" height={200}/> */}
             </div>
         )
     }
@@ -33,7 +30,7 @@ class Channel extends React.Component{
 const mapStateToProps = state => {
     console.log('state', state); // to look at state
     return {
-        podcasts: state.search.podcasts
+        podcast: state.search.currChannel
     }
 }
 

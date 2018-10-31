@@ -6,7 +6,7 @@ function SearchResults(props){
             <div>
                 {props.resultNumber +': '}
                 <Link
-                    onCLick={localStorage.setItem('podcastChannel',props.podcast.xml)}
+                    onClick={() => localStorage.setItem('podcastChannel',props.podcast.xml)}
                     to={{
                         pathname:`/channel/${props.podcast.id}` }}>
                     {props.podcast.collection}
