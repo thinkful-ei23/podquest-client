@@ -48,3 +48,12 @@ p {
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 5.5rem;
 }
+#password,
+#username,
+#email,
+#passwordConfirm {
+width: 30rem;
+line-height: 3rem;
+padding: .5rem;
+justify-content: center;
+}
