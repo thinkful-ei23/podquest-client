@@ -1,8 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import { getChannel } from '../actions/search';
 
 class Channel extends React.Component{
     
+
+    componentDidMount(){
+        const channelUrl = localStorage.getItem('podcastChannel');
+        this.props.dispatch(getChannel(channelUrl))
+    }
 
     render(){
         console.log('props', this.props); // see podcasts
