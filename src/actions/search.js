@@ -29,15 +29,16 @@ export const getPodcastError = error => ({
 });
 
 export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS';
-export const getPostcastSuccess = podcast => ({
+export const getPostcastSuccess = (input, podcast) => ({
 	type: GET_PODCAST_SUCCESS,
-	podcast
+	podcast,
+	input
 });
 
-export const getPodcasts = (searchTerm, attr = '') => dispatch => {
+export const getPodcasts = (searchTerm, attr = '', offset = 1) => dispatch => {
 	dispatch(getPodcastRequest());
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}&offset=1&limit=10`,
+		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}&offset=${offset}&limit=10`,
 		{
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' }
@@ -46,7 +47,7 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(response => {
-			console.log(response);
+			// console.log(response);
 			let filteredResponse = response.results
 				.filter(index => index.feedUrl)
 				.map(result => {
@@ -57,7 +58,7 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 						image: result.artworkUrl100
 					};
 				});
-			dispatch(getPostcastSuccess(filteredResponse));
+			dispatch(getPostcastSuccess(searchTerm, filteredResponse));
 		})
 		.catch(err => {
 			dispatch(getPodcastError(err));

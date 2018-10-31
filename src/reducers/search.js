@@ -7,6 +7,7 @@ import {
 } from '../actions/search';
 
 const initialState = {
+	initialInput: null,
 	podcasts: null,
 	currChannel: null,
 	error: null,
@@ -38,13 +39,11 @@ export default function reducer(state = initialState, action) {
 			loading: false
 		});
 	} else if (action.type === GET_PODCAST_SUCCESS) {
-		return Object.assign(
-			{},
-			{
-				podcasts: action.podcast,
-				loading: false
-			}
-		);
+		return Object.assign({}, state, {
+			podcasts: action.podcast,
+			initialInput: action.input,
+			loading: false
+		});
 	}
 	return state;
 }

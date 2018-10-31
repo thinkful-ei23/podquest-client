@@ -10,7 +10,8 @@ export class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null
+			selectedOption: null,
+			offset: 2
 		};
 	}
 
@@ -25,9 +26,21 @@ export class Dashboard extends React.Component {
 		});
 	}
 
-	handleNext() {
+	handleNext(e) {
+		// dispatch the same GET from iTunes or a new action?
+		// requires the original input query + attr (if attr exists)
+		// current offset + 1, current offset starts at 2
 		console.log('Next button clicked');
-		// this.props.dispatch(getPodcasts(this.state.input, '', 2));
+		const input = e.target.value;
+		this.setState({
+			offset: this.state.offset + 1
+		});
+		console.log(this.state.offset);
+		this.state.selectedOption
+			? this.props.dispatch(
+					getPodcasts(input, this.state.selectedOption, this.state.offset)
+			  )
+			: this.props.dispatch(getPodcasts(input, '', this.state.offset));
 	}
 
 	onSubmit(e) {
@@ -65,7 +78,12 @@ export class Dashboard extends React.Component {
 					  ))
 					: ''}
 				{this.props.podcasts ? (
-					<button onClick={this.handleNext}>Show More Results</button>
+					<button
+						onClick={e => this.handleNext(e)}
+						value={this.props.initialInput}
+					>
+						Show More Results
+					</button>
 				) : (
 					'Nothing to see for now. So...shall we search for a podcast?'
 				)}
@@ -76,11 +94,13 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
 	const { currentUser } = state.auth;
+	// console.log(state.search.initialInput);
 	return {
 		username: state.auth.currentUser.username,
 		name: `${currentUser.name} `,
 		protectedData: state.protectedData.data,
-		podcasts: state.search.podcasts
+		podcasts: state.search.podcasts,
+		initialInput: state.search.initialInput
 	};
 };
 
