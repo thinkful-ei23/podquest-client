@@ -25,8 +25,16 @@ export class Dashboard extends React.Component {
 		});
 	}
 
+	handleNext() {
+		console.log('Next button clicked');
+		// this.props.dispatch(getPodcasts(this.state.input, '', 2));
+	}
+
 	onSubmit(e) {
 		// console.log(e);
+		this.setState({
+			searchInput: e
+		});
 		if (this.state.selectedOption) {
 			// console.log('option is', this.state.selectedOption);
 			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
@@ -56,6 +64,11 @@ export class Dashboard extends React.Component {
 							/>
 					  ))
 					: ''}
+				{this.props.podcasts ? (
+					<button onClick={this.handleNext}>Show More Results</button>
+				) : (
+					'Nothing to see for now. So...shall we search for a podcast?'
+				)}
 			</div>
 		);
 	}
