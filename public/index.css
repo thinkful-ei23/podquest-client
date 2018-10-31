@@ -1,0 +1,40 @@
+
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* text */
+	/* other */
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* root font size declared below to allow use of rem's  62.5% = 10px*/
+html{
+    font-size: 62.5%;
+}
+/* BELOW, basic body attributes used throughout, */
+body {
+	font-family: "Bai Jamjuree", sans-serif; /*body font*/
+	font-weight: 400;
+	line-height: 1.7;
+	color: #000;
+	/* gives a white border around the entire page */
+	padding:1rem;
+	/* font-family: 'Montserrat', sans-serif; */
+	/* TODO */
+	height: 100vh;
+	background-image: linear-gradient(to right, rgba(238, 238, 238, .7), rgba(238, 238, 238, .7)), url("./img/icon-earth.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* TODO  */
+	background-attachment: fixed;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
+}
