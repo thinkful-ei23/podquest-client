@@ -34,16 +34,14 @@ export const getPostcastSuccess = podcast => ({
 	podcast
 });
 
-export const getPodcasts = (searchTerm, attr = '') => (getState, dispatch) => {
+export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 	dispatch(getPodcastRequest());
-	const authToken = getState().auth.authToken;
 	return fetch(
 		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
 		{
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${authToken}`
+				'Content-Type': 'application/json'
 			}
 		}
 	)
