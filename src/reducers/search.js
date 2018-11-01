@@ -4,11 +4,10 @@ import {
 	GET_CHANNEL_ERROR,
 	GET_PODCAST_SUCCESS,
 	GET_PODCAST_REQUEST,
-  GET_PODCAST_ERROR
+	GET_PODCAST_ERROR
 } from '../actions/search';
 
 const initialState = {
-	initialInput: null,
 	podcasts: null,
 	currChannel: null,
 	error: null,
@@ -42,19 +41,18 @@ export default function reducer(state = initialState, action) {
 	} else if (action.type === GET_PODCAST_SUCCESS) {
 		return Object.assign({}, state, {
 			podcasts: action.podcast,
-			initialInput: action.input,
 			loading: false
 		});
-  } else if(action.type === GET_PODCAST_REQUEST){
-    return Object.assign({},state,{
-      error:null,
-      loading:true
-    });
-  } else if(action.type === GET_PODCAST_ERROR){
-    return Object.assign({},state,{
-      loading:false,
-      error:action.error
-    });
-  }
+	} else if (action.type === GET_PODCAST_REQUEST) {
+		return Object.assign({}, state, {
+			error: null,
+			loading: true
+		});
+	} else if (action.type === GET_PODCAST_ERROR) {
+		return Object.assign({}, state, {
+			loading: false,
+			error: action.error
+		});
+	}
 	return state;
 }
