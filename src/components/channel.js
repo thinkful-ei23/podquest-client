@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
@@ -63,6 +64,7 @@ class Channel extends React.Component{
         }
         return(
             <div>
+                <Link to="/dashboard"><button>Back</button></Link>
                 <h1>{podcast.title}</h1>
                 <img src={podcast.image} alt="podcast wallpaper" height={200}/>
                 <p dangerouslySetInnerHTML={{__html: podcast.description}}></p>

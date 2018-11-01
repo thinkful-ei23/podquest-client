@@ -131,8 +131,11 @@ export class MediaPlayer extends React.Component {
     if (this.props.episodeNumber) {
       episode = ` : Episode ${this.props.episodeNumber}`;
     }
+    if (this.props.episodeSeason && this.props.episodeDate) {
+      date += ` - `
+    }
     if (this.props.episodeDate) {
-      date = ` - ${this.props.episodeDate}`
+      date += this.props.episodeDate;
     }
     if (this.props.episodeUrl && !this.state.loaded) {
       player = (
