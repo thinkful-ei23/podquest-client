@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
-import { setEpisode } from '../actions/media-player'
+import { setEpisode, clearEpisode } from '../actions/media-player'
 
 class Channel extends React.Component{
 
@@ -12,6 +12,10 @@ class Channel extends React.Component{
         const channelUrl = localStorage.getItem('podcastChannel');
         // console.log('channelUrl', channelUrl);
         this.props.dispatch(getChannel(channelUrl))
+    }
+
+    componentWillUnmount() {
+        this.props.dispatch(clearEpisode())
     }
 
     handleSelectEpisode(e) {
