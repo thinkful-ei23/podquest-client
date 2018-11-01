@@ -4,13 +4,12 @@ import {
 	GET_CHANNEL_ERROR,
 	GET_PODCAST_SUCCESS,
 	GET_PODCAST_REQUEST,
-  GET_PODCAST_ERROR
+	GET_PODCAST_ERROR
 } from '../actions/search';
 
 import { CLEAR_AUTH } from '../actions/auth'
 
 const initialState = {
-	initialInput: null,
 	podcasts: null,
 	currChannel: null,
 	error: null,
@@ -51,7 +50,6 @@ export default function reducer(state = initialState, action) {
 	if (action.type === GET_PODCAST_SUCCESS) {
 		return Object.assign({}, state, {
 			podcasts: action.podcast,
-			initialInput: action.input,
 			loading: false
 		});
 	}
