@@ -24,6 +24,20 @@ export class MediaPlayer extends React.Component {
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
+  componentDidUpdate (prevProps, prevState, prevContext) {
+    if (this.props.episodeUrl !== prevProps.episodeUrl) {
+
+      this.setState({
+        playing: false,
+        loaded: false,
+        mute: false,
+        seek: null,
+        duration: null
+      });
+      this.clearRAF();
+    }
+  }
+
   componentWillUnmount () {
     this.clearRAF()
   }
@@ -76,11 +90,13 @@ export class MediaPlayer extends React.Component {
   }
 
   renderSeekPos () {
-    this.setState({
-      seek: this.player.seek()
-    })
+    if (this.state.loaded) {
+      this.setState({
+        seek: this.player.seek()
+      });
+    }
     if (this.state.playing) {
-      this._raf = raf(this.renderSeekPos)
+      this._raf = raf(this.renderSeekPos);
     }
   }
 
@@ -94,7 +110,7 @@ export class MediaPlayer extends React.Component {
       player = (
         <React.Fragment>
           <ReactHowler
-            src={[this.props.episodeUrl]}
+            src={this.props.episodeUrl}
             playing={this.state.playing}
             onLoad={this.handleOnLoad}
             onPlay={this.handleOnPlay}
@@ -128,9 +144,9 @@ export class MediaPlayer extends React.Component {
   
           <p>
             {'Status: '}
-            {(this.state.seek !== undefined) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '0:00'}
+            {(this.state.seek) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '00:00:00'}
             {' / '}
-            {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '0:00'}
+            {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '00:00:00'}
           </p>
   
           <div className='volume'>
