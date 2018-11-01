@@ -7,6 +7,8 @@ import {
   GET_PODCAST_ERROR
 } from '../actions/search';
 
+import { CLEAR_AUTH } from '../actions/auth'
+
 const initialState = {
 	initialInput: null,
 	podcasts: null,
@@ -16,41 +18,50 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+	if (action.type === CLEAR_AUTH) {
+		return Object.assign({}, state, initialState);
+	}
 	if (action.type === GET_CHANNEL_REQUEST) {
 		return Object.assign({}, state, {
 			currChannel: null,
 			error: null,
 			loading: true
 		});
-	} else if (action.type === GET_PODCAST_REQUEST) {
+	}
+	if (action.type === GET_PODCAST_REQUEST) {
 		return Object.assign({}, state, {
 			error: null,
 			loading: true
 		});
-	} else if (action.type === GET_CHANNEL_SUCCESS) {
+	}
+	if (action.type === GET_CHANNEL_SUCCESS) {
 		return Object.assign({}, state, {
 			currChannel: action.channelInfo,
 			error: null,
 			loading: false
 		});
-	} else if (action.type === GET_CHANNEL_ERROR) {
+	}
+	if (action.type === GET_CHANNEL_ERROR) {
 		return Object.assign({}, state, {
 			currChannel: null,
 			error: action.error,
 			loading: false
 		});
-	} else if (action.type === GET_PODCAST_SUCCESS) {
+	}
+	if (action.type === GET_PODCAST_SUCCESS) {
 		return Object.assign({}, state, {
 			podcasts: action.podcast,
 			initialInput: action.input,
 			loading: false
 		});
-  } else if(action.type === GET_PODCAST_REQUEST){
+	}
+	if (action.type === GET_PODCAST_REQUEST){
     return Object.assign({},state,{
       error:null,
       loading:true
     });
-  } else if(action.type === GET_PODCAST_ERROR){
+	}
+	if (action.type === GET_PODCAST_ERROR){
     return Object.assign({},state,{
       loading:false,
       error:action.error
