@@ -6,6 +6,17 @@
 	/* color */
 	/* text */
 	/* other */
-.dashboard-username {
-	color: lightcoral;
+
+.user-welcome {
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 2.5rem;
+	line-height: 1.7rem;
+	text-align: center;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+.search-tagline {
+	font-size: 2rem;
+	padding: 1rem;
+
 }
