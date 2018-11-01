@@ -6,6 +6,8 @@
 }
 
 #app-main-body {
-padding: 1rem;
+/* padding: 1rem; */
 margin-top: 8rem;
+/* position: fixed; */
+/* top: 90; */
 }

@@ -14,11 +14,14 @@
 	justify-content: space-around;
 	align-items: center;
 	margin-top: 4rem;
+
 }
 
 .link-reg {
 	margin: 3rem 1rem;
 }
-h2{
+.home >h2{
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 3rem;
 	margin: 3rem 0;
 }

@@ -69,8 +69,9 @@ justify-content: center;
 /* =============ICONS================= */
 
 .fa, .fas, .far {
-	font-size: 2rem;
-	margin: 0 1rem;
+	font-size: 1.5rem;
+	padding: .3rem;
+	/* margin: 0 1rem; */
 	color: #122375;
 }
 .fa-heart {
@@ -82,4 +83,11 @@ color: #122375;
 #world {
 	color: #122375;
 	/* margin-left: -3rem; */
+}
+/* =============BOXES in LOGIN SIGNUP ABOUT================= */
+
+.box{
+background-color: rgba(255, 255, 255, .4);
+border: transparent;
+border-radius: 2px;
 }

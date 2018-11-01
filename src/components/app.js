@@ -10,6 +10,7 @@ import RegistrationPage from './registration-page';
 import Channel from './channel';
 import { refreshAuthToken } from '../actions/auth';
 // import { LoginForm } from './login-form';
+import './app.css';
 
 export class App extends React.Component {
 	componentDidUpdate(prevProps) {

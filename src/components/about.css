@@ -31,14 +31,12 @@ body {
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
-
 	padding: 1rem;
 	/* positioning */
 	/* display + box model */
 	/* color */
 	/* text */
 	/* other */
-
 }
 .about-app{
 	/* display: flex;
@@ -48,13 +46,24 @@ body {
 /* align-content: center; */
 	margin: 1rem;
 	text-align: center;
+	padding: 1rem 2rem;
 }
-h2 {
+.about-app >h2 {
 	font-size: 2rem;
 }
-h3 {
+.about-app >h3 {
 	font-size: 1.8rem;
 }
-h4 {
+.about-app >h4 {
 	font-size: 1.6rem;
+}
+.about-span {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.about-app >p {
+	margin: 0 0 2rem 0;
+}
+.about-directions {
+	margin-top: 3rem;
 }
