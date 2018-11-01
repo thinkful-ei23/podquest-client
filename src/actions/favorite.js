@@ -21,3 +21,5 @@ export const getFavorite = () => (dispatch, getState) => {
     }
   })
 }
+
+export const userFavorite
