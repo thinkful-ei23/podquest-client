@@ -14,15 +14,36 @@ class Channel extends React.Component{
     }
 
     handleSelectEpisode(e) {
-        const episodeTitle = e.target.value;
-        let episodeUrl;
+        const episodeTitle = e.target.value.trim();
+        let episodeData = {};
         this.props.podcast.episodes.forEach(episode => {
-            if (episode.title[0] === episodeTitle) {
-                episodeUrl = episode.enclosure[0].$.url;
+            if (episode.title[0].trim() === episodeTitle) {
+                // console.log(episode);
+                if (episode.title) {
+                    episodeData.episodeTitle = episode.title[0];
+                }
+                if (episode['itunes:season']) {
+                    episodeData.episodeSeason = episode['itunes:season'][0];
+                }
+                if (episode['itunes:episode']) {
+                    episodeData.episodeNumber = episode['itunes:episode'][0];
+                }
+                if (episode.pubDate) {
+                    episodeData.episodeDate = episode.pubDate[0];
+                }
+                if (episode.enclosure) {
+                    episodeData.episodeUrl = episode.enclosure[0].$.url;
+                }
+                if (episode.guid) {
+                    episodeData.episodeGuid = episode.guid[0]._;
+                }
+                if (this.props.podcast.feedUrl) {
+                    episodeData.feedUrl = this.props.podcast.feedUrl;
+                }
             }
         })
-        if (episodeUrl) {
-            this.props.dispatch(setEpisode(episodeUrl));
+        if (episodeData) {
+            this.props.dispatch(setEpisode(episodeData));
         }
     }
 
@@ -44,7 +65,7 @@ class Channel extends React.Component{
             <div>
                 <h1>{podcast.title}</h1>
                 <img src={podcast.image} alt="podcast wallpaper" height={200}/>
-                <p>{podcast.description}</p>
+                <p dangerouslySetInnerHTML={{__html: podcast.description}}></p>
                 <button>Subscribe to channel</button>
                 <select defaultValue="Select episode" onChange={(e) => this.handleSelectEpisode(e)}>
                     <option>Select episode</option>
