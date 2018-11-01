@@ -36,11 +36,15 @@ export const getPostcastSuccess = podcast => ({
 
 export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 	dispatch(getPodcastRequest());
+	const authToken = getState().auth.authToken;
 	return fetch(
 		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
 		{
 			method: 'GET',
-			headers: { 'Content-Type': 'application/json' }
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${authToken}`
+			}
 		}
 	)
 		.then(res => normalizeResponseErrors(res))
@@ -65,11 +69,15 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 		});
 };
 
-export const getChannel = feedUrl => dispatch => {
+export const getChannel = feedUrl => (dispatch, getState) => {
 	dispatch(getChannelRequest());
+	const authToken = getState().auth.authToken;
 	return fetch(`${API_BASE_URL}/podcast`, {
 		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${authToken}`
+		},
 		body: JSON.stringify({ feedUrl })
 	})
 		.then(res => normalizeResponseErrors(res))

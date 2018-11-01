@@ -8,11 +8,13 @@
 	/* other */
 .header-bar {
 	/* positioning */
-	position: relative;
-	margin-bottom: 2rem;
-	/* display + box model */
+	/* position: fixed; */
+	/* top: 0; */
 	width: 100%;
 	height: auto;
+	margin-bottom: 2rem;
+	/* display + box model */
+
 	/* color */
 	/* background-color:#122375; */
 	/* text */
@@ -31,12 +33,10 @@
 	/* font-family: 'Baloo Chettan', cursive; */
 	font-size: 5rem;
 	text-transform: uppercase;
+
 	/* <i class="fas fa-globe-americas"></i> */
 }
-/*
-#header-title2 {
-	font-family: 'Baloo Chettan', cursive;
-	font-size: 5rem;
-	text-align: center;
-	color: #FCFCFC;
-} */
+.head-link{
+	text-decoration: none;
+	color: #DBBC34;
+}

@@ -5,16 +5,18 @@ import { loadAuthToken } from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import searchReducer from './reducers/search';
-import { setAuthToken, refreshAuthToken } from './actions/auth';
+import mediaPlayerReducer from './reducers/media-player';
+import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
-	combineReducers({
-		form: formReducer,
-		auth: authReducer,
-		protectedData: protectedDataReducer,
-		search: searchReducer
-	}),
-	applyMiddleware(thunk)
+    combineReducers({
+        form: formReducer,
+        auth: authReducer,
+        protectedData: protectedDataReducer,
+        search: searchReducer,
+        mediaPlayer: mediaPlayerReducer
+    }),
+    applyMiddleware(thunk)
 );
 
 // Hydrate the authToken from localStorage if it exist

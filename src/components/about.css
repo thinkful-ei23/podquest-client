@@ -1,0 +1,69 @@
+@import "buttons.css";
+@import "text.css";
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* root font size declared below to allow use of rem's  62.5% = 10px*/
+html{
+    font-size: 62.5%;
+}
+/* BELOW, basic body attributes used throughout, */
+body {
+	font-weight: 400;
+	line-height: 1.7;
+	color: #000;
+	/* gives a white border around the entire page */
+	padding:1rem;
+	font-family: "Bai Jamjuree", sans-serif; /*body font*/
+/* font-family: 'Montserrat', sans-serif; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.go-to-dashboard {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 1rem;
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* text */
+	/* other */
+}
+.about-app{
+	/* display: flex;
+	flex-direction: column;
+	flex-wrap: wrap; */
+	justify-content: center;
+/* align-content: center; */
+	margin: 1rem;
+	text-align: center;
+	padding: 1rem 2rem;
+}
+.about-app >h2 {
+	font-size: 2rem;
+}
+.about-app >h3 {
+	font-size: 1.8rem;
+}
+.about-app >h4 {
+	font-size: 1.6rem;
+}
+.about-span {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.about-app >p {
+	margin: 0 0 2rem 0;
+}
+.about-directions {
+	margin-top: 3rem;
+}
