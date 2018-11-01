@@ -20,7 +20,7 @@ export class HeaderBar extends React.Component {
 		return (
 			<div className="header-bar">
 				<h1 id="header-title">
-					<Link to="/">podQuest</Link>
+					<Link to="/" className="head-link" >podQuest</Link>
 				</h1>
 				{logOutButton}
 			</div>

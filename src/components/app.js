@@ -10,6 +10,7 @@ import RegistrationPage from './registration-page';
 import Channel from './channel';
 import { refreshAuthToken } from '../actions/auth';
 // import { LoginForm } from './login-form';
+import './app.css';
 
 export class App extends React.Component {
 	componentDidUpdate(prevProps) {
@@ -45,11 +46,13 @@ export class App extends React.Component {
 		return (
 			<div className="app">
 				<HeaderBar />
-				<Route exact path="/" component={About} />
-				<Route exact path="/login" component={LandingPage} />
-				<Route exact path="/dashboard" component={Dashboard} />
-				<Route exact path="/register" component={RegistrationPage} />
-				<Route exact path="/channel/:id" component={Channel} />
+				<main id="app-main-body">
+					<Route exact path="/" component={About} />
+					<Route exact path="/login" component={LandingPage} />
+					<Route exact path="/dashboard" component={Dashboard} />
+					<Route exact path="/register" component={RegistrationPage} />
+					<Route exact path="/channel/:id" component={Channel} />
+				</main>
 			</div>
 		);
 	}

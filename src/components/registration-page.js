@@ -11,10 +11,10 @@ export function RegistrationPage(props) {
 		return <Redirect to="/dashboard" />;
 	}
 	return (
-		<div className="home">
-			 <h2>Register for PodQuest</h2>
+		<div className="home box">
+			<h2>Register for PodQuest</h2>
 			<RegistrationForm />
-    <p className="link link-reg">Already have an account?&nbsp;Click here to&nbsp;<Link to="/login">Login</Link></p>
+			<p className="link link-reg">Already have an account?&nbsp;Click here to&nbsp;<Link to="/login">Login</Link></p>
 		</div>
 	);
 }
