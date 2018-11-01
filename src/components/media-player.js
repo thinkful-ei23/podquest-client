@@ -104,6 +104,13 @@ export class MediaPlayer extends React.Component {
     raf.cancel(this._raf)
   }
 
+  seekTo (seek) {
+    this.player.seek(seek);
+    this.setState({
+      seek
+    });
+  }
+
   render () {
     let player;
     if (this.props.episodeUrl) {
@@ -142,13 +149,6 @@ export class MediaPlayer extends React.Component {
             </label>
           </div>
   
-          <p>
-            {'Status: '}
-            {(this.state.seek) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '00:00:00'}
-            {' / '}
-            {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '00:00:00'}
-          </p>
-  
           <div className='volume'>
             <label>
               Volume:
@@ -168,7 +168,23 @@ export class MediaPlayer extends React.Component {
           </div>
 
           <div className='progress'>
-
+            <label>
+              <span className='slider-container'>
+                <input
+                  type='range'
+                  min='0'
+                  max={this.state.duration ? this.state.duration : 0}
+                  step='1'
+                  value={this.state.seek ? this.state.seek : 0}
+                  onChange={e => this.seekTo(e.target.value)}
+                />
+              </span>
+              <p>
+                {(this.state.seek) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '00:00:00'}
+                {' / '}
+                {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '00:00:00'}
+              </p>
+            </label>
           </div>
   
           <button onClick={this.handleToggle} disabled={!this.state.loaded}>
