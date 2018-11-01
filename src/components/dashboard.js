@@ -25,47 +25,6 @@ export class Dashboard extends React.Component {
 		});
 	}
 
-	// handlePrev(e) {
-	// 	// dispatch the same GET from iTunes or a new action?
-	// 	// requires the original input query + attr (if attr exists)
-	// 	// current offset + 1, current offset starts at 2
-	// 	console.log('Prev button clicked');
-	// 	const input = e.target.value;
-	// 	this.setState(
-	// 		{
-	// 			offset: this.state.offset - 10
-	// 		},
-	// 		() => {
-	// 			this.state.selectedOption
-	// 				? this.props.dispatch(
-	// 						getPodcasts(input, this.state.selectedOption, this.state.offset)
-	// 				  )
-	// 				: this.props.dispatch(getPodcasts(input, '', this.state.offset));
-	// 		}
-	// 	);
-	// }
-
-	// handleNext(e) {
-	// 	// dispatch the same GET from iTunes or a new action?
-	// 	// requires the original input query + attr (if attr exists)
-	// 	// current offset + 1, current offset starts at 2
-	// 	console.log('Next button clicked');
-	// 	const input = e.target.value;
-	// 	this.setState(
-	// 		{
-	// 			offset: this.state.offset + 10
-	// 		},
-	// 		() => {
-	// 			// console.log('Next', this.state.offset);
-	// 			this.state.selectedOption
-	// 				? this.props.dispatch(
-	// 						getPodcasts(input, this.state.selectedOption, this.state.offset)
-	// 				  )
-	// 				: this.props.dispatch(getPodcasts(input, '', this.state.offset));
-	// 		}
-	// );
-	// }
-
 	onSubmit(e) {
 		// console.log(e);
 		if (this.state.selectedOption) {
