@@ -5,6 +5,7 @@ import SearchForm from './searchForm';
 import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 import SearchResults from './searchResults';
+import './dashboard.css';
 
 export class Dashboard extends React.Component {
 	constructor(props) {
@@ -39,8 +40,8 @@ export class Dashboard extends React.Component {
 			() => {
 				this.state.selectedOption
 					? this.props.dispatch(
-							getPodcasts(input, this.state.selectedOption, this.state.offset)
-					  )
+						getPodcasts(input, this.state.selectedOption, this.state.offset)
+					)
 					: this.props.dispatch(getPodcasts(input, '', this.state.offset));
 			}
 		);
@@ -66,8 +67,8 @@ export class Dashboard extends React.Component {
 				// console.log('Next', this.state.offset);
 				this.state.selectedOption
 					? this.props.dispatch(
-							getPodcasts(input, this.state.selectedOption, this.state.offset)
-					  )
+						getPodcasts(input, this.state.selectedOption, this.state.offset)
+					)
 					: this.props.dispatch(getPodcasts(input, '', this.state.offset));
 			}
 		);
@@ -89,7 +90,7 @@ export class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<div className="dashboard">
+			<div className="dashboard box">
 				<div className="dashboard-username">
 					Username: {this.props.username}
 				</div>
@@ -101,15 +102,15 @@ export class Dashboard extends React.Component {
 
 				{this.props.podcasts
 					? [...Array(this.props.podcasts.length).keys()].map(index => (
-							<SearchResults
-								key={this.props.podcasts[index].id}
-								resultNumber={index+1}
-								podcast={this.props.podcasts[index]}
-							/>
+						<SearchResults
+							key={this.props.podcasts[index].id}
+							resultNumber={index + 1}
+							podcast={this.props.podcasts[index]}
+						/>
 					))
 					: ''}
 				{this.state.offset > 10 ? (
-					<button
+					<button className="btn btn-small btn-yellow2 btn-pre"
 						onClick={e => this.handlePrev(e)}
 						value={this.props.initialInput}
 					>
@@ -117,15 +118,15 @@ export class Dashboard extends React.Component {
 					</button>
 				) : null}
 				{this.props.podcasts ? (
-					<button
+					<button className="btn btn-small btn-yellow2 btn-results"
 						onClick={e => this.handleNext(e)}
 						value={this.props.initialInput}
 					>
 						Show More Results
 					</button>
 				) : (
-					'Nothing to see for now. So...shall we search for a podcast?'
-				)}
+						'Nothing to see for now. So...shall we search for a podcast?'
+					)}
 			</div>
 		);
 	}

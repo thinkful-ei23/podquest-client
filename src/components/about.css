@@ -13,31 +13,27 @@ html{
     font-size: 62.5%;
 }
 /* BELOW, basic body attributes used throughout, */
-body {
-	font-weight: 400;
-	line-height: 1.7;
-	color: #000;
-	/* gives a white border around the entire page */
-	padding:1rem;
-	font-family: "Bai Jamjuree", sans-serif; /*body font*/
-/* font-family: 'Montserrat', sans-serif; */
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: center;
-}
+
 .go-to-dashboard {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding: 1rem;
+	text-align: center;
+	padding: 2rem;
 	/* positioning */
 	/* display + box model */
 	/* color */
 	/* text */
 	/* other */
 }
+.go-to-h2 {
+	font-family: 'Bai Jamjuree', sans-serif;
+}
+.go-to-p {
+	margin: 2rem 0;
+}
+
 .about-app{
 	/* display: flex;
 	flex-direction: column;
