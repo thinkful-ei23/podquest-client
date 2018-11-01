@@ -34,7 +34,7 @@ export const getPostcastSuccess = podcast => ({
 	podcast
 });
 
-export const getPodcasts = (searchTerm, attr = '') => dispatch => {
+export const getPodcasts = (searchTerm, attr = '') => (getState, dispatch) => {
 	dispatch(getPodcastRequest());
 	const authToken = getState().auth.authToken;
 	return fetch(
@@ -43,7 +43,7 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${authToken}`
+				Authorization: `Bearer ${authToken}`
 			}
 		}
 	)
@@ -76,7 +76,7 @@ export const getChannel = feedUrl => (dispatch, getState) => {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${authToken}`
+			Authorization: `Bearer ${authToken}`
 		},
 		body: JSON.stringify({ feedUrl })
 	})
