@@ -45,11 +45,13 @@ export class App extends React.Component {
 		return (
 			<div className="app">
 				<HeaderBar />
-				<Route exact path="/" component={About} />
-				<Route exact path="/login" component={LandingPage} />
-				<Route exact path="/dashboard" component={Dashboard} />
-				<Route exact path="/register" component={RegistrationPage} />
-				<Route exact path="/channel/:id" component={Channel} />
+				<main id="app-main-body">
+					<Route exact path="/" component={About} />
+					<Route exact path="/login" component={LandingPage} />
+					<Route exact path="/dashboard" component={Dashboard} />
+					<Route exact path="/register" component={RegistrationPage} />
+					<Route exact path="/channel/:id" component={Channel} />
+				</main>
 			</div>
 		);
 	}

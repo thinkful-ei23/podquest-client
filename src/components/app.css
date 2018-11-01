@@ -1,0 +1,11 @@
+.app {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+#app-main-body {
+padding: 1rem;
+margin-top: 8rem;
+}

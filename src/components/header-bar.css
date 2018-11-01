@@ -8,11 +8,13 @@
 	/* other */
 .header-bar {
 	/* positioning */
-	position: relative;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 8rem;
 	margin-bottom: 2rem;
 	/* display + box model */
-	width: 100%;
-	height: auto;
+
 	/* color */
 	/* background-color:#122375; */
 	/* text */
@@ -31,7 +33,12 @@
 	/* font-family: 'Baloo Chettan', cursive; */
 	font-size: 5rem;
 	text-transform: uppercase;
+
 	/* <i class="fas fa-globe-americas"></i> */
+}
+.head-link{
+	text-decoration: none;
+	color: #DBBC34;
 }
 /*
 #header-title2 {
