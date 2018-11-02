@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
 import { userFavoriteInfo } from "../actions/favorite";
+import './media-player.css';
+
 
 export class MediaPlayer extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -25,7 +27,7 @@ export class MediaPlayer extends React.Component {
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
-  componentDidUpdate (prevProps, prevState, prevContext) {
+  componentDidUpdate(prevProps, prevState, prevContext) {
     if (this.props.episodeUrl !== prevProps.episodeUrl) {
 
       this.setState({
@@ -39,38 +41,38 @@ export class MediaPlayer extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.clearRAF()
   }
 
-  handleToggle () {
+  handleToggle() {
     this.setState({
       playing: !this.state.playing
     })
   }
 
-  handleOnLoad () {
+  handleOnLoad() {
     this.setState({
       loaded: true,
       duration: this.player.duration()
     })
   }
 
-  handleOnPlay () {
+  handleOnPlay() {
     this.setState({
       playing: true
     })
     this.renderSeekPos()
   }
 
-  handleOnEnd () {
+  handleOnEnd() {
     this.setState({
       playing: false
     })
     this.clearRAF()
   }
 
-  handleStop () {
+  handleStop() {
     this.player.stop()
     this.setState({
       playing: false // Need to update our local state so we don't immediately invoke autoplay
@@ -78,19 +80,19 @@ export class MediaPlayer extends React.Component {
     this.renderSeekPos()
   }
 
-  handleLoopToggle () {
+  handleLoopToggle() {
     this.setState({
       loop: !this.state.loop
     })
   }
 
-  handleMuteToggle () {
+  handleMuteToggle() {
     this.setState({
       mute: !this.state.mute
     })
   }
 
-  renderSeekPos () {
+  renderSeekPos() {
     if (this.state.loaded) {
       this.setState({
         seek: this.player.seek()
@@ -101,11 +103,11 @@ export class MediaPlayer extends React.Component {
     }
   }
 
-  clearRAF () {
+  clearRAF() {
     raf.cancel(this._raf)
   }
 
-  seekTo (seek) {
+  seekTo(seek) {
     this.player.seek(seek);
     this.setState({
       seek
@@ -122,7 +124,7 @@ export class MediaPlayer extends React.Component {
     this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeGuid));
   }
 
-  render () {
+  render() {
     let player;
     let season = '';
     let episode = '';
@@ -166,7 +168,7 @@ export class MediaPlayer extends React.Component {
               />
             </label>
           </div>
-  
+
           <div className='volume'>
             <label>
               Volume:
@@ -177,8 +179,8 @@ export class MediaPlayer extends React.Component {
                   max='1'
                   step='.05'
                   value={this.state.volume}
-                  onChange={e => this.setState({volume: parseFloat(e.target.value)})}
-                  style={{verticalAlign: 'bottom'}}
+                  onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
+                  style={{ verticalAlign: 'bottom' }}
                 />
               </span>
               {(this.state.volume * 100).toFixed(0)}
@@ -204,7 +206,7 @@ export class MediaPlayer extends React.Component {
               </p>
             </label>
           </div>
-  
+
           <button className='play-button' onClick={this.handleToggle} disabled={!this.state.loaded}>
             {(this.state.playing) ? 'Pause' : 'Play'}
           </button>
