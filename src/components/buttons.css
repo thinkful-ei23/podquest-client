@@ -24,8 +24,10 @@ html{
 	box-shadow: 0 .4rem .6rem 0 rgba(0, 0, 0, 0.2);
 	/* text */
 	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 1.7rem;
+	font-weight: 500;
+	font-size: 2rem;
 	text-transform: uppercase;
+	letter-spacing: .2rem;
 	/* other */
 	border: transparent;
 	border-radius: 1rem;
@@ -60,7 +62,6 @@ html{
 }
 .btn-blue {
 	background-color:#122375;
-
 	background-color: rgba(18, 35, 117, .7);
 	color: #FCFCFC;
 }

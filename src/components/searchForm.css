@@ -1,29 +1,28 @@
 @import "buttons.css";
 @import "text.css";
 @import "radio_btn.css";
+@import "form.css";
 
 	/* positioning */
 	/* display + box model */
 	/* color */
 	/* text */
 	/* other */
-
+.title-search {
+	margin: 2rem 2rem 4rem 2rem;
+}
 #form-search {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
+	justify-content: center;
 	padding: 3rem;
 }
-#search-input {
-	width: 30rem;
-	line-height: 2.5rem;
-	padding: .5rem;
-	margin-top: 3rem;
-	font-size: 2rem;
-	/* justify-content: center; */
-}
-.input-label-search {
-	margin: 0 2rem;
+.input-label-div{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 .radio-row {
 	display: flex;
@@ -37,4 +36,8 @@
 	/* align-items: center; */
 	margin-left: auto;
 	margin-right: auto;
+}
+.search-by-terms {
+	align-self: flex-start;
+	margin-left: -1rem;
 }

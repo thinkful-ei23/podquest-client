@@ -1,0 +1,21 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* other */
+
+.results-page {
+	border: 5px dotted lemonchiffon;
+	padding: 2rem 4rem;
+	margin-top: 5rem;
+	}
+	/* .btn-previous {
+		visibility: hidden;
+	} */
+	.btn-row-results{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: baseline;
+	}

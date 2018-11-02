@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchResults from './searchResults';
 import pages from './makePages';
+import './showResults.css';
 
 export default class ShowResults extends React.Component {
 	constructor(props) {
@@ -31,29 +32,32 @@ export default class ShowResults extends React.Component {
 			// console.log(searchResults.length);
 		}
 		return (
-			<div>
+			<section className="results-page">
 				{searchResults
 					? [...Array(searchResults[this.state.page].length).keys()].map(
-							index => (
-								<SearchResults
-									key={searchResults[this.state.page][index].id}
-									resultNumber={index + 1}
-									podcast={searchResults[this.state.page][index]}
-								/>
-							)
-					  )
+						index => (
+							<SearchResults
+								key={searchResults[this.state.page][index].id}
+								resultNumber={index + 1}
+								podcast={searchResults[this.state.page][index]}
+							/>
+						)
+					)
 					: 'Nothing to see for now. So...shall we search for a podcast?'}
-				{searchResults && this.state.page > 0 ? (
-					<button onClick={e => this.handleLess(e)}>Previous Results</button>
-				) : (
-					''
-				)}
-				{searchResults && this.state.page < searchResults.length - 1 ? (
-					<button onClick={e => this.handleMore(e)}>Show More Results</button>
-				) : (
-					''
-				)}
-			</div>
+				<div className="btn-row-results">
+					{searchResults && this.state.page > 0 ? (
+						<button className="btn btn-large btn-yellow2 btn-previous" onClick={e => this.handleLess(e)}>Previous Results</button>
+					) : (
+							''
+						)}
+					{searchResults && this.state.page < searchResults.length - 1 ? (
+						<button className="btn btn-large btn-yellow2 btn-more" onClick={e => this.handleMore(e)}>Show More Results</button>
+					) : (
+							''
+						)
+					}
+				</div>
+			</section>
 		);
 	}
 }

@@ -3,12 +3,16 @@
 } */
 /* The container */
 .container {
-	display: block;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: baseline;
+	align-self:baseline;
 	position: relative;
-	padding-left: 35px;
-	margin-bottom: 12px;
+	padding-left: 3.5rem;
+	margin-bottom: 1.2rem;
 	cursor: pointer;
-	font-size: 22px;
+	font-size: 2.2rem;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -25,8 +29,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 25px;
-	width: 25px;
+	height: 2rem;
+	width: 2rem;
+	margin-top: .3rem;
 	background-color: #808080;
 	border-radius: 50%;
 }
@@ -50,8 +55,9 @@
 }
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
-	top: 9px;
-	left: 9px;
+
+ top: 6px;
+	left: 6px;
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
