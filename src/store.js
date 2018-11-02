@@ -6,6 +6,7 @@ import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import searchReducer from './reducers/search';
 import mediaPlayerReducer from './reducers/media-player';
+import favoritesReducer from "./reducers/favorite";
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
@@ -14,7 +15,8 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         search: searchReducer,
-        mediaPlayer: mediaPlayerReducer
+        mediaPlayer: mediaPlayerReducer,
+        favorites: favoritesReducer 
     }),
     applyMiddleware(thunk)
 );
