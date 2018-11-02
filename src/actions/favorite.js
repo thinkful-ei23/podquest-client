@@ -36,3 +36,14 @@ export const userFavoriteInfo = (feedUrl, title, guid) => (getState) => {
     .then(res => res.json())
     .catch(err => next(err));
 }
+
+export const deleteFavorite = id => (getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/favorite/:${id}`, {
+    method: 'DELETE',
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+}
