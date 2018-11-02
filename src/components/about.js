@@ -28,18 +28,18 @@ export class About extends React.Component {
 				<h4>But, we're here to help!</h4>
 
 				<p className="about-directions">
-					To start searching, go to&nbsp;
-					<Link to="/register"><span className="about-span">Register</span></Link>.
-				</p>
-				<p>
-					If you've already got an account, go to&nbsp;
-					<Link to="/login"><span className="about-span">Login</span></Link>
-				</p>
-				<p>	To start searching, go to</p>
-				<button className="btn btn-large btn-green">Register button sample</button>
 
-				<button className="btn btn-large btn-green">Got to LOGIN button sample</button>
+					<p>	To start searching, go to</p>
+					<button className="btn btn-large btn-green">
+						<Link className="link link-about" to="/register"><span className="about-span">Register</span></Link>
+					</button>
 
+					<p>If you've already got an account, go to</p>
+					<button className="btn btn-large btn-green">
+						<Link className="link link-about" to="/login"><span className="about-span">Login</span></Link>
+					</button>
+
+				</p>
 			</div>
 		);
 	}

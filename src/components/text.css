@@ -54,9 +54,8 @@ p {
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 2.5rem;
 }
-.link > Link {
-	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 5.5rem;
+.link {
+	text-decoration: none;
 }
 #password,
 #username,
