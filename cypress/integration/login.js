@@ -5,5 +5,5 @@ describe('podQuest - Login', function() {
         cy.get('input#username').type('there you2')
         cy.get('input#password').type('password123')
         cy.get('button.login-button').click()
-    })
+    });
   })
