@@ -36,4 +36,3 @@ export const userFavoriteInfo = (feedUrl, title, guid) => (getState) => {
     .then(res => res.json())
     .catch(err => next(err));
 }
-
