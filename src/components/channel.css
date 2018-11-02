@@ -1,0 +1,15 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* other */
+
+	.title-channel {
+		font-size: 3rem;
+		margin: 3rem 0;
+	}
+	.channel-box {
+		margin: 3rem;
+		border: 3px dashed chartreuse;
+	}
