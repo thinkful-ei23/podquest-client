@@ -203,10 +203,10 @@ export class MediaPlayer extends React.Component {
             </label>
           </div>
   
-          <button onClick={this.handleToggle} disabled={!this.state.loaded}>
+          <button className='play-button' onClick={this.handleToggle} disabled={!this.state.loaded}>
             {(this.state.playing) ? 'Pause' : 'Play'}
           </button>
-          <button onClick={this.handleStop} disabled={!this.state.loaded}>
+          <button className='stop-button' onClick={this.handleStop} disabled={!this.state.loaded}>
             Stop
           </button>
           <button onClick={() => this.handleFav()}>

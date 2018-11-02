@@ -73,7 +73,10 @@ class Channel extends React.Component{
                 <img src={podcast.image} alt="podcast wallpaper" height={200}/>
                 <p dangerouslySetInnerHTML={{__html: podcast.description}}></p>
                 <button>Subscribe to channel</button>
-                <select defaultValue="Select episode" onChange={(e) => this.handleSelectEpisode(e)}>
+                <select
+                    id='episode-select'
+                    defaultValue="Select episode" 
+                    onChange={(e) => this.handleSelectEpisode(e)}>
                     <option>Select episode</option>
                     {optionEpisode}
                 </select>
