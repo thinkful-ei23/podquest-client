@@ -8,10 +8,9 @@
 	/* other */
 .header-bar {
 	/* positioning */
-	/* position: fixed; */
-	/* top: 0; */
+	position: fixed;
+	top: 0;
 	width: 100%;
-	height: auto;
 	margin-bottom: 2rem;
 	/* display + box model */
 
@@ -39,4 +38,9 @@
 .head-link{
 	text-decoration: none;
 	color: #DBBC34;
+}
+
+/* TODO */
+.btn-logout {
+	margin-top: -3rem;
 }

@@ -19,8 +19,8 @@ html{
 /* font-family: 'Montserrat', sans-serif;  titles and headers*/
 
 /* logo fonts
-	/* font-family: 'Audiowide', cursive; */
-	/* font-family: 'Baloo Chettan', cursive; */
+	/* font-family: 'Audiowide', cursive;  header title only*/
+	/* font-family: 'Baloo Chettan', cursive; maybe for logo*/
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', sans-serif;
@@ -31,6 +31,7 @@ h1 {
 }
 h2 {
 	font-size: 4rem;
+	font-family: 'Bai Jamjuree', sans-serif;
 }
 h3 {
 	font-size: 3.5rem;

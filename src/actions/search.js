@@ -29,23 +29,19 @@ export const getPodcastError = error => ({
 });
 
 export const GET_PODCAST_SUCCESS = 'GET_PODCAST_SUCCESS';
-export const getPostcastSuccess = (input, podcast) => ({
+export const getPostcastSuccess = podcast => ({
 	type: GET_PODCAST_SUCCESS,
-	podcast,
-	input
+	podcast
 });
 
-
-export const getPodcasts = (searchTerm, attr = '', offset = 1) => (dispatch, getState) => {
+export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 	dispatch(getPodcastRequest());
-	const authToken = getState().auth.authToken;
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}&offset=${offset}&limit=10`,
+		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
 		{
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${authToken}`
+				'Content-Type': 'application/json'
 			}
 		}
 	)
@@ -63,7 +59,8 @@ export const getPodcasts = (searchTerm, attr = '', offset = 1) => (dispatch, get
 						image: result.artworkUrl100
 					};
 				});
-			dispatch(getPostcastSuccess(searchTerm, filteredResponse));
+			// console.log(filteredResponse);
+			dispatch(getPostcastSuccess(filteredResponse));
 		})
 		.catch(err => {
 			dispatch(getPodcastError(err));
@@ -77,7 +74,7 @@ export const getChannel = feedUrl => (dispatch, getState) => {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${authToken}`
+			Authorization: `Bearer ${authToken}`
 		},
 		body: JSON.stringify({ feedUrl })
 	})
