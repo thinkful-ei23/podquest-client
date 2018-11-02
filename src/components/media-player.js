@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
+import { userFavoriteInfo } from "../actions/favorite";
 
 export class MediaPlayer extends React.Component {
   constructor (props) {
@@ -117,7 +118,8 @@ export class MediaPlayer extends React.Component {
       title: this.props.episodeTitle,
       feedUrl: this.props.feedUrl
     };
-    console.log('episodeData', episodeData);
+    // console.log('episodeData', episodeData);
+    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeGuid));
   }
 
   render () {

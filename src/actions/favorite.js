@@ -11,6 +11,11 @@ export const getFavoriteError = error => ({
   type: GET_FAVORITE_ERROR,
   error
 })
+export const POST_FAVORITE_ERROR = 'POST_FAVORITE_ERROR';
+export const postFavoriteError = error => ({
+  type: POST_FAVORITE_ERROR,
+  error
+})
 
 export const getFavorite = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken
@@ -22,7 +27,7 @@ export const getFavorite = () => (dispatch, getState) => {
   })
 }
 
-export const userFavoriteInfo = (feedUrl, title, guid) => (getState) => {
+export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/favorite`, {
     method: 'POST',
@@ -34,7 +39,7 @@ export const userFavoriteInfo = (feedUrl, title, guid) => (getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .catch(err => next(err));
+    .catch(err => dispatch(postFavoriteError(err)));
 }
 
 export const deleteFavorite = id => (getState) => {
@@ -46,4 +51,7 @@ export const deleteFavorite = id => (getState) => {
       Authorization: `Bearer ${authToken}`
     }
   })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    // .catch(err => console.log(err))
 }
