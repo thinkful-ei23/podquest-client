@@ -35,6 +35,11 @@ export class About extends React.Component {
 					If you've already got an account, go to&nbsp;
 					<Link to="/login"><span className="about-span">Login</span></Link>
 				</p>
+				<p>	To start searching, go to</p>
+				<button className="btn btn-large btn-green">Register button sample</button>
+
+				<button className="btn btn-large btn-green">Got to LOGIN button sample</button>
+
 			</div>
 		);
 	}
