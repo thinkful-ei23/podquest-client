@@ -17,9 +17,11 @@ export default class ShowResults extends React.Component {
 	}
 
 	handleLess(e) {
-		this.setState({
-			page: this.state.page - 1
-		});
+		if (this.state.pages > 0) {
+			this.setState({
+				page: this.state.page - 1
+			});
+		}
 	}
 
 	render() {
