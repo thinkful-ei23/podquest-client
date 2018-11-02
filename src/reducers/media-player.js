@@ -1,20 +1,21 @@
 import {
-	SET_EPISODE
+	SET_EPISODE,
+	CLEAR_EPISODE
 } from '../actions/media-player';
 
 import { CLEAR_AUTH } from '../actions/auth'
 
 const initialState = {
-	episodeUrl: null
+	episodeData: null
 };
 
 export default function reducer(state = initialState, action) {
-	if (action.type === CLEAR_AUTH) {
+	if (action.type === CLEAR_AUTH || action.type === CLEAR_EPISODE) {
 		return Object.assign({}, state, initialState);
 	}
 	if (action.type === SET_EPISODE) {
 		return Object.assign({}, state, {
-			episodeUrl: action.episodeUrl
+			episodeData: action.episodeData
     });
   }
   return state;

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
+import { userFavoriteInfo } from "../actions/favorite";
 
 export class MediaPlayer extends React.Component {
   constructor (props) {
@@ -111,25 +112,42 @@ export class MediaPlayer extends React.Component {
     });
   }
 
+  handleFav() {
+    const episodeData = {
+      guid: this.props.episodeGuid,
+      title: this.props.episodeTitle,
+      feedUrl: this.props.feedUrl
+    };
+    // console.log('episodeData', episodeData);
+    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeGuid));
+  }
+
   render () {
     let player;
-    if (this.props.episodeUrl) {
+    let season = '';
+    let episode = '';
+    let date = '';
+    if (this.props.episodeSeason) {
+      season = `Season ${this.props.episodeSeason}`;
+    }
+    if (this.props.episodeNumber) {
+      episode = ` : Episode ${this.props.episodeNumber}`;
+    }
+    if (this.props.episodeSeason && this.props.episodeDate) {
+      date += ` - `
+    }
+    if (this.props.episodeDate) {
+      date += this.props.episodeDate;
+    }
+    if (this.props.episodeUrl && !this.state.loaded) {
+      player = (
+        <p>Loading...</p>
+      )
+    } else if (this.props.episodeUrl && this.state.loaded) {
       player = (
         <React.Fragment>
-          <ReactHowler
-            src={this.props.episodeUrl}
-            playing={this.state.playing}
-            onLoad={this.handleOnLoad}
-            onPlay={this.handleOnPlay}
-            onEnd={this.handleOnEnd}
-            loop={this.state.loop}
-            mute={this.state.mute}
-            volume={this.state.volume}
-            ref={(ref) => (this.player = ref)}
-          />
-  
-          <p>{(this.state.loaded) ? 'Loaded' : 'Loading'}</p>
-  
+          <p><strong>{this.props.episodeTitle}</strong></p>
+          <p>{season}{episode}<em>{date}</em></p>
           <div className='toggles'>
             <label>
               Loop:
@@ -187,17 +205,34 @@ export class MediaPlayer extends React.Component {
             </label>
           </div>
   
-          <button onClick={this.handleToggle} disabled={!this.state.loaded}>
+          <button className='play-button' onClick={this.handleToggle} disabled={!this.state.loaded}>
             {(this.state.playing) ? 'Pause' : 'Play'}
           </button>
-          <button onClick={this.handleStop} disabled={!this.state.loaded}>
+          <button className='stop-button' onClick={this.handleStop} disabled={!this.state.loaded}>
             Stop
+          </button>
+          <button onClick={() => this.handleFav()}>
+            Favorite
           </button>
         </React.Fragment>
       );
     }
     return (
       <section className="media-player">
+        {!this.props.episodeUrl ? '' : (
+          <ReactHowler
+            src={this.props.episodeUrl}
+            playing={this.state.playing}
+            onLoad={this.handleOnLoad}
+            onPlay={this.handleOnPlay}
+            onEnd={this.handleOnEnd}
+            loop={this.state.loop}
+            mute={this.state.mute}
+            volume={this.state.volume}
+            ref={(ref) => (this.player = ref)}
+            html5={true}
+          />
+        )}
         {player}
       </section>
     );
@@ -205,8 +240,19 @@ export class MediaPlayer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    episodeUrl: state.mediaPlayer.episodeUrl
+  const episodeData = state.mediaPlayer.episodeData;
+  if (episodeData) {
+    return {
+      episodeDate: episodeData.episodeDate,
+      episodeGuid: episodeData.episodeGuid,
+      episodeNumber: episodeData.episodeNumber,
+      episodeSeason: episodeData.episodeSeason,
+      episodeTitle: episodeData.episodeTitle,
+      episodeUrl: episodeData.episodeUrl,
+      feedUrl: episodeData.feedUrl
+    }
+  } else {
+    return {};
   }
 };
 
