@@ -55,41 +55,38 @@ class Channel extends React.Component {
 		console.log('subscription button clicked', document.URL);
 	}
 
-	render() {
-		if (!this.props.podcast) {
-			return <div>Loading...</div>;
-		}
-		// console.log('props', this.props); // see podcasts
-		const podcast = this.props.podcast;
-		// loops through episodes
-		let optionEpisode = [];
-		if (podcast.episodes) {
-			optionEpisode = podcast.episodes.map((episode, index) => {
-				return <option key={index}>{episode.title}</option>;
-			});
-		}
-		return (
-			<div>
-				<Link to="/dashboard">
-					<button>Back</button>
-				</Link>
-				<h1>{podcast.title}</h1>
-				<img src={podcast.image} alt="podcast wallpaper" height={200} />
-				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button onClick={e => this.handleSubscribe(e)}>
-					Subscribe to channel
-				</button>
-				<select
-					defaultValue="Select episode"
-					onChange={e => this.handleSelectEpisode(e)}
-				>
-					<option>Select episode</option>
-					{optionEpisode}
-				</select>
-				<MediaPlayer />
-			</div>
-		);
-	}
+    render(){
+
+        if(!this.props.podcast) {
+            return <div>Loading...</div>
+        }
+        // console.log('props', this.props); // see podcasts
+        const podcast = this.props.podcast
+        // loops through episodes
+        let optionEpisode = [];
+        if (podcast.episodes) {
+            optionEpisode = podcast.episodes.map((episode, index) => {
+                return <option key={index}>{episode.title}</option>
+            });
+        }
+        return(
+            <div>
+                <Link to="/dashboard"><button>Back</button></Link>
+                <h1>{podcast.title}</h1>
+                <img src={podcast.image} alt="podcast wallpaper" height={200}/>
+                <p dangerouslySetInnerHTML={{__html: podcast.description}}></p>
+                <button>Subscribe to channel</button>
+                <select
+                    id='episode-select'
+                    defaultValue="Select episode" 
+                    onChange={(e) => this.handleSelectEpisode(e)}>
+                    <option>Select episode</option>
+                    {optionEpisode}
+                </select>
+                <MediaPlayer />
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => {

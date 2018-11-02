@@ -30,8 +30,8 @@ export default function SearchForm(props) {
 						value="titleTerm"
 						checked={props.selectedOption === 'titleTerm'}
 						onChange={e => props.handleOptionChange(e)}
-					/>
-					<span class="checkmark" />
+					/><span className="checkmark"></span>
+
 					<p>Title </p>
 				</label>
 				<label className="container">
@@ -42,8 +42,7 @@ export default function SearchForm(props) {
 						value="genreIndex"
 						checked={props.selectedOption === 'genreIndex'}
 						onChange={e => props.handleOptionChange(e)}
-					/>
-					<span class="checkmark" />
+					/><span className="checkmark"></span>
 					<p>Genre</p>
 				</label>
 				<label className="container">
