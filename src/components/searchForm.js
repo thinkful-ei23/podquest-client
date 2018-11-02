@@ -38,7 +38,7 @@ onChange={e => props.handleInput(e)}
 					/><span className="checkmark"></span>
 
 
-					/><span className="checkmark"></span>
+					<span className="checkmark"></span>
 					<p className="search-by-terms">Title </p>
 
 					
