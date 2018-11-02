@@ -25,6 +25,10 @@ export const getFavorite = () => (dispatch, getState) => {
       Authorization: `Bearer ${authToken}`
     }
   })
+  .then(res => normalizeResponseErrors(res))
+  .then(results =>{
+    dispatch(getFavoriteSuccess(results))
+  })
 }
 
 export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) => {
