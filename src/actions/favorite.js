@@ -17,14 +17,18 @@ export const postFavoriteError = error => ({
   error
 })
 
-export const getFavorite = () => (dispatch, getState) => {
-  const authToken = getState().auth.authToken
-  return fetch(`${API_BASE_URL}/favorite`, {
+async function getFavorites(authToken){
+ return await fetch(`${API_BASE_URL}/favorite`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`
     }
   })
+}
+
+export const getFavorite = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken
+  getFavorites(authToken)
   .then(res => normalizeResponseErrors(res))
   .then(results =>{
     dispatch(getFavoriteSuccess(results))
