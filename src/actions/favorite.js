@@ -31,8 +31,10 @@ export const getFavorite = () => (dispatch, getState) => {
   getFavorites(authToken)
   .then(res => normalizeResponseErrors(res))
   .then(results =>{
+    console.log('results', results);
     dispatch(getFavoriteSuccess(results))
   })
+  .catch(err => getFavoriteError(err))
 }
 
 export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) => {
