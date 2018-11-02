@@ -10,7 +10,8 @@ export class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null
+			selectedOption: null,
+			search: null
 		};
 	}
 
@@ -19,14 +20,21 @@ export class Dashboard extends React.Component {
 	// }
 
 	handleOptionChange(e) {
-		console.log(e.target.value);
+		// console.log(e.target.value);
 		this.setState({
 			selectedOption: e.target.value
 		});
 	}
 
+	handleInput(e) {
+		// console.log(e.target.value);
+		this.setState({
+			search: e.target.value
+		});
+	}
+
 	onSubmit(e) {
-		// console.log(e);
+		console.log(e);
 		if (this.state.selectedOption) {
 			// console.log('option is', this.state.selectedOption);
 			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
@@ -46,6 +54,8 @@ export class Dashboard extends React.Component {
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
 					selectedOption={this.state.selectedOption}
+					handleInput={e => this.handleInput(e)}
+					search={this.state.search}
 				/>
 				<ShowResults podcasts={this.props.podcasts} />
 			</div>
