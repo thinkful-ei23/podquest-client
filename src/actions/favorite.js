@@ -22,4 +22,18 @@ export const getFavorite = () => (dispatch, getState) => {
   })
 }
 
-export const userFavorite
+export const userFavoriteInfo = (feedUrl, title, guid) => (getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/favorite`, {
+    method: 'POST',
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify({ feedUrl, title, guid })
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .catch(err => next(err));
+}
+
