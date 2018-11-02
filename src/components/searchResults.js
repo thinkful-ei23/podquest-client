@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-function SearchResults(props){
+export function SearchResults(props){
         return(
             <div>
                 {props.resultNumber +': '}

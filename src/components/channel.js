@@ -6,7 +6,7 @@ import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player'
 
-class Channel extends React.Component{
+export class Channel extends React.Component{
 
     componentDidMount(){
         const channelUrl = localStorage.getItem('podcastChannel');
