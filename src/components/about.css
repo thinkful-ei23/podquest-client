@@ -46,6 +46,7 @@ html{
 }
 .about-app >h2 {
 	font-size: 2rem;
+	margin: 2rem 0;
 }
 .about-app >h3 {
 	font-size: 1.8rem;
@@ -58,12 +59,33 @@ html{
 	text-transform: uppercase;
 }
 .about-app >p {
-	margin: 0 0 2rem 0;
+	margin: 0 0 4rem 0;
+	line-height: 3rem;
+
 }
 .about-directions {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: stretch;
+	justify-content: space-evenly;
 	margin-top: 3rem;
+}
+.about-log,
+.about-reg {
+	align-items: center;
+	flex-wrap: wrap;
+}
+.about-log >p,
+.about-reg >p {
+	font-size: 1.7rem;
+}
+.btn-about {
+	margin: 1rem 0 3rem 0;
+}
+.link-about {
+	color: #fcfcfc;
+}
+.link-about:hover,
+.link-about:active {
+	color: purple;
 }
