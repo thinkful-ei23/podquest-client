@@ -228,6 +228,7 @@ export class MediaPlayer extends React.Component {
             mute={this.state.mute}
             volume={this.state.volume}
             ref={(ref) => (this.player = ref)}
+            html5={true}
           />
         )}
         {player}
