@@ -8,9 +8,9 @@ export class About extends React.Component {
 		if (this.props.loggedIn) {
 			return (
 				<div className="go-to-dashboard box">
-					<h2>Nananana&nbsp;~~ &nbsp;Podcast!</h2>
-					<p>You know what we do. Let's keep searching, shall we?</p>
-					<p>
+					<h2 className="go-to-h2">Nananana&nbsp;~~ &nbsp;Podcast!</h2>
+					<p className="go-to-p">You know what we do. Let's keep searching, shall we?</p>
+					<p className="go-to-p">
 						Take me back to &nbsp;<Link to="/dashboard">My Dashboard</Link>
 					</p>
 				</div>

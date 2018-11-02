@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
-import { fetchProtectedData } from '../actions/protected-data';
+// import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 import ShowResults from './showResults';
 
@@ -14,9 +14,9 @@ export class Dashboard extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		this.props.dispatch(fetchProtectedData());
-	}
+	// componentDidMount() {
+	// 	this.props.dispatch(fetchProtectedData());
+	// }
 
 	handleOptionChange(e) {
 		console.log(e.target.value);
@@ -24,47 +24,6 @@ export class Dashboard extends React.Component {
 			selectedOption: e.target.value
 		});
 	}
-
-	// handlePrev(e) {
-	// 	// dispatch the same GET from iTunes or a new action?
-	// 	// requires the original input query + attr (if attr exists)
-	// 	// current offset + 1, current offset starts at 2
-	// 	console.log('Prev button clicked');
-	// 	const input = e.target.value;
-	// 	this.setState(
-	// 		{
-	// 			offset: this.state.offset - 10
-	// 		},
-	// 		() => {
-	// 			this.state.selectedOption
-	// 				? this.props.dispatch(
-	// 						getPodcasts(input, this.state.selectedOption, this.state.offset)
-	// 				  )
-	// 				: this.props.dispatch(getPodcasts(input, '', this.state.offset));
-	// 		}
-	// 	);
-	// }
-
-	// handleNext(e) {
-	// 	// dispatch the same GET from iTunes or a new action?
-	// 	// requires the original input query + attr (if attr exists)
-	// 	// current offset + 1, current offset starts at 2
-	// 	console.log('Next button clicked');
-	// 	const input = e.target.value;
-	// 	this.setState(
-	// 		{
-	// 			offset: this.state.offset + 10
-	// 		},
-	// 		() => {
-	// 			// console.log('Next', this.state.offset);
-	// 			this.state.selectedOption
-	// 				? this.props.dispatch(
-	// 						getPodcasts(input, this.state.selectedOption, this.state.offset)
-	// 				  )
-	// 				: this.props.dispatch(getPodcasts(input, '', this.state.offset));
-	// 		}
-	// );
-	// }
 
 	onSubmit(e) {
 		// console.log(e);
