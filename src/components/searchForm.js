@@ -21,7 +21,7 @@ export default function SearchForm(props) {
 					name="search"
 					// placeholder="Health, Fitness, Finanace, etc."
 					ref={search => (input = search)}
-onChange={e => props.handleInput(e)}
+					onChange={e => props.handleInput(e)}
 				/>
 			</div>
 
@@ -35,13 +35,14 @@ onChange={e => props.handleInput(e)}
 						value="titleTerm"
 						checked={props.selectedOption === 'titleTerm'}
 						onChange={e => props.handleOptionChange(e)}
-					/><span className="checkmark"></span>
+					/>
+					{/* <span className="checkmark"></span> */}
 
 
-					/><span className="checkmark"></span>
+					<span className="checkmark"></span>
 					<p className="search-by-terms">Title </p>
 
-					
+
 				</label>
 
 				<label className="container">
