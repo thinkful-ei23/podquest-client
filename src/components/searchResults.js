@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import './searchResults.css';
+
 function SearchResults(props) {
     return (
         <div>
-            {props.resultNumber + ': '}
+            {props.resultNumber + ': \u00a0 '}
             <Link
                 onClick={() => localStorage.setItem('podcastChannel', props.podcast.xml)}
                 to={{
