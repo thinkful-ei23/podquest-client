@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
-import { userFavoriteInfo } from "../actions/favorite";
+import { userFavoriteInfo, deleteFavorite } from "../actions/favorite";
 
 export class MediaPlayer extends React.Component {
   constructor (props) {
@@ -112,8 +112,12 @@ export class MediaPlayer extends React.Component {
     });
   }
 
-  handleFav() {
+  handleAddFav() {
     this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeUrl));
+  }
+
+  handleDeleteFav() {
+    this.props.dispatch(deleteFavorite(this.props.episodeTitle));
   }
 
   render () {
@@ -121,6 +125,18 @@ export class MediaPlayer extends React.Component {
     let season = '';
     let episode = '';
     let date = '';
+    let favButton = (
+      <button onClick={() => this.handleAddFav()}>
+        Favorite
+      </button>
+    );
+    if (this.props.isFavorite) {
+      favButton = (
+        <button onClick={() => this.handleDeleteFav()}>
+          Unfavorite
+        </button>
+      )
+    }
     if (this.props.episodeSeason) {
       season = `Season ${this.props.episodeSeason}`;
     }
@@ -205,9 +221,7 @@ export class MediaPlayer extends React.Component {
           <button className='stop-button' onClick={this.handleStop} disabled={!this.state.loaded}>
             Stop
           </button>
-          <button onClick={() => this.handleFav()}>
-            Favorite
-          </button>
+          {favButton}
         </React.Fragment>
       );
     }

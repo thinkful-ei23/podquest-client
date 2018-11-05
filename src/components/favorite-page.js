@@ -43,7 +43,7 @@ export class FavoritePage extends React.Component {
         <ul>
           {listFavorite}
         </ul>
-        <MediaPlayer />
+        <MediaPlayer isFavorite={true}/>
       </div>
     )
   }
