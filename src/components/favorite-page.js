@@ -1,5 +1,6 @@
 import React from "react";
 import requiresLogin from "./requires-login";
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFavorite } from "../actions/favorite";
 import { getChannel } from "../actions/search";
@@ -9,7 +10,6 @@ export class FavoritePage extends React.Component {
     this.props.dispatch(getFavorite());
   }
   render(){
-    console.log(this.props.favorites)
     if (!this.props.favorites) {
       return <div>Loading...</div>
     }
@@ -19,6 +19,7 @@ export class FavoritePage extends React.Component {
 
     return (
       <div>
+        <Link to="/dashboard"><button>Back</button></Link>
         <ul>
           {listFavorite}
         </ul>
