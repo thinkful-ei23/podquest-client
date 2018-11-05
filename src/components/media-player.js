@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
-import { userFavoriteInfo, deleteFavorite } from "../actions/favorite";
+import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
+
 
 export class MediaPlayer extends React.Component {
   constructor (props) {
@@ -113,7 +114,8 @@ export class MediaPlayer extends React.Component {
   }
 
   handleAddFav() {
-    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeUrl));
+    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeUrl, this.props.episodeGuid));
+    this.props.dispatch(getFavorite());
   }
 
   handleDeleteFav() {

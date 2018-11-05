@@ -35,7 +35,7 @@ export const getFavorite = () => (dispatch, getState) => {
   .catch(err => getFavoriteError(err))
 }
 
-export const userFavoriteInfo = (feedUrl, title, mediaUrl) => (dispatch, getState) => {
+export const userFavoriteInfo = (feedUrl, title, mediaUrl, guid) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/favorite`, {
     method: 'POST',
@@ -43,7 +43,7 @@ export const userFavoriteInfo = (feedUrl, title, mediaUrl) => (dispatch, getStat
       "content-type": "application/json",
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ feedUrl, title, mediaUrl })
+    body: JSON.stringify({ feedUrl, title, mediaUrl, guid })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
