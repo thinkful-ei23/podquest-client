@@ -113,13 +113,7 @@ export class MediaPlayer extends React.Component {
   }
 
   handleFav() {
-    const episodeData = {
-      guid: this.props.episodeGuid,
-      title: this.props.episodeTitle,
-      feedUrl: this.props.feedUrl
-    };
-    // console.log('episodeData', episodeData);
-    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeGuid));
+    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeUrl));
   }
 
   render () {

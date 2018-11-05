@@ -1,9 +1,10 @@
-import { GET_FAVORITE_SUCCESS, GET_FAVORITE_ERROR } from "../actions/favorite";
+import { GET_FAVORITE_SUCCESS, GET_FAVORITE_ERROR, CLICK_FAVORITE_SUCCESS, CLICK_FAVORITE_ERROR } from "../actions/favorite";
 
 import { CLEAR_AUTH } from '../actions/auth'
 
 const initialState = {
   favorites: null,
+  clickedFav: null,
   error: null
 }
 
@@ -13,11 +14,19 @@ export default function reducer(state = initialState, action) {
   }
   else if (action.type === GET_FAVORITE_SUCCESS) {
     return Object.assign({}, state, {
-      favorites: action.favorites,
+      favorites: action.favData,
       error: null
     })
   }
   else if (action.type === GET_FAVORITE_ERROR) {
+    return Object.assign({}, state, {
+      error: action.error
+    })
+  }
+  else if (action.type === CLICK_FAVORITE_SUCCESS) {
+    return Object.assign({}, state, { clickedFav: action.clickedFav })
+  }
+  else if (action.type === CLICK_FAVORITE_ERROR) {
     return Object.assign({}, state, {
       error: action.error
     })

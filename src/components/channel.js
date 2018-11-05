@@ -87,7 +87,7 @@ class Channel extends React.Component{
 }
 
 const mapStateToProps = state => {
-    // console.log('state', state); // to look at state
+    console.log('state', state); // to look at state
     return {
         podcast: state.search.currChannel
     }
