@@ -35,7 +35,7 @@ export const getFavorite = () => (dispatch, getState) => {
   .catch(err => getFavoriteError(err))
 }
 
-export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) => {
+export const userFavoriteInfo = (feedUrl, title, mediaUrl) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/favorite`, {
     method: 'POST',
@@ -43,7 +43,7 @@ export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) =
       "content-type": "application/json",
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ feedUrl, title, guid })
+    body: JSON.stringify({ feedUrl, title, mediaUrl })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
@@ -63,3 +63,16 @@ export const deleteFavorite = id => (getState) => {
     .then(res => res.json())
     // .catch(err => console.log(err))
 }
+
+
+// Actions for clickedFav
+export const CLICK_FAVORITE_SUCCESS = 'CLICK_FAVORITE_SUCCESS';
+export const clickFavoriteSuccess = clickedFav => ({
+  type: CLICK_FAVORITE_SUCCESS,
+  clickedFav
+})
+export const CLICK_FAVORITE_ERROR = 'CLICK_FAVORITE_ERROR';
+export const clickFavoriteError = error => ({
+  type: CLICK_FAVORITE_ERROR,
+  error
+})
