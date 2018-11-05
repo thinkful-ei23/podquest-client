@@ -36,12 +36,14 @@ export const getPostcastSuccess = podcast => ({
 
 export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 	dispatch(getPodcastRequest());
+	let proxy = 'https://cors-anywhere.herokuapp.com';
 	return fetch(
-		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
+		`${proxy}/${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
 		{
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'X-Content-Type-Options': 'nosniff'
 			}
 		}
 	)
