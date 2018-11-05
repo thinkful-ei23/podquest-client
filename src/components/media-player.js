@@ -2,8 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
-import { userFavoriteInfo } from "../actions/favorite";
+ 
+
 import './media-player.css';
+
+import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
+ 
 
 
 export class MediaPlayer extends React.Component {
@@ -27,7 +31,12 @@ export class MediaPlayer extends React.Component {
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
-  componentDidUpdate(prevProps, prevState, prevContext) {
+
+  componentDidMount () {
+    this.props.dispatch(getFavorite());
+  }
+
+  componentDidUpdate (prevProps, prevState, prevContext) {
     if (this.props.episodeUrl !== prevProps.episodeUrl) {
 
       this.setState({
@@ -114,8 +123,14 @@ export class MediaPlayer extends React.Component {
     });
   }
 
-  handleFav() {
-    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeGuid));
+  handleAddFav() {
+    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeUrl, this.props.episodeGuid));
+    this.props.dispatch(getFavorite());
+  }
+
+  handleDeleteFav() {
+    this.props.dispatch(deleteFavorite(this.props.episodeTitle));
+    this.props.dispatch(getFavorite());
   }
 
   render() {
@@ -123,6 +138,22 @@ export class MediaPlayer extends React.Component {
     let season = '';
     let episode = '';
     let date = '';
+    let favButton = (
+      <button onClick={() => this.handleAddFav()}>
+        Favorite
+      </button>
+    );
+    if (this.props.favorites) {
+      this.props.favorites.map(favorite => {
+        if (favorite.title === this.props.episodeTitle) {
+          favButton = (
+            <button onClick={() => this.handleDeleteFav()}>
+              Unfavorite
+            </button>
+          );
+        }
+      });
+    }
     if (this.props.episodeSeason) {
       season = `Season ${this.props.episodeSeason}`;
     }
@@ -207,9 +238,7 @@ export class MediaPlayer extends React.Component {
           <button className='stop-button' onClick={this.handleStop} disabled={!this.state.loaded}>
             Stop
           </button>
-          <button onClick={() => this.handleFav()}>
-            Favorite
-          </button>
+          {favButton}
         </React.Fragment>
       );
     }
@@ -236,20 +265,21 @@ export class MediaPlayer extends React.Component {
 }
 
 const mapStateToProps = state => {
+  let props = {};
   const episodeData = state.mediaPlayer.episodeData;
   if (episodeData) {
-    return {
-      episodeDate: episodeData.episodeDate,
-      episodeGuid: episodeData.episodeGuid,
-      episodeNumber: episodeData.episodeNumber,
-      episodeSeason: episodeData.episodeSeason,
-      episodeTitle: episodeData.episodeTitle,
-      episodeUrl: episodeData.episodeUrl,
-      feedUrl: episodeData.feedUrl
-    }
-  } else {
-    return {};
+    props.episodeDate = episodeData.episodeDate;
+    props.episodeGuid = episodeData.episodeGuid;
+    props.episodeNumber = episodeData.episodeNumber;
+    props.episodeSeason = episodeData.episodeSeason;
+    props.episodeTitle = episodeData.episodeTitle;
+    props.episodeUrl = episodeData.episodeUrl;
+    props.feedUrl = episodeData.feedUrl;
   }
+  if (state.favorites.favorites) {
+    props.favorites = state.favorites.favorites;
+  }
+  return props;
 };
 
 export default connect(mapStateToProps)(MediaPlayer);
