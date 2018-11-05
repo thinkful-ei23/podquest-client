@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './about.css';
 
@@ -11,7 +11,7 @@ export class About extends React.Component {
 					<h2 className="go-to-h2">Nananana&nbsp;~~ &nbsp;Podcast!</h2>
 					<p className="go-to-p">You know what we do. Let's keep searching, shall we?</p>
 					<p className="go-to-p">
-						Take me back to &nbsp;<Link to="/dashboard">My Dashboard</Link>
+						Take me back to &nbsp;<NavLink to="/dashboard">My Dashboard</NavLink>
 					</p>
 				</div>
 			);
@@ -31,16 +31,14 @@ export class About extends React.Component {
 
 					<div className="about-reg">
 						<p>	To start searching, go to</p>
-						<button className="btn btn-large btn-green btn-about">
-							<Link className="link link-about" to="/register"><span className="about-span">Register</span></Link>
-						</button>
+
+						<NavLink className="link link-about" to="/register"><button className="btn btn-large btn-green btn-about"><span className="about-span">Register</span></button></NavLink>
+
 					</div>
 
 					<div className="about-log">
 						<p>If you've already got an account, go to</p>
-						<button className="btn btn-large btn-blue btn-about">
-							<Link className="link link-about" to="/login"><span className="about-span">Login</span></Link>
-						</button>
+						<NavLink className="link link-about" to="/login"><button className="btn btn-large btn-blue btn-about"><span className="about-span">Login</span></button></NavLink>
 					</div>
 
 				</section>
