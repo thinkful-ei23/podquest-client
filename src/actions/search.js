@@ -40,9 +40,9 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 		`${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
 		{
 			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
+			// headers: {
+			// 	'Content-Type': 'application/json'
+			// }
 		}
 	)
 		.then(res => normalizeResponseErrors(res))
