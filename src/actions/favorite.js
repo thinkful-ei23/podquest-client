@@ -50,9 +50,9 @@ export const userFavoriteInfo = (feedUrl, title, mediaUrl) => (dispatch, getStat
     .catch(err => dispatch(postFavoriteError(err)));
 }
 
-export const deleteFavorite = title => (getState) => {
+export const deleteFavorite = title => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/favorite/`, {
+  return fetch(`${API_BASE_URL}/favorite`, {
     method: 'DELETE',
     headers: {
       "content-type": "application/json",
@@ -61,8 +61,8 @@ export const deleteFavorite = title => (getState) => {
     body: JSON.stringify({title})
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    // .catch(err => console.log(err))
+    // .then(res => res.json())
+    .catch(err => console.log(err))
 }
 
 
