@@ -30,10 +30,8 @@ export const getFavorite = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken
   getFavorites(authToken)
   .then(res => normalizeResponseErrors(res))
-  .then(results =>{
-    console.log('results', results);
-    dispatch(getFavoriteSuccess(results))
-  })
+  .then(res => res.json())
+  .then(results => dispatch(getFavoriteSuccess(results)))
   .catch(err => getFavoriteError(err))
 }
 

@@ -13,7 +13,7 @@ export default function reducer(state = initialState, action) {
   }
   else if (action.type === GET_FAVORITE_SUCCESS) {
     return Object.assign({}, state, {
-      favorites: action.favorites,
+      favorites: action.favData,
       error: null
     })
   }

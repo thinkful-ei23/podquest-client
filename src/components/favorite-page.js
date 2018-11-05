@@ -5,25 +5,32 @@ import { getFavorite } from "../actions/favorite";
 import { getChannel } from "../actions/search";
 
 export class FavoritePage extends React.Component {
-  componentDidMount() {
-    // this.props.dispatch(getChannel(channelUrl))
-  }
   componentWillMount() {
-    console.log('here');
     this.props.dispatch(getFavorite());
   }
-  
   render(){
+    console.log(this.props.favorites)
+    if (!this.props.favorites) {
+      return <div>Loading...</div>
+    }
+    const listFavorite = this.props.favorites.map((favorite, index) => {
+      return <li key={index}>{favorite.title}</li>
+    })
+
     return (
-      <div></div>
+      <div>
+        <ul>
+          {listFavorite}
+        </ul>
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  console.log('state', state); // to look at state
+  // console.log('state', state); // to look at state
   return {
-    info: state
+    favorites: state.favorites.favorites
   }
 }
 
