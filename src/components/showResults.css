@@ -6,10 +6,8 @@
 	/* other */
 
 .results-page {
-	border: 5px dotted lemonchiffon;
 	padding: 2rem 4rem;
-	margin-top: 5rem;
-
+	margin-top: 1rem;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
 	}
@@ -22,3 +20,11 @@
 		flex-wrap: wrap;
 		justify-content: baseline;
 	}
+	.fa-angle-left,
+	.fa-angle-right {
+		font-size: 2rem;
+	}
+	/* .fa-angle-left:hover,
+	.fa-angle-right:active {
+		color: #DBBC34;
+	} */

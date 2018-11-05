@@ -10,13 +10,14 @@
 	/* other */
 .title-search {
 	margin: 2rem 2rem 4rem 2rem;
+	text-transform: capitalize;
 }
 #form-search {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding: 3rem;
+	padding: 2rem;
 }
 .input-label-div{
 	display: flex;
@@ -29,7 +30,8 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-	margin: 4rem 0;
+	margin: 1rem 0;
+	color: #122375;
 }
 .btn-search {
 	/* justify-content: center; */
