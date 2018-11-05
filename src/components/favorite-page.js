@@ -14,6 +14,7 @@ export class FavoritePage extends React.Component {
     let episodeData = {
       episodeTitle: episode.title,
       episodeUrl: episode.mediaUrl,
+      episodeGuid: episode.guid,
       feedUrl: episode.feedUrl
     };
     if (episodeData) {
