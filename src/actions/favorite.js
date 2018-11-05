@@ -17,9 +17,8 @@ export const postFavoriteError = error => ({
   error
 })
 
-export const getFavorite = () => (dispatch, getState) => {
-  const authToken = getState().auth.authToken
-  return fetch(`${API_BASE_URL}/favorite`, {
+async function getFavorites(authToken){
+ return await fetch(`${API_BASE_URL}/favorite`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`
@@ -27,7 +26,16 @@ export const getFavorite = () => (dispatch, getState) => {
   })
 }
 
-export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) => {
+export const getFavorite = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken
+  getFavorites(authToken)
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(results => dispatch(getFavoriteSuccess(results)))
+  .catch(err => getFavoriteError(err))
+}
+
+export const userFavoriteInfo = (feedUrl, title, mediaUrl, guid) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/favorite`, {
     method: 'POST',
@@ -35,23 +43,37 @@ export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) =
       "content-type": "application/json",
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ feedUrl, title, guid })
+    body: JSON.stringify({ feedUrl, title, mediaUrl, guid })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .catch(err => dispatch(postFavoriteError(err)));
 }
 
-export const deleteFavorite = id => (getState) => {
+export const deleteFavorite = title => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/favorite/:${id}`, {
+  return fetch(`${API_BASE_URL}/favorite`, {
     method: 'DELETE',
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${authToken}`
-    }
+    },
+    body: JSON.stringify({title})
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    // .catch(err => console.log(err))
+    // .then(res => res.json())
+    .catch(err => console.log(err))
 }
+
+
+// Actions for clickedFav
+export const CLICK_FAVORITE_SUCCESS = 'CLICK_FAVORITE_SUCCESS';
+export const clickFavoriteSuccess = clickedFav => ({
+  type: CLICK_FAVORITE_SUCCESS,
+  clickedFav
+})
+export const CLICK_FAVORITE_ERROR = 'CLICK_FAVORITE_ERROR';
+export const clickFavoriteError = error => ({
+  type: CLICK_FAVORITE_ERROR,
+  error
+})

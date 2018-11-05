@@ -23,6 +23,7 @@ export class HeaderBar extends React.Component {
 					<Link to="/" className="head-link" >podQuest</Link>
 				</h1>
 				{logOutButton}
+				<Link to="/favorites">Favorite Episodes!</Link>
 			</div>
 		);
 	}
