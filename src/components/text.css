@@ -90,7 +90,7 @@ color: #122375;
 /* =============BOXES in LOGIN SIGNUP ABOUT================= */
 
 .box{
-background-color: rgba(255, 255, 255, .4);
+background-color: rgba(255, 255, 255, .5);
 border: transparent;
 border-radius: 2px;
 }

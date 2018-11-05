@@ -32,7 +32,8 @@
 	height: 2rem;
 	width: 2rem;
 	margin-top: .3rem;
-	background-color: #808080;
+	/* background-color: #808080; */
+	background-color: #fdfdfd;
 	border-radius: 50%;
 }
 /* On mouse-over, add a grey background color */
