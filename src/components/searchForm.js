@@ -1,23 +1,32 @@
 import React from 'react';
 // import { connect } from 'react-redux';
-import './searchForm.css'
+import './searchForm.css';
 export default function SearchForm(props) {
 	let input;
 	return (
-		<form id="form-search"
+		<form
+			id="form-search"
 			onSubmit={e => {
 				e.preventDefault();
 				props.onSubmit(input.value);
 			}}
 		>
-			<label className="input-label input-label-search" htmlFor="search-input">Search for keyword: </label>
-			<input
-				id="search-input"
-				name="search"
-				placeholder="Health, Fitness, Finanace, etc."
-				ref={search => (input = search)}
-			/>
+
+			<h2 className="title-search" htmlFor="search-input">Search by keyword: </h2>
+			<div className="input-label-div">
+				<label className="input-label input-label-search" htmlFor="search-input">Type in search terms here...</label>
+				<input
+					className="input-box"
+					id="search-input"
+					name="search"
+					// placeholder="Health, Fitness, Finanace, etc."
+					ref={search => (input = search)}
+					onChange={e => props.handleInput(e)}
+				/>
+			</div>
+
 			<div className="radio-row">
+				<p>Narrow your search by...</p>
 				<label className="container">
 					<input
 						type="radio"
@@ -26,10 +35,16 @@ export default function SearchForm(props) {
 						value="titleTerm"
 						checked={props.selectedOption === 'titleTerm'}
 						onChange={e => props.handleOptionChange(e)}
+					/>
+					{/* <span className="checkmark"></span> */}
 
-					/><span className="checkmark"></span>
-					<p>Title </p>
+
+					<span className="checkmark"></span>
+					<p className="search-by-terms">Title </p>
+
+
 				</label>
+
 				<label className="container">
 					<input
 						type="radio"
@@ -38,8 +53,10 @@ export default function SearchForm(props) {
 						value="genreIndex"
 						checked={props.selectedOption === 'genreIndex'}
 						onChange={e => props.handleOptionChange(e)}
+
 					/><span className="checkmark"></span>
-					<p>Genre</p>
+					<p className="search-by-terms">Genre</p>
+
 				</label>
 				<label className="container">
 					<input
@@ -49,13 +66,20 @@ export default function SearchForm(props) {
 						value="descriptionTerm"
 						checked={(true, props.selectedOption === 'descriptionTerm')}
 						onChange={e => props.handleOptionChange(e)}
+
 					/><span className="checkmark"></span>
-					<p>Description</p>
+					<p className="search-by-terms">Description</p>
+
 				</label>
 			</div>
-			<button className="btn btn-med btn-yellow2 btn-search search-button">Search</button>
-		</form >
+			<button
+				className="btn btn-med btn-yellow2 btn-search search-button"
+				disabled={!props.search}
+			>
+				Search
+			</button>
+		</form>
 	);
 }
 
-		// export default connect()(SearchForm);
+// export default connect()(SearchForm);

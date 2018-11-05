@@ -5,12 +5,14 @@ import SearchForm from './searchForm';
 // import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 import ShowResults from './showResults';
+import './dashboard.css';
 
 export class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null
+			selectedOption: null,
+			search: null
 		};
 	}
 
@@ -19,18 +21,23 @@ export class Dashboard extends React.Component {
 	// }
 
 	handleOptionChange(e) {
-		console.log(e.target.value);
+		// console.log(e.target.value);
 		this.setState({
 			selectedOption: e.target.value
 		});
 	}
 
+	handleInput(e) {
+		// console.log(e.target.value);
+		this.setState({
+			search: e.target.value
+		});
+	}
+
 	onSubmit(e) {
-		// console.log(e);
+
 		if (this.state.selectedOption) {
-			// console.log('option is', this.state.selectedOption);
 			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
-			// .then(() => this.SearchForm.reset());
 		} else {
 			this.props.dispatch(getPodcasts(e));
 		}
@@ -38,14 +45,17 @@ export class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<div className="dashboard">
+			<div className="dashboard box">
 				<div className="dashboard-username">
-					Username: {this.props.username}
+					<p className="user-welcome">Glad to have you with us,&nbsp;{this.props.username}!</p>
+
 				</div>
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
 					selectedOption={this.state.selectedOption}
+					handleInput={e => this.handleInput(e)}
+					search={this.state.search}
 				/>
 				<ShowResults podcasts={this.props.podcasts} />
 			</div>
@@ -55,7 +65,6 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
 	const { currentUser } = state.auth;
-	// console.log(state.search.podcasts);
 	return {
 		username: state.auth.currentUser.username,
 		name: `${currentUser.name} `,
