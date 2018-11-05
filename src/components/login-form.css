@@ -18,14 +18,17 @@
 	border: transparent;
 	/* 2px solid #222222; */
 	padding: 2rem;
+	text-align: center;
+	margin: 0 auto;
 }
 .btn-form {
-justify-content: center;
-margin-top: 3rem;
+	justify-content: center;
+	margin-top: 5rem;
 }
 .input-label {
-	align-items: flex-start;
-	margin: 3rem 0 .5rem 0;
+	text-align: left;
+	/* align-items: flex-start; */
+	/* margin: 3rem 0 .5rem 0; */
 }
 
 Input {
@@ -34,8 +37,22 @@ Input {
 }
 #password,
 #username {
-width: 30rem;
-line-height: 3rem;
-padding: .5rem;
-justify-content: center;
+	width: 100%;
+	line-height: 3rem;
+	padding: .5rem;
+	/* justify-content: center; */
 }
+
+/*
+.login-form{
+	text-align: center;
+	width: 170px;
+	margin: 0 auto;
+}
+#username,
+#password,
+.login-button { width: 100%; border-radius: 4px; }
+
+
+
+*/

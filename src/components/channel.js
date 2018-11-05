@@ -5,6 +5,7 @@ import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
+import './channel.css';
 
 class Channel extends React.Component {
 	componentDidMount() {
@@ -73,14 +74,17 @@ class Channel extends React.Component {
 			});
 		}
 		return (
-			<div>
-				<Link to="/dashboard">
+			<div className="box channel-box">
+				<Link className="btn btn-small btn-blue btn-back" to="/dashboard">
 					<button>Back</button>
 				</Link>
-				<h1>{podcast.title}</h1>
+				<h2 className="title-channel">{podcast.title}</h2>
 				<img src={podcast.image} alt="podcast wallpaper" height={200} />
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button onClick={e => this.handleSubscribe(e)}>
+				<button
+					className="btn btn-med btn-blue btn-subscribe"
+					onClick={e => this.handleSubscribe(e)} //for subscription button (do not delete this when merging)
+				>
 					Subscribe to channel
 				</button>
 				<select

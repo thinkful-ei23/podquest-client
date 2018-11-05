@@ -5,6 +5,7 @@ import SearchForm from './searchForm';
 // import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 import ShowResults from './showResults';
+import './dashboard.css';
 
 export class Dashboard extends React.Component {
 	constructor(props) {
@@ -34,11 +35,8 @@ export class Dashboard extends React.Component {
 	}
 
 	onSubmit(e) {
-		// console.log(e);
 		if (this.state.selectedOption) {
-			// console.log('option is', this.state.selectedOption);
 			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
-			// .then(() => this.SearchForm.reset());
 		} else {
 			this.props.dispatch(getPodcasts(e));
 		}
@@ -46,9 +44,12 @@ export class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<div className="dashboard">
+			<div className="dashboard box">
 				<div className="dashboard-username">
-					Username: {this.props.username}
+					<p className="user-welcome">
+						Glad to have you with us,&nbsp;
+						{this.props.username}!
+					</p>
 				</div>
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
@@ -65,7 +66,6 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
 	const { currentUser } = state.auth;
-	// console.log(state.search.podcasts);
 	return {
 		username: state.auth.currentUser.username,
 		name: `${currentUser.name} `,

@@ -11,17 +11,22 @@ export default function SearchForm(props) {
 				props.onSubmit(input.value);
 			}}
 		>
-			<label className="input-label input-label-search" htmlFor="search-input">
-				Search for keyword:{' '}
-			</label>
-			<input
-				id="search-input"
-				name="search"
-				placeholder="Health, Fitness, Finanace, etc."
-				ref={search => (input = search)}
-				onChange={e => props.handleInput(e)}
-			/>
+
+			<h2 className="title-search" htmlFor="search-input">Search by keyword: </h2>
+			<div className="input-label-div">
+				<label className="input-label input-label-search" htmlFor="search-input">Type in search terms here...</label>
+				<input
+					className="input-box"
+					id="search-input"
+					name="search"
+					// placeholder="Health, Fitness, Finanace, etc."
+					ref={search => (input = search)}
+					onChange={e => props.handleInput(e)}
+				/>
+			</div>
+
 			<div className="radio-row">
+				<p>Narrow your search by...</p>
 				<label className="container">
 					<input
 						type="radio"
@@ -30,10 +35,16 @@ export default function SearchForm(props) {
 						value="titleTerm"
 						checked={props.selectedOption === 'titleTerm'}
 						onChange={e => props.handleOptionChange(e)}
-					/><span className="checkmark"></span>
+					/>
+					{/* <span className="checkmark"></span> */}
 
-					<p>Title </p>
+
+					<span className="checkmark"></span>
+					<p className="search-by-terms">Title </p>
+
+
 				</label>
+
 				<label className="container">
 					<input
 						type="radio"
@@ -42,8 +53,10 @@ export default function SearchForm(props) {
 						value="genreIndex"
 						checked={props.selectedOption === 'genreIndex'}
 						onChange={e => props.handleOptionChange(e)}
+
 					/><span className="checkmark"></span>
-					<p>Genre</p>
+					<p className="search-by-terms">Genre</p>
+
 				</label>
 				<label className="container">
 					<input
@@ -53,9 +66,10 @@ export default function SearchForm(props) {
 						value="descriptionTerm"
 						checked={(true, props.selectedOption === 'descriptionTerm')}
 						onChange={e => props.handleOptionChange(e)}
-					/>
-					<span className="checkmark" />
-					<p>Description</p>
+
+					/><span className="checkmark"></span>
+					<p className="search-by-terms">Description</p>
+
 				</label>
 			</div>
 			<button

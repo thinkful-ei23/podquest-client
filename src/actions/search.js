@@ -41,7 +41,8 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 		{
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'X-Content-Type-Options': 'nosniff'
 			}
 		}
 	)
