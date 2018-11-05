@@ -52,14 +52,15 @@ export const userFavoriteInfo = (feedUrl, title, guid) => (dispatch, getState) =
     .catch(err => dispatch(postFavoriteError(err)));
 }
 
-export const deleteFavorite = id => (getState) => {
+export const deleteFavorite = title => (getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/favorite/:${id}`, {
+  return fetch(`${API_BASE_URL}/favorite/`, {
     method: 'DELETE',
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${authToken}`
-    }
+    },
+    body: JSON.stringify({title})
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
