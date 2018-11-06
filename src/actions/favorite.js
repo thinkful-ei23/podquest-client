@@ -66,14 +66,3 @@ export const deleteFavorite = title => (dispatch, getState) => {
 }
 
 
-// Actions for clickedFav
-export const CLICK_FAVORITE_SUCCESS = 'CLICK_FAVORITE_SUCCESS';
-export const clickFavoriteSuccess = clickedFav => ({
-  type: CLICK_FAVORITE_SUCCESS,
-  clickedFav
-})
-export const CLICK_FAVORITE_ERROR = 'CLICK_FAVORITE_ERROR';
-export const clickFavoriteError = error => ({
-  type: CLICK_FAVORITE_ERROR,
-  error
-})

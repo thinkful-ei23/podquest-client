@@ -2,7 +2,7 @@ import React from "react";
 import requiresLogin from "./requires-login";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getFavorite, clickFavoriteSuccess } from "../actions/favorite";
+import { getFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
 import { setEpisode } from "../actions/media-player";
 
@@ -14,6 +14,7 @@ export class FavoritePage extends React.Component {
     let episodeData = {
       episodeTitle: episode.title,
       episodeUrl: episode.mediaUrl,
+      episodeGuid: episode.guid,
       feedUrl: episode.feedUrl
     };
     if (episodeData) {
