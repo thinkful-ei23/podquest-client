@@ -8,4 +8,4 @@ describe('My First Test', function() {
         cy.get('input#passwordConfirm').type('password123')
         cy.get('button.submit-button').click()
     })
-  })
+})
