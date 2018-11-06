@@ -43,13 +43,19 @@ export class App extends React.Component {
 		clearInterval(this.refreshInterval);
 	}
 
+
 	render() {
+
+		let navBar;
+		if(this.props.loggedIn){
+			navBar = <NavBar/>
+		}
 		return (
 			<div className="app">
 				<HeaderBar />
 
 				<main id="app-main-body">
-					<NavBar />
+					{navBar}
 					<Route exact path="/" component={About} />
 					<Route exact path="/login" component={LandingPage} />
 					<Route exact path="/dashboard" component={Dashboard} />
