@@ -1,9 +1,4 @@
 
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* text */
-	/* other */
 *,
 *::before,
 *::after{
@@ -34,32 +29,19 @@ html{
 	cursor: pointer;
 }
 .btn-small {
-	/* positioning */
-	/* display + box model */
 	width: 10rem;
-	/* color */
-	background-color: bisque;
-	/* text */
-	/* other */
 }
 .btn-med {
-	/* positioning */
-	/* display + box model */
 	width: 15rem;
-	/* color */
-	/* text */
-	/* other */
-	/* transform: translateY(4px); */
 }
 .btn-large {
-	/* positioning */
-	/* display + box model */
 	width: 30rem;
-	/* color */
-	/* text */
-	/* other */
-	border-radius: 0;
 }
+/* .btn-round {
+	border-radius: 100%;
+	padding: 0;
+	margin: 0;
+} */
 .btn-blue {
 	background-color:#122375;
 	background-color: rgba(18, 35, 117, .7);
@@ -106,6 +88,16 @@ html{
 .btn-white:active {
 	background-color: #122375;
 	color: #FCFCFC;
+}
+.btn-red {
+	background-color:#cd3d20;
+	background-color: rgba(205, 61, 32, .7);
+	color: #FCFCFC;
+}
+.btn-red:hover,
+.btn-red:active {
+	background-color:#FCFCFC;
+	color: #cd3d20;
 }
 .disabled {
 	opacity: 0.6;

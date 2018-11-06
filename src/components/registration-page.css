@@ -1,8 +1,6 @@
+@import "buttons.css";
+@import "text.css";
 
-
-.home {
-	margin-top: 8rem;
-}
-.link-reg-page{
-	color: orangered;
+.register-page {
+	padding: 3rem;
 }

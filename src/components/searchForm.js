@@ -26,7 +26,7 @@ export default function SearchForm(props) {
 			</div>
 
 			<div className="radio-row">
-				<p>Narrow your search by...</p>
+				<p className="search-narrow">Narrow your search by...</p>
 				<label className="container">
 					<input
 						type="radio"

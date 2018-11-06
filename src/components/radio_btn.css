@@ -10,7 +10,8 @@
 	align-self:baseline;
 	position: relative;
 	padding-left: 3.5rem;
-	margin-bottom: 1.2rem;
+	/* margin-bottom: 1.2rem; */
+	margin: 0 2rem 1.2rem 2rem;
 	cursor: pointer;
 	font-size: 2.2rem;
 	-webkit-user-select: none;
@@ -57,7 +58,7 @@
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
 
- top: 6px;
+	top: 6px;
 	left: 6px;
 	width: 8px;
 	height: 8px;

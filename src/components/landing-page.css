@@ -1,27 +1,14 @@
 @import "buttons.css";
 @import "text.css";
 
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* text */
-	/* other */
-
-.home {
+.land-home {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
-	margin-top: 4rem;
 	padding: 2rem;
 }
-
 .link-reg {
 	margin: 3rem 1rem;
-}
-.home >h2{
-	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 3rem;
-	margin: 3rem 0;
 }

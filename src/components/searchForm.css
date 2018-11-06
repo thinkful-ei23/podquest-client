@@ -25,11 +25,17 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+.search-by-terms,
+.search-narrow {
+	/* align-content: center; */
+	padding: .5rem 0 0 .4rem;
+}
 .radio-row {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: center;
+	align-content: center;
 	margin: 1rem 0;
 	color: #122375;
 }

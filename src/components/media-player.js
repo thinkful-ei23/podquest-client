@@ -2,13 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
- 
+import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
 
 import './media-player.css';
-
-import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
- 
-
 
 export class MediaPlayer extends React.Component {
   constructor(props) {
@@ -32,11 +28,11 @@ export class MediaPlayer extends React.Component {
   }
 
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.dispatch(getFavorite());
   }
 
-  componentDidUpdate (prevProps, prevState, prevContext) {
+  componentDidUpdate(prevProps, prevState, prevContext) {
     if (this.props.episodeUrl !== prevProps.episodeUrl) {
 
       this.setState({
@@ -139,8 +135,9 @@ export class MediaPlayer extends React.Component {
     let episode = '';
     let date = '';
     let favButton = (
-      <button onClick={() => this.handleAddFav()}>
-        Favorite
+      <button className="btn-round btn-fav" onClick={() => this.handleAddFav()}>
+        <i className="fab fa-gratipay"></i>
+        {/* Favorite */}
       </button>
     );
     if (this.props.favorites) {
@@ -148,8 +145,9 @@ export class MediaPlayer extends React.Component {
       this.props.favorites.forEach(favorite => {
         if (favorite.title === this.props.episodeTitle) {
           favButton = (
-            <button onClick={() => this.handleDeleteFav()}>
-              Unfavorite
+            <button className="btn-round btn-fav" onClick={() => this.handleDeleteFav()}>
+              <i className="fas fa-ban"></i>
+              {/* Remove, or Unfavorite */}
             </button>
           );
         }
@@ -174,30 +172,40 @@ export class MediaPlayer extends React.Component {
     } else if (this.props.episodeUrl && this.state.loaded) {
       player = (
         <React.Fragment>
-          <p><strong>{this.props.episodeTitle}</strong></p>
-          <p>{season}{episode}<em>{date}</em></p>
+          <p className="player-p"><strong>{this.props.episodeTitle}</strong></p>
+          <p className="player-p"> {season}{episode}<em>{date}</em></p>
           <div className='toggles'>
-            <label>
-              Loop:
+            <label className="player-label">
+              Loop:&nbsp;
               <input
+                // type="radio"
+                // id="radio-loop"
+                // name="loop"
+                className="checkbox"
                 type='checkbox'
                 checked={this.state.loop}
                 onChange={this.handleLoopToggle}
               />
+
             </label>
-            <label>
-              Mute:
+            <label className="player-label">
+              &nbsp;&nbsp;Mute:&nbsp;
               <input
+                // type="radio"
+                // id="radio-mute"
+                // name="loop"
+                className="checkbox"
                 type='checkbox'
                 checked={this.state.mute}
                 onChange={this.handleMuteToggle}
               />
+
             </label>
           </div>
 
           <div className='volume'>
-            <label>
-              Volume:
+            <label className="player-label">
+              Volume:&nbsp;
               <span className='slider-container'>
                 <input
                   type='range'
@@ -225,21 +233,24 @@ export class MediaPlayer extends React.Component {
                   onChange={e => this.seekTo(e.target.value)}
                 />
               </span>
-              <p>
+              <p className="player-p" >
                 {(this.state.seek) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '00:00:00'}
                 {' / '}
                 {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '00:00:00'}
               </p>
             </label>
           </div>
+          <div className="btn-row">
+            <button className="btn-round" onClick={this.handleToggle} disabled={!this.state.loaded}>
+              {/* <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} </span> */}
+              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-play-circle"></i> : <i className="far fa-pause-circle"></i>} </span>
+            </button>
+            <button className="btn-round" onClick={this.handleStop} disabled={!this.state.loaded}>
+              <i className="far fa-stop-circle"></i>
+            </button>
 
-          <button className='play-button' onClick={this.handleToggle} disabled={!this.state.loaded}>
-            {(this.state.playing) ? 'Pause' : 'Play'}
-          </button>
-          <button className='stop-button' onClick={this.handleStop} disabled={!this.state.loaded}>
-            Stop
-          </button>
-          {favButton}
+            {favButton}
+          </div>
         </React.Fragment>
       );
     }
