@@ -2,5 +2,11 @@
 @import "text.css";
 
 .register-page {
-	padding: 3rem;
+	/* padding: 3rem; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2rem;
 }
