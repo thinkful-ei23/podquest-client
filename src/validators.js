@@ -15,3 +15,5 @@ export const matches = field => (value, allValues) =>
     field in allValues && value.trim() === allValues[field].trim()
         ? undefined
         : 'Does not match';
+export const email = value =>
+    /^\S+@\S+$/.test(value) ? undefined : "Must be a valid email address";
