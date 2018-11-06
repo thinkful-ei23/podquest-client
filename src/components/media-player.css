@@ -1,5 +1,7 @@
 @import "buttons.css";
 @import "text.css";
+@import "radio_btn.css";
+
 .media-player {
 	text-align: center;
 	display: flex;
@@ -7,7 +9,6 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-	border: 2px solid brown;
 }
 .btn-row {
 	display: flex;
@@ -18,7 +19,7 @@
 }
 .player-p {
 	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 1.5rem;
+	font-size: 1.8rem;
 	line-height: 1.7rem;
 	padding: 1rem;
 	margin: 1rem 0;
@@ -27,6 +28,12 @@
 	color: #122375;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 2rem;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+.radio-loop,
+.radio-mute {
+	border: 1rem solid orangered;
 }
 .link {
 	text-decoration: none;
@@ -35,38 +42,24 @@
 	margin: 2rem 0;
 }
 .btn-round {
-	border-radius: 100%;
+	border: transparent;
 	padding: 0;
 	margin: 0;
-}
-.play-btn-symbol {
-	font-size: 2rem;
-	padding: 1rem;
-	text-align: center;
-}
-.btn-play {
-	font-size: 1rem;
-	/* text-transform: lowercase; */
-	padding: 0 2rem;
+	background-color: transparent;
 }
 .fa-play-circle,
 .fa-pause-circle,
 .fa-stop-circle,
 .fa-circle,
-.fa-ban {
+.fa-ban,
+.fa-pause,
+.fa-gratipay {
+	/* <i class="fas fa-pause"></i> */
+	/* <i className="fab fa-gratipay"></i><i className="far fa-circle"></i><i className="fas fa-ban"></i> */
 	font-size: 3rem;
+	color: #000;
+	padding: 1rem;
 }
-.btn-stop {
-border: 2px solid #cd3d20;
-background-color: #FCFCFC;
-color: #cd3d20;
-font-size: 1rem;
-padding: 0 2rem;
-/* border-radius: 6rem;; */
+.fa-gratipay {
+	color: red;
 }
-.btn-stop:hover,
-.btn-stop:active {
-	border: 2px solid #cd3d20;
-	background-color: #cd3d20;
-	color: #fcfcfc;
-	}

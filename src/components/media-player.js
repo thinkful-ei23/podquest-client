@@ -135,16 +135,18 @@ export class MediaPlayer extends React.Component {
     let episode = '';
     let date = '';
     let favButton = (
-      <button className="btn btn-small btn-green btn-fav" onClick={() => this.handleAddFav()}>
-        Favorite
+      <button className="btn-round btn-fav" onClick={() => this.handleAddFav()}>
+        <i className="fab fa-gratipay"></i>
+        {/* Favorite */}
       </button>
     );
     if (this.props.favorites) {
       this.props.favorites.map(favorite => {
         if (favorite.title === this.props.episodeTitle) {
           favButton = (
-            <button onClick={() => this.handleDeleteFav()}>
-              Unfavorite
+            <button className="btn-round btn-fav" onClick={() => this.handleDeleteFav()}>
+              <i className="fas fa-ban"></i>
+              {/* Remove, or Unfavorite */}
             </button>
           );
         }
@@ -175,24 +177,34 @@ export class MediaPlayer extends React.Component {
             <label className="player-label">
               Loop:&nbsp;
               <input
+                // type="radio"
+                // id="radio-loop"
+                // name="loop"
+                className="checkbox"
                 type='checkbox'
                 checked={this.state.loop}
                 onChange={this.handleLoopToggle}
               />
+
             </label>
             <label className="player-label">
               &nbsp;&nbsp;Mute:&nbsp;
               <input
+                // type="radio"
+                // id="radio-mute"
+                // name="loop"
+                className="checkbox"
                 type='checkbox'
                 checked={this.state.mute}
                 onChange={this.handleMuteToggle}
               />
+
             </label>
           </div>
 
           <div className='volume'>
             <label className="player-label">
-              Volume:
+              Volume:&nbsp;
               <span className='slider-container'>
                 <input
                   type='range'
@@ -228,15 +240,15 @@ export class MediaPlayer extends React.Component {
             </label>
           </div>
           <div className="btn-row">
-            <button className="btn-round btn-green btn-play" onClick={this.handleToggle} disabled={!this.state.loaded}>
-              <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} <i className="far fa-play-circle"></i><i className="far fa-pause-circle"></i></span>
+            <button className="btn-round" onClick={this.handleToggle} disabled={!this.state.loaded}>
+              {/* <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} </span> */}
+              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-play-circle"></i> : <i className="far fa-pause-circle"></i>} </span>
             </button>
-            <button className="btn-round btn-red btn-stop" onClick={this.handleStop} disabled={!this.state.loaded}>
-              {/* <span className="play-btn-symbol">S</span> */}
-              {/* {('\u25a0')} */}
+            <button className="btn-round" onClick={this.handleStop} disabled={!this.state.loaded}>
               <i className="far fa-stop-circle"></i>
             </button>
-            {favButton} <i className="fab fa-gratipay"></i><i className="far fa-circle"></i><i className="fas fa-ban"></i>
+
+            {favButton}
           </div>
         </React.Fragment>
       );
