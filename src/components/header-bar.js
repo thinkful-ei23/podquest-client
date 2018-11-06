@@ -14,8 +14,13 @@ export class HeaderBar extends React.Component {
 	render() {
 		// Only render the log out button if we are logged in
 		let logOutButton;
+		let favoritesLink;
+		let subscriptionLink;
 		if (this.props.loggedIn) {
 			logOutButton = <button className="btn btn-med btn-green btn-logout" onClick={() => this.logOut()}>Log out</button>;
+			favoritesLink = <Link to="/favorites">Favorite Episodes!</Link>
+			subscriptionLink = <Link to="/subscriptions">Subscriptions</Link>
+
 		}
 		return (
 			<div className="header-bar">
@@ -23,7 +28,8 @@ export class HeaderBar extends React.Component {
 					<Link to="/" className="head-link" >podQuest</Link>
 				</h1>
 				{logOutButton}
-				<Link to="/favorites">Favorite Episodes!</Link>
+				{favoritesLink}
+				{subscriptionLink}
 			</div>
 		);
 	}

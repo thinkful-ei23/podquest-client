@@ -144,7 +144,8 @@ export class MediaPlayer extends React.Component {
       </button>
     );
     if (this.props.favorites) {
-      this.props.favorites.map(favorite => {
+      // const favorited =this.props.favorites.filter(favorite => favorite.title === this.props.episodeTitle)
+      this.props.favorites.forEach(favorite => {
         if (favorite.title === this.props.episodeTitle) {
           favButton = (
             <button onClick={() => this.handleDeleteFav()}>
