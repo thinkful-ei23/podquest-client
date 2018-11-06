@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import './searchResults.css';
 
-function SearchResults(props) {
+export default function SearchResults(props) {
     return (
         <div>
             {props.resultNumber + ': \u00a0 '}
@@ -15,8 +14,5 @@ function SearchResults(props) {
                 {props.podcast.collection}
             </Link>
         </div>
-
     )
 }
-
-export default connect()(SearchResults)
