@@ -87,6 +87,8 @@ html{
 .btn-white:hover,
 .btn-white:active {
 	background-color: #122375;
+	background-color: #737373;
+
 	color: #FCFCFC;
 }
 .btn-red {

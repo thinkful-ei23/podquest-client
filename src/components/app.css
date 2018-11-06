@@ -9,9 +9,14 @@
 }
 #app-main-body {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
+	width: 100%;
+	/* flex: 2; */
+	/* margin-left: 25%; */
+	/* margin-top: 0%; */
+
 	/* TODO  */
 	/* height: 100vh; */
 }

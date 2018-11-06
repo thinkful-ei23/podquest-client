@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 
 import HeaderBar from './header-bar';
+import NavBar from './nav-bar';
 import LandingPage from './landing-page';
 import About from './about';
 import Dashboard from './dashboard';
@@ -10,7 +11,6 @@ import RegistrationPage from './registration-page';
 import Channel from './channel';
 import FavoritePage from './favorite-page';
 import { refreshAuthToken } from '../actions/auth';
-// import { LoginForm } from './login-form';
 import './app.css';
 
 export class App extends React.Component {
@@ -47,7 +47,9 @@ export class App extends React.Component {
 		return (
 			<div className="app">
 				<HeaderBar />
+
 				<main id="app-main-body">
+					<NavBar />
 					<Route exact path="/" component={About} />
 					<Route exact path="/login" component={LandingPage} />
 					<Route exact path="/dashboard" component={Dashboard} />

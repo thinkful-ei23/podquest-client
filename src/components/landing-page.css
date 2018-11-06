@@ -8,6 +8,8 @@
 	justify-content: space-around;
 	align-items: center;
 	padding: 2rem;
+	width: 75%;
+	order: 1;
 }
 .link-reg {
 	margin: 3rem 1rem;
