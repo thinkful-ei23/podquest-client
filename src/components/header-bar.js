@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './header-bar.css';
 
 export class HeaderBar extends React.Component {
@@ -19,14 +19,14 @@ export class HeaderBar extends React.Component {
 		if (this.props.loggedIn) {
 			logOutButton = (
 				<button
-					className="btn btn-med btn-green btn-logout"
+					className="btn btn-med btn-large btn-white btn-logout"
 					onClick={() => this.logOut()}
 				>
 					Log out
 				</button>
 			);
-			favoritesLink = <Link to="/favorites">Favorite Episodes!</Link>;
-			subscriptionLink = <Link to="/subscriptions">Subscriptions</Link>;
+			favoritesLink = <NavLink className="btn btn-med btn-large btn-white btn-fav" to="/favorites">Favorite Episodes!</NavLink>;
+			subscriptionLink = <NavLink className="btn btn-med btn-large btn-white btn-subscrip" to="/subscriptions">Subscriptions</NavLink>;
 		}
 		return (
 			<header className="header">
@@ -39,10 +39,14 @@ export class HeaderBar extends React.Component {
 					<h2 className="header-sub-title">
 						Bringing you the world, one pod cast at a time
 					</h2>
-					{logOutButton}
-					{favoritesLink}
-					{subscriptionLink}
 				</div>
+				{/* <aside>
+					<nav className="nav-bar">
+						{logOutButton}
+						{favoritesLink}
+						{subscriptionLink}
+					</nav>
+				</aside> */}
 			</header>
 		);
 	}
