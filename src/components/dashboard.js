@@ -35,7 +35,6 @@ export class Dashboard extends React.Component {
 	}
 
 	onSubmit(e) {
-
 		if (this.state.selectedOption) {
 			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
 		} else {
@@ -47,8 +46,10 @@ export class Dashboard extends React.Component {
 		return (
 			<div className="dashboard box">
 				<div className="dashboard-username">
-					<p className="user-welcome">Glad to have you with us,&nbsp;{this.props.username}!</p>
-
+					<p className="user-welcome">
+						Glad to have you with us,&nbsp;
+						{this.props.username}!
+					</p>
 				</div>
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
