@@ -34,11 +34,13 @@ describe('podQuest - Login', function() {
             url: 'http://localhost:8080/api/auth/login',
             headers: {
                 'Content-Type': 'application/json'
-            }, // baseUrl is prepended to url
-            form: true, // indicates the body should be form urlencoded and sets Content-Type: application/x-www-form-urlencoded headers
-            body: JSON.stringify({ username:"joe8", password:"secret1234"})
+            }, 
+            body: JSON.stringify({ username:"there you2", password:"password123"})
         })
-        cy.visit('http://localhost:3000')
+        .then((resp) => {
+            localStorage.setItem('authToken', resp.body.authToken)
+        })
+        cy.visit('http://localhost:3000/dashboard')
         // cy.contains('Login').click()
         // cy.get('input#username').type('there you2').should('have.value','there you2')
         // cy.get('input#password').type('password123').should('have.value','password123')
