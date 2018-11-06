@@ -15,7 +15,8 @@
 		padding: 3rem;
 	}
 
-	.fa-angle-left {
+	.fa-angle-left,
+	.fa-angle-right {
 		font-size: 2rem;
 		color: #fcfcfc;
 	}
