@@ -14,15 +14,12 @@
 	align-items: center;
 	}
 .header-bar {
-
 	width: 100%;
 	/* height: auto; */
 	max-height: 11.8rem;
 	background: url("/img/Nasa_blue_marble2.jpg") no-repeat center;
 	background-size: fill;
 	background-color: black;
-
-
 }
 #header-title {
 	text-align: center;
@@ -39,25 +36,16 @@
 	justify-content: center;
 	/* <i class="fas fa-globe-americas"></i> */
 }
-.head-link{
-	text-decoration: none;
-	color: #DBBC34;
-	/* color: rgba(18, 35, 117); */
-	/* background-color: rgba(18, 35, 117, .7); */
-	padding: 0 2rem;
-}
 .header-sub-title {
 	color: #DBBC34;
 	font-size: 2rem;
 	text-align: center;
 	background-color: rgba(18, 35, 117, .7);
 }
-.fav-link {
+.head-link{
 	text-decoration: none;
 	color: #DBBC34;
-	font-size: 2rem;
-}
-/* TODO */
-.btn-logout {
-	margin-top: -3rem;
+	/* color: rgba(18, 35, 117); */
+	/* background-color: rgba(18, 35, 117, .7); */
+	padding: 0 2rem;
 }

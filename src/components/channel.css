@@ -5,15 +5,23 @@
 	/* color */
 	/* other */
 
-	.title-channel {
+.title-channel {
 		font-size: 3rem;
 		margin: 3rem 0;
+}
+.channel-box {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 2rem;
+	width: 75%;
+	order: 1;
 	}
-	.channel-box {
-		margin: 3rem;
-		padding: 3rem;
-	}
-
+.channel-pod-img {
+	width: 20rem;
+	height: auto;
+}
 	.fa-angle-left,
 	.fa-angle-right {
 		font-size: 2rem;

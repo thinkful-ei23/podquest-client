@@ -21,6 +21,8 @@ html{
 	justify-content: center;
 	text-align: center;
 	padding: 2rem;
+	width: 75%;
+	order: 1;
 }
 .go-to-h2 {
 	font-family: 'Bai Jamjuree', sans-serif;
@@ -37,6 +39,8 @@ html{
 /* align-content: center; */
 	text-align: center;
 	padding: 1rem 2rem;
+	width: 75%;
+	order: 1;
 }
 .about-app >h2 {
 	font-size: 2rem;
