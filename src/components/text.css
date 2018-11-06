@@ -23,15 +23,17 @@ html{
 	/* font-family: 'Baloo Chettan', cursive; maybe for logo*/
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Bai Jamjuree', sans-serif;
 	text-transform: uppercase;
+	letter-spacing: .2rem;
+	color: #122375;
 }
 h1 {
+	font-family: 'Audiowide', cursive;
 	font-size: 5rem;
 }
 h2 {
 	font-size: 4rem;
-	font-family: 'Bai Jamjuree', sans-serif;
 }
 h3 {
 	font-size: 3.5rem;
@@ -48,15 +50,15 @@ h6 {
 p {
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
+	line-height: 1.7rem;
 }
 .input-label {
 	color: #122375;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 2.5rem;
 }
-.link > Link {
-	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 5.5rem;
+.link {
+	text-decoration: none;
 }
 #password,
 #username,
@@ -88,7 +90,7 @@ color: #122375;
 /* =============BOXES in LOGIN SIGNUP ABOUT================= */
 
 .box{
-background-color: rgba(255, 255, 255, .4);
+background-color: rgba(255, 255, 255, .7);
 border: transparent;
 border-radius: 2px;
 }

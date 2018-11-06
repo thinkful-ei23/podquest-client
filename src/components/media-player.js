@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
-import { userFavoriteInfo } from "../actions/favorite";
+import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
+
+import './media-player.css';
 
 export class MediaPlayer extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -25,7 +27,12 @@ export class MediaPlayer extends React.Component {
     this.handleMuteToggle = this.handleMuteToggle.bind(this)
   }
 
-  componentDidUpdate (prevProps, prevState, prevContext) {
+
+  componentDidMount() {
+    this.props.dispatch(getFavorite());
+  }
+
+  componentDidUpdate(prevProps, prevState, prevContext) {
     if (this.props.episodeUrl !== prevProps.episodeUrl) {
 
       this.setState({
@@ -39,38 +46,38 @@ export class MediaPlayer extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.clearRAF()
   }
 
-  handleToggle () {
+  handleToggle() {
     this.setState({
       playing: !this.state.playing
     })
   }
 
-  handleOnLoad () {
+  handleOnLoad() {
     this.setState({
       loaded: true,
       duration: this.player.duration()
     })
   }
 
-  handleOnPlay () {
+  handleOnPlay() {
     this.setState({
       playing: true
     })
     this.renderSeekPos()
   }
 
-  handleOnEnd () {
+  handleOnEnd() {
     this.setState({
       playing: false
     })
     this.clearRAF()
   }
 
-  handleStop () {
+  handleStop() {
     this.player.stop()
     this.setState({
       playing: false // Need to update our local state so we don't immediately invoke autoplay
@@ -78,19 +85,19 @@ export class MediaPlayer extends React.Component {
     this.renderSeekPos()
   }
 
-  handleLoopToggle () {
+  handleLoopToggle() {
     this.setState({
       loop: !this.state.loop
     })
   }
 
-  handleMuteToggle () {
+  handleMuteToggle() {
     this.setState({
       mute: !this.state.mute
     })
   }
 
-  renderSeekPos () {
+  renderSeekPos() {
     if (this.state.loaded) {
       this.setState({
         seek: this.player.seek()
@@ -101,32 +108,51 @@ export class MediaPlayer extends React.Component {
     }
   }
 
-  clearRAF () {
+  clearRAF() {
     raf.cancel(this._raf)
   }
 
-  seekTo (seek) {
+  seekTo(seek) {
     this.player.seek(seek);
     this.setState({
       seek
     });
   }
 
-  handleFav() {
-    const episodeData = {
-      guid: this.props.episodeGuid,
-      title: this.props.episodeTitle,
-      feedUrl: this.props.feedUrl
-    };
-    // console.log('episodeData', episodeData);
-    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeGuid));
+  handleAddFav() {
+    this.props.dispatch(userFavoriteInfo(this.props.feedUrl, this.props.episodeTitle, this.props.episodeUrl, this.props.episodeGuid));
+    this.props.dispatch(getFavorite());
   }
 
-  render () {
+  handleDeleteFav() {
+    this.props.dispatch(deleteFavorite(this.props.episodeTitle));
+    this.props.dispatch(getFavorite());
+  }
+
+  render() {
     let player;
     let season = '';
     let episode = '';
     let date = '';
+    let favButton = (
+      <button className="btn-round btn-fav" onClick={() => this.handleAddFav()}>
+        <i className="fab fa-gratipay"></i>
+        {/* Favorite */}
+      </button>
+    );
+    if (this.props.favorites) {
+      // const favorited =this.props.favorites.filter(favorite => favorite.title === this.props.episodeTitle)
+      this.props.favorites.forEach(favorite => {
+        if (favorite.title === this.props.episodeTitle) {
+          favButton = (
+            <button className="btn-round btn-fav" onClick={() => this.handleDeleteFav()}>
+              <i className="fas fa-ban"></i>
+              {/* Remove, or Unfavorite */}
+            </button>
+          );
+        }
+      });
+    }
     if (this.props.episodeSeason) {
       season = `Season ${this.props.episodeSeason}`;
     }
@@ -146,30 +172,40 @@ export class MediaPlayer extends React.Component {
     } else if (this.props.episodeUrl && this.state.loaded) {
       player = (
         <React.Fragment>
-          <p><strong>{this.props.episodeTitle}</strong></p>
-          <p>{season}{episode}<em>{date}</em></p>
+          <p className="player-p"><strong>{this.props.episodeTitle}</strong></p>
+          <p className="player-p"> {season}{episode}<em>{date}</em></p>
           <div className='toggles'>
-            <label>
-              Loop:
+            <label className="player-label">
+              Loop:&nbsp;
               <input
+                // type="radio"
+                // id="radio-loop"
+                // name="loop"
+                className="checkbox"
                 type='checkbox'
                 checked={this.state.loop}
                 onChange={this.handleLoopToggle}
               />
+
             </label>
-            <label>
-              Mute:
+            <label className="player-label">
+              &nbsp;&nbsp;Mute:&nbsp;
               <input
+                // type="radio"
+                // id="radio-mute"
+                // name="loop"
+                className="checkbox"
                 type='checkbox'
                 checked={this.state.mute}
                 onChange={this.handleMuteToggle}
               />
+
             </label>
           </div>
-  
+
           <div className='volume'>
-            <label>
-              Volume:
+            <label className="player-label">
+              Volume:&nbsp;
               <span className='slider-container'>
                 <input
                   type='range'
@@ -177,8 +213,8 @@ export class MediaPlayer extends React.Component {
                   max='1'
                   step='.05'
                   value={this.state.volume}
-                  onChange={e => this.setState({volume: parseFloat(e.target.value)})}
-                  style={{verticalAlign: 'bottom'}}
+                  onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
+                  style={{ verticalAlign: 'bottom' }}
                 />
               </span>
               {(this.state.volume * 100).toFixed(0)}
@@ -197,23 +233,24 @@ export class MediaPlayer extends React.Component {
                   onChange={e => this.seekTo(e.target.value)}
                 />
               </span>
-              <p>
+              <p className="player-p" >
                 {(this.state.seek) ? new Date(this.state.seek * 1000).toISOString().substr(11, 8) : '00:00:00'}
                 {' / '}
                 {(this.state.duration) ? new Date(this.state.duration * 1000).toISOString().substr(11, 8) : '00:00:00'}
               </p>
             </label>
           </div>
-  
-          <button className='play-button' onClick={this.handleToggle} disabled={!this.state.loaded}>
-            {(this.state.playing) ? 'Pause' : 'Play'}
-          </button>
-          <button className='stop-button' onClick={this.handleStop} disabled={!this.state.loaded}>
-            Stop
-          </button>
-          <button onClick={() => this.handleFav()}>
-            Favorite
-          </button>
+          <div className="btn-row">
+            <button className="btn-round" onClick={this.handleToggle} disabled={!this.state.loaded}>
+              {/* <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} </span> */}
+              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-play-circle"></i> : <i className="far fa-pause-circle"></i>} </span>
+            </button>
+            <button className="btn-round" onClick={this.handleStop} disabled={!this.state.loaded}>
+              <i className="far fa-stop-circle"></i>
+            </button>
+
+            {favButton}
+          </div>
         </React.Fragment>
       );
     }
@@ -240,20 +277,21 @@ export class MediaPlayer extends React.Component {
 }
 
 const mapStateToProps = state => {
+  let props = {};
   const episodeData = state.mediaPlayer.episodeData;
   if (episodeData) {
-    return {
-      episodeDate: episodeData.episodeDate,
-      episodeGuid: episodeData.episodeGuid,
-      episodeNumber: episodeData.episodeNumber,
-      episodeSeason: episodeData.episodeSeason,
-      episodeTitle: episodeData.episodeTitle,
-      episodeUrl: episodeData.episodeUrl,
-      feedUrl: episodeData.feedUrl
-    }
-  } else {
-    return {};
+    props.episodeDate = episodeData.episodeDate;
+    props.episodeGuid = episodeData.episodeGuid;
+    props.episodeNumber = episodeData.episodeNumber;
+    props.episodeSeason = episodeData.episodeSeason;
+    props.episodeTitle = episodeData.episodeTitle;
+    props.episodeUrl = episodeData.episodeUrl;
+    props.feedUrl = episodeData.feedUrl;
   }
+  if (state.favorites.favorites) {
+    props.favorites = state.favorites.favorites;
+  }
+  return props;
 };
 
 export default connect(mapStateToProps)(MediaPlayer);

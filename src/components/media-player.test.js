@@ -21,4 +21,10 @@ describe('<MediaPlayer />', () => {
     wrapper.setState({loaded: false});
     expect(wrapper.contains(<p>Loading...</p>));
   });
+
+  it('Renders the media player', () => {
+    const wrapper = shallow(<MediaPlayer episodeUrl={episodeUrl}/>);
+    wrapper.setState({loaded: true});
+    expect(wrapper.contains(<p>Loading...</p>));
+  });
 });

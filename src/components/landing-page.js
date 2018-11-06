@@ -12,8 +12,10 @@ export function LandingPage(props) {
     }
 
     return (
-        <div className="home box">
-            <h2>Login for your casting pleasure</h2>
+        <div className="land-home box">
+            <h2>Login</h2>
+            <p>for your casting pleasure</p>
+
             <LoginForm />
             <p className="link link-reg">Don't have an account?&nbsp;Click here to&nbsp;<Link to="/register">Register</Link></p>
         </div>

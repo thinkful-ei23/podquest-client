@@ -6,17 +6,18 @@
 	/* color */
 	/* text */
 	/* other */
-
+.dashboard-username {
+	margin: 0;
+}
 .user-welcome {
 	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 2.5rem;
+	font-size: 2rem;
 	line-height: 1.7rem;
 	text-align: center;
-	padding: 1rem;
-	margin: 1rem 0;
+	padding: 2rem;
+	color: #122375;
 }
 .search-tagline {
 	font-size: 2rem;
 	padding: 1rem;
-
 }

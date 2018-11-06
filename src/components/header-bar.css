@@ -6,40 +6,57 @@
 	/* color */
 	/* text */
 	/* other */
+.header {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	}
 .header-bar {
-	/* positioning */
-	position: fixed;
-	top: 0;
-	width: 100%;
-	margin-bottom: 2rem;
-	/* display + box model */
 
-	/* color */
-	/* background-color:#122375; */
-	/* text */
-	/* other */
-	/* background-image: url("/img/Nasa_blue_marble2.jpg"); */
-	/* object-fit: contain; */
-	background-color:#122375;
-	/* rect (top, right, bottom, left) */
+	width: 100%;
+	/* height: auto; */
+	max-height: 11.8rem;
+	background: url("/img/Nasa_blue_marble2.jpg") no-repeat center;
+	background-size: fill;
+	background-color: black;
+
+
 }
 #header-title {
 	text-align: center;
+	height: 100%;
 	color: #DBBC34;
-	/* color:#122375; */
+	/* color: rgba(18, 35, 117); */
 	/* color: #FCFCFC; */
 	font-family: 'Audiowide', cursive;
-	/* font-family: 'Baloo Chettan', cursive; */
 	font-size: 5rem;
 	text-transform: uppercase;
-
+	background-color: rgba(18, 35, 117, .7);
+	display: flex;
+  align-items: center;
+	justify-content: center;
 	/* <i class="fas fa-globe-americas"></i> */
 }
 .head-link{
 	text-decoration: none;
 	color: #DBBC34;
+	/* color: rgba(18, 35, 117); */
+	/* background-color: rgba(18, 35, 117, .7); */
+	padding: 0 2rem;
 }
-
+.header-sub-title {
+	color: #DBBC34;
+	font-size: 2rem;
+	text-align: center;
+	background-color: rgba(18, 35, 117, .7);
+}
+.fav-link {
+	text-decoration: none;
+	color: #DBBC34;
+	font-size: 2rem;
+}
 /* TODO */
 .btn-logout {
 	margin-top: -3rem;

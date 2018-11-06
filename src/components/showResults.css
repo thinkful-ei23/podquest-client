@@ -1,0 +1,30 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* other */
+
+.results-page {
+	padding: 2rem 4rem;
+	margin-top: 1rem;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	}
+	/* .btn-previous {
+		visibility: hidden;
+	} */
+	.btn-row-results{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: baseline;
+	}
+	.fa-angle-left,
+	.fa-angle-right {
+		font-size: 2rem;
+	}
+	/* .fa-angle-left:hover,
+	.fa-angle-right:active {
+		color: #DBBC34;
+	} */

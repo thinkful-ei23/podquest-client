@@ -1,0 +1,65 @@
+@import "buttons.css";
+@import "text.css";
+@import "radio_btn.css";
+
+.media-player {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+}
+.btn-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+}
+.player-p {
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.8rem;
+	line-height: 1.7rem;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+.player-label {
+	color: #122375;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 2rem;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+.radio-loop,
+.radio-mute {
+	border: 1rem solid orangered;
+}
+.link {
+	text-decoration: none;
+}
+.volume {
+	margin: 2rem 0;
+}
+.btn-round {
+	border: transparent;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+}
+.fa-play-circle,
+.fa-pause-circle,
+.fa-stop-circle,
+.fa-circle,
+.fa-ban,
+.fa-pause,
+.fa-gratipay {
+	/* <i class="fas fa-pause"></i> */
+	/* <i className="fab fa-gratipay"></i><i className="far fa-circle"></i><i className="fas fa-ban"></i> */
+	font-size: 3rem;
+	color: #000;
+	padding: 1rem;
+}
+.fa-gratipay {
+	color: red;
+}

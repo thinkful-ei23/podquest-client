@@ -1,0 +1,50 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* other */
+
+	.title-channel {
+		font-size: 3rem;
+		margin: 3rem 0;
+	}
+	.channel-box {
+		margin: 3rem;
+		padding: 3rem;
+	}
+
+	.fa-angle-left,
+	.fa-angle-right {
+		font-size: 2rem;
+		color: #fcfcfc;
+	}
+	.btn-back:hover,
+	.btn-back:active {
+	color: #FCFCFC;
+	background-color: #122375;
+	}
+	.btn-subscribe {
+		font-size: 1.7rem;
+		padding: 1rem;
+		border-radius: 1rem;
+	}
+	/* .episode-select {
+		height: 2rem;
+		padding: 2rem;
+		width: 50%;
+		margin-bottom:6rem;
+	} */
+
+.styled-select {
+	background-color:#DBBC34;
+	color: #122375;
+	height: 4rem;
+	overflow: hidden;
+	width: 24rem;
+	font-size: 1.7rem;
+	padding: 1rem;
+	-webkit-border-radius: 1rem;
+		-moz-border-radius: 1rem;
+		border-radius: 1rem;
+}
