@@ -1,0 +1,63 @@
+@import "buttons.css";
+@import "text.css";
+
+.nav-bar {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* align-content: flex-start; */
+	width: 25%;
+	order: 0;
+}
+.nav-subscrip,
+.nav-fav {
+	text-decoration: none;
+}
+.nav-logout {
+	width: 100%;
+	height: 100%;
+
+	border: transparent;
+	border-radius: 0;
+	background-color: transparent;
+}
+.nav-logout-p{
+	text-align: center;
+	font-size: 1.7rem;
+	line-height: 2rem;
+	text-transform: capitalize;
+	padding: 0;
+	background-color: #FCFCFC;
+	color: #122375;
+}
+.nav-logout-p:hover,
+.nav-logout-p:active {
+	width: 100%;
+	background-color: transparent;
+	color: #FCFCFC;
+}
+.nav-ul {
+	margin: 1rem;
+}
+.nav-li {
+	list-style-type: none;
+	/* text-decoration: none; */
+	text-align: center;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.7rem;
+	line-height: 2rem;
+	text-transform: capitalize;
+	padding: 1rem;
+	margin: 5rem 0;
+	height: 4rem;
+	background-color: #FCFCFC;
+	color: #122375;
+}
+.nav-li:hover,
+.nav-li:active {
+	background-color: #122375;
+	background-color: #737373;
+	color: #FCFCFC;
+}

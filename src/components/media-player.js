@@ -243,13 +243,13 @@ export class MediaPlayer extends React.Component {
           <div className="btn-row">
             <button className="btn-round" onClick={this.handleToggle} disabled={!this.state.loaded}>
               {/* <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} </span> */}
-              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-play-circle"></i> : <i className="far fa-pause-circle"></i>} </span>
+              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-pause-circle"></i> : <i className="far fa-play-circle"></i>} </span>
             </button>
             <button className="btn-round" onClick={this.handleStop} disabled={!this.state.loaded}>
               <i className="far fa-stop-circle"></i>
             </button>
-
             {favButton}
+
           </div>
         </React.Fragment>
       );

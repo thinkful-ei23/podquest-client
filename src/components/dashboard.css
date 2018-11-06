@@ -6,6 +6,10 @@
 	/* color */
 	/* text */
 	/* other */
+	.dashboard {
+		width: 75%;
+	order: 1;
+	}
 .dashboard-username {
 	margin: 0;
 }
