@@ -9,6 +9,8 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
+	width: 75%;
+	order: 1;
 }
 .btn-row {
 	display: flex;

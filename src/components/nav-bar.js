@@ -17,25 +17,26 @@ export class NavBar extends React.Component {
 		let subscriptionLink;
 		if (this.props.loggedIn) {
 			logOutButton = (
+
 				<button
-					className="btn btn-med btn-white btn-logout"
+					className="nav-logout"
 					onClick={() => this.logOut()}
 				>
-					Log out
+					<p className="nav-logout-p">Log out</p>
 				</button>
+
 			);
-			favoritesLink = <NavLink className="btn btn-med btn-white btn-fav" to="/favorites">Favorite Episodes!</NavLink>;
-			subscriptionLink = <NavLink className="btn btn-med btn-white btn-subscrip" to="/subscriptions">Subscriptions</NavLink>;
+			favoritesLink = <NavLink className="nav-fav" to="/favorites">My Favorite Episodes!</NavLink>;
+			subscriptionLink = <NavLink className="nav-subscrip" to="/subscriptions">Subscriptions</NavLink>;
 		}
 		return (
-
 			<nav className="nav-bar">
-
-				{favoritesLink}
-				{subscriptionLink}
-				{logOutButton}
+				<ul className="nav-ul">
+					<li className="nav-li">	{favoritesLink}</li>
+					<li className="nav-li">	{subscriptionLink}</li>
+					<li className="nav-li nav-logout-li">	{logOutButton}</li>
+				</ul>
 			</nav>
-
 		);
 	}
 }

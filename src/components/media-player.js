@@ -248,8 +248,8 @@ export class MediaPlayer extends React.Component {
             <button className="btn-round" onClick={this.handleStop} disabled={!this.state.loaded}>
               <i className="far fa-stop-circle"></i>
             </button>
-
             {favButton}
+
           </div>
         </React.Fragment>
       );

@@ -13,21 +13,7 @@ export class HeaderBar extends React.Component {
 
 	render() {
 		// Only render the log out button if we are logged in
-		let logOutButton;
-		let favoritesLink;
-		let subscriptionLink;
-		if (this.props.loggedIn) {
-			logOutButton = (
-				<button
-					className="btn btn-med btn-large btn-white btn-logout"
-					onClick={() => this.logOut()}
-				>
-					Log out
-				</button>
-			);
-			favoritesLink = <NavLink className="btn btn-med btn-large btn-white btn-fav" to="/favorites">Favorite Episodes!</NavLink>;
-			subscriptionLink = <NavLink className="btn btn-med btn-large btn-white btn-subscrip" to="/subscriptions">Subscriptions</NavLink>;
-		}
+
 		return (
 			<header className="header">
 				<div className="header-bar">
@@ -40,13 +26,6 @@ export class HeaderBar extends React.Component {
 						Bringing you the world, one pod cast at a time
 					</h2>
 				</div>
-				{/* <aside>
-					<nav className="nav-bar">
-						{logOutButton}
-						{favoritesLink}
-						{subscriptionLink}
-					</nav>
-				</aside> */}
 			</header>
 		);
 	}
