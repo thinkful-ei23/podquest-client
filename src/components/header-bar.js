@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './header-bar.css';
 
 export class HeaderBar extends React.Component {
@@ -18,13 +18,16 @@ export class HeaderBar extends React.Component {
 			logOutButton = <button className="btn btn-med btn-green btn-logout" onClick={() => this.logOut()}>Log out</button>;
 		}
 		return (
-			<div className="header-bar">
-				<h1 id="header-title">
-					<Link to="/" className="head-link" >podQuest</Link>
-				</h1>
-				{logOutButton}
-				<Link to="/favorites">Favorite Episodes!</Link>
-			</div>
+			<header className="header">
+				<div className="header-bar">
+					<h1 id="header-title">
+						<NavLink to="/" className="head-link" >podQuest</NavLink>
+					</h1>
+					<h2 className="header-sub-title">Bringing you the world, one pod cast at a time</h2>
+					{logOutButton}
+					<NavLink to="/favorites" className="fav-link">Favorite Episodes!</NavLink>
+				</div>
+			</header>
 		);
 	}
 }

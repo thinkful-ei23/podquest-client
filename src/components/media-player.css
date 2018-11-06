@@ -1,10 +1,72 @@
 @import "buttons.css";
 @import "text.css";
-
-React.Fragment {
+.media-player {
 	text-align: center;
-
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	border: 2px solid brown;
 }
-/* div {
-	margin: 3rem 0;
-} */
+.btn-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+}
+.player-p {
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+.player-label {
+	color: #122375;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 2rem;
+}
+.link {
+	text-decoration: none;
+}
+.volume {
+	margin: 2rem 0;
+}
+.btn-round {
+	border-radius: 100%;
+	padding: 0;
+	margin: 0;
+}
+.play-btn-symbol {
+	font-size: 2rem;
+	padding: 1rem;
+	text-align: center;
+}
+.btn-play {
+	font-size: 1rem;
+	/* text-transform: lowercase; */
+	padding: 0 2rem;
+}
+.fa-play-circle,
+.fa-pause-circle,
+.fa-stop-circle,
+.fa-circle,
+.fa-ban {
+	font-size: 3rem;
+}
+.btn-stop {
+border: 2px solid #cd3d20;
+background-color: #FCFCFC;
+color: #cd3d20;
+font-size: 1rem;
+padding: 0 2rem;
+/* border-radius: 6rem;; */
+}
+.btn-stop:hover,
+.btn-stop:active {
+	border: 2px solid #cd3d20;
+	background-color: #cd3d20;
+	color: #fcfcfc;
+	}

@@ -12,7 +12,7 @@ export function LandingPage(props) {
     }
 
     return (
-        <div className="home box">
+        <div className="land-home box">
             <h2>Login</h2>
             <p>for your casting pleasure</p>
 

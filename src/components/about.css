@@ -21,11 +21,6 @@ html{
 	justify-content: center;
 	text-align: center;
 	padding: 2rem;
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* text */
-	/* other */
 }
 .go-to-h2 {
 	font-family: 'Bai Jamjuree', sans-serif;
@@ -40,7 +35,6 @@ html{
 	flex-wrap: wrap;
 	justify-content: center;
 /* align-content: center; */
-	margin: 1rem;
 	text-align: center;
 	padding: 1rem 2rem;
 }

@@ -14,24 +14,20 @@
 		border: 3px dashed chartreuse;
 		padding: 3rem;
 	}
-	.btn-back {
-/* border-top-left-radius: 5rem;
-border-top-right-radius:0;
-border-bottom-right-radius:0;
-border-bottom-left-radius:5rem; */
--webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+
+	.fa-angle-left {
+		font-size: 2rem;
+		color: #fcfcfc;
 	}
 	.btn-back:hover,
 	.btn-back:active {
-color: black;
-background-color: turquoise;
+	color: #FCFCFC;
+	background-color: #122375;
 	}
 	.btn-subscribe {
 		font-size: 1.7rem;
-		padding: 2rem 0 4rem 0;
-		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 65% 75%, 75% 100%, 50% 75%, 0% 75%);
-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 65% 75%, 75% 100%, 50% 75%, 0% 75%);
+		padding: 1rem;
+		border-radius: 1rem;
 	}
 	.episode-select {
 		border: 3px dotted darkorange;
