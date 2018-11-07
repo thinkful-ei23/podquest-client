@@ -5,7 +5,7 @@ import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
-import { subscribeChannel } from '../actions/subscribe';
+import { subscribeChannel, postSubscribe } from '../actions/subscribe';
 
 import './channel.css';
 
@@ -55,10 +55,11 @@ class Channel extends React.Component {
 	}
 
 	handleSubscribe(e) {
-		// let addressArray = document.URL.split('/');
-		// let channelId = addressArray[addressArray.length - 1];
+		let addressArray = document.URL.split('/');
+		let channelId = addressArray[addressArray.length - 1];
 		console.log('subscription button clicked');
-		// this.props.dispatch(subscribeChannel(channelId));
+		this.props.dispatch(subscribeChannel(channelId));
+		this.props.dispatch(postSubscribe(channelId));
 	}
 
 	render() {

@@ -22,5 +22,5 @@ export const postSubscribe = subChannel => (dispatch, getState) => {
 			Authorization: `Bearer ${authToken}`
 		},
 		body: JSON.stringify({ subChannel })
-	}).then(res => console.log(res.json()));
+	}).then(res => console.log(res));
 };
