@@ -5,9 +5,9 @@ const initialState = {
 };
 
 export default function subscribeReducer(state = initialState, action) {
-	if ((action.type = SUBSCRIBE_CHANNEL)) {
+	if (action.type === SUBSCRIBE_CHANNEL) {
 		return Object.assign({}, state, {
-			subChannels: [...state.subChannels, action.subChannel]
+			subChannels: [action.subChannel, ...state.subChannels]
 		});
 	}
 	return state;
