@@ -1,8 +1,12 @@
+@import "buttons.css";
+@import "text.css";
 
-
-.home {
-	margin-top: 8rem;
-}
-.link-reg-page{
-	color: orangered;
+.register-page {
+	/* padding: 3rem; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2rem;
 }

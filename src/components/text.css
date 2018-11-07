@@ -26,6 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Bai Jamjuree', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: .2rem;
+	color: #122375;
 }
 h1 {
 	font-family: 'Audiowide', cursive;
@@ -49,6 +50,7 @@ h6 {
 p {
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
+	line-height: 1.7rem;
 }
 .input-label {
 	color: #122375;
@@ -88,7 +90,7 @@ color: #122375;
 /* =============BOXES in LOGIN SIGNUP ABOUT================= */
 
 .box{
-background-color: rgba(255, 255, 255, .4);
+background-color: rgba(255, 255, 255, .7);
 border: transparent;
 border-radius: 2px;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
@@ -75,19 +75,21 @@ class Channel extends React.Component {
 		}
 		return (
 			<div className="box channel-box">
-				<Link className="btn btn-small btn-blue btn-back" to="/dashboard">
-					<button>Back</button>
-				</Link>
+				<NavLink to="/dashboard">
+					<button className="btn btn-small btn-blue btn-back">
+						<i className="fas fa-angle-left" />
+						&nbsp;Back
+					</button>
+				</NavLink>
+
 				<h2 className="title-channel">{podcast.title}</h2>
 				<img src={podcast.image} alt="podcast wallpaper" height={200} />
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button
-					className="btn btn-med btn-blue btn-subscribe"
-					onClick={e => this.handleSubscribe(e)} //for subscription button (do not delete this when merging)
-				>
+				<button className="btn btn-large btn-blue btn-subscribe">
 					Subscribe to channel
 				</button>
 				<select
+					className="episode-select styled-select green rounded"
 					id="episode-select"
 					defaultValue="Select episode"
 					onChange={e => this.handleSelectEpisode(e)}

@@ -1,13 +1,17 @@
 .app {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
-	justify-content: space-around;
-}
+	justify-content: center;
+	/* TODO */
+	/* background-image: linear-gradient(45deg, #182848, #4b6cb7); */
 
+}
 #app-main-body {
-/* padding: 1rem; */
-margin-top: 15rem;
-/* position: fixed; */
-/* top: 100; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* TODO  */
+	/* height: 100vh; */
 }

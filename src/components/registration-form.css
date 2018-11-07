@@ -7,17 +7,16 @@
 	/* other */
 
 .register-form {
-	width: auto;
-	border: transparent;
-	padding: 2rem;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	width: auto;
+	border: transparent;
+	padding: 2rem;
 }
 .input-label-reg {
 	margin-top: 3rem;
-
 }
 #email,
 #username,

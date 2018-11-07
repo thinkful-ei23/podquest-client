@@ -8,6 +8,7 @@ import About from './about';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import Channel from './channel';
+import FavoritePage from './favorite-page';
 import { refreshAuthToken } from '../actions/auth';
 // import { LoginForm } from './login-form';
 import './app.css';
@@ -52,6 +53,7 @@ export class App extends React.Component {
 					<Route exact path="/dashboard" component={Dashboard} />
 					<Route exact path="/register" component={RegistrationPage} />
 					<Route exact path="/channel/:id" component={Channel} />
+					<Route exact path="/favorites" component={FavoritePage} />
 				</main>
 			</div>
 		);

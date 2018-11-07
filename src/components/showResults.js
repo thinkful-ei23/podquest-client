@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTable from 'react-table';
 import SearchResults from './searchResults';
 import pages from './makePages';
 import './showResults.css';
@@ -23,24 +24,31 @@ export default class ShowResults extends React.Component {
 		});
 	}
 
+	handleReset() {
+		this.setState({
+			page: 0
+		});
+	}
+
 	render() {
 		let searchResults = null;
 		if (this.props.podcasts) {
 			searchResults = pages(this.props.podcasts);
 			// console.log(searchResults.length);
 		}
+
 		return (
 			<section className="results-page">
 				{searchResults
 					? [...Array(searchResults[this.state.page].length).keys()].map(
-							index => (
-								<SearchResults
-									key={searchResults[this.state.page][index].id}
-									resultNumber={index + 1}
-									podcast={searchResults[this.state.page][index]}
-								/>
-							)
-					  )
+						index => (
+							<SearchResults
+								key={searchResults[this.state.page][index].id}
+								resultNumber={index + 1}
+								podcast={searchResults[this.state.page][index]}
+							/>
+						)
+					)
 					: 'Nothing to see for now. So...shall we search for a podcast?'}
 				<div className="btn-row-results">
 					{searchResults && this.state.page > 0 ? (
@@ -51,8 +59,8 @@ export default class ShowResults extends React.Component {
 							Previous Results
 						</button>
 					) : (
-						''
-					)}
+							''
+						)}
 					{searchResults && this.state.page < searchResults.length - 1 ? (
 						<button
 							className="btn btn-large btn-yellow2 btn-more"
@@ -61,8 +69,8 @@ export default class ShowResults extends React.Component {
 							Show More Results
 						</button>
 					) : (
-						''
-					)}
+							''
+						)}
 				</div>
 			</section>
 		);
