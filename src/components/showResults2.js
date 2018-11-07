@@ -7,35 +7,39 @@ import './showResults.css';
 import "react-table/react-table.css";
 
 export default class ShowResults extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			data: SearchResults
-		};
-	}
-	render() {
-		const searchResults = null;
-		// if (this.props.podcasts) {
-		// searchResults = (this.props.podcasts);
+	// componentWillMount() {
+	// 	this.props.dispatch(searchResults());
+	// }
 
-		const data = { SearchResults }
+	render() {
+		// const data = this.props.podcasts
+		const data = SearchResults
+		// console.log(data, "looking for search")
 		const columns = [{
 			Header: '#',
 			accessor: 'number',
 		}, {
 			Header: 'Title',
-			accessor: 'title',
+			accessor: 'collection',
 		}]
-		return (
-			<div>
-				<ReactTable
-					data={[data]}
-					columns={columns}
-					defaultPageSize={10}
-					pageSizeOption={[5, 10, 15]}
-					className="-striped -highlight"
-				/>
-			</div >
-		)
+		if (this.props.podcasts) {
+			return (
+				<div>
+					<ReactTable
+						data={[data]}
+						// data={SearchResults}
+
+						columns={columns}
+						defaultPageSize={10}
+						pageSizeOption={[5, 10, 15]}
+						className="-striped -highlight"
+					/>
+				</div >
+			)
+		} else {
+			return (
+				<p>'Nothing to see for now. So...shall we search for a podcast?'</p>
+			)
+		}
 	}
-};
+}

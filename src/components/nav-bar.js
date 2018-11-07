@@ -54,6 +54,7 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
+	username: state.auth.currentUser.username,
 	loggedIn: state.auth.currentUser !== null
 });
 

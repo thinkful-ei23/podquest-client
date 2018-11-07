@@ -10,6 +10,7 @@ import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import Channel from './channel';
 import FavoritePage from './favorite-page';
+import Subscriptions from './subscriptions';
 import { refreshAuthToken } from '../actions/auth';
 import './app.css';
 
@@ -62,6 +63,7 @@ export class App extends React.Component {
 					<Route exact path="/register" component={RegistrationPage} />
 					<Route exact path="/channel/:id" component={Channel} />
 					<Route exact path="/favorites" component={FavoritePage} />
+					<Route exact path="/subscriptions" component={Subscriptions} />
 				</main>
 			</div>
 		);

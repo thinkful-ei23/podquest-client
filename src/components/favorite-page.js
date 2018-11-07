@@ -1,10 +1,11 @@
 import React from "react";
 import requiresLogin from "./requires-login";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
 import { setEpisode } from "../actions/media-player";
+import './favorite-page.css';
 
 export class FavoritePage extends React.Component {
   componentWillMount() {
@@ -22,26 +23,27 @@ export class FavoritePage extends React.Component {
     }
   }
 
-  render(){
+  render() {
     if (!this.props.favorites) {
       return <div>Loading...</div>
     }
     const listFavorite = this.props.favorites.map((favorite, index) => {
       return (
         <li
+          className="favorite-li"
           key={index}
-          onClick = {() => 
+          onClick={() =>
             this.handleSelectEpisode(favorite)
           }
         >
-        {favorite.title}</li>
+          {favorite.title}</li>
       )
     })
 
     return (
-      <div>
-        <Link to="/dashboard"><button>Back</button></Link>
-        <ul>
+      <div className="favorite-page box">
+        <NavLink to="/dashboard"><button className="btn btn-small btn-blue btn-back">Back</button></NavLink>
+        <ul className="favorite-ul">
           {listFavorite}
         </ul>
         <MediaPlayer />

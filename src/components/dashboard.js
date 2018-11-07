@@ -45,12 +45,6 @@ export class Dashboard extends React.Component {
 	render() {
 		return (
 			<div className="dashboard box">
-				<div className="dashboard-username">
-					<p className="user-welcome">
-						Glad to have you with us,&nbsp;
-						{this.props.username}!
-					</p>
-				</div>
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
