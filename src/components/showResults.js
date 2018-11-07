@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactTable from 'react-table';
 import SearchResults from './searchResults';
 import pages from './makePages';
 import './showResults.css';

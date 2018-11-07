@@ -6,3 +6,6 @@
 	/* color */
 	/* text */
 	/* other */
+	.search-results{
+		border: 2px dotted lemonchiffon;
+	}

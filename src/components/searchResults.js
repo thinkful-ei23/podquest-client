@@ -5,7 +5,7 @@ import './searchResults.css';
 
 function SearchResults(props) {
     return (
-        <div>
+        <div className="search-results">
             {props.resultNumber + ': \u00a0 '}
             <Link
                 onClick={() => localStorage.setItem('podcastChannel', props.podcast.xml)}

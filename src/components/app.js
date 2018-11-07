@@ -47,8 +47,8 @@ export class App extends React.Component {
 	render() {
 
 		let navBar;
-		if(this.props.loggedIn){
-			navBar = <NavBar/>
+		if (this.props.loggedIn) {
+			navBar = <NavBar />
 		}
 		return (
 			<div className="app">
