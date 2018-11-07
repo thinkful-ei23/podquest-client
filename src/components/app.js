@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter,Switch } from 'react-router-dom';
 
 import HeaderBar from './header-bar';
 import NavBar from './nav-bar';
@@ -12,6 +12,7 @@ import Channel from './channel';
 import FavoritePage from './favorite-page';
 import { refreshAuthToken } from '../actions/auth';
 import './app.css';
+import PageNotFound from './pageNotFound';
 
 export class App extends React.Component {
 	componentDidUpdate(prevProps) {
@@ -56,12 +57,16 @@ export class App extends React.Component {
 
 				<main id="app-main-body">
 					{navBar}
-					<Route exact path="/" component={About} />
-					<Route exact path="/login" component={LandingPage} />
-					<Route exact path="/dashboard" component={Dashboard} />
-					<Route exact path="/register" component={RegistrationPage} />
-					<Route exact path="/channel/:id" component={Channel} />
-					<Route exact path="/favorites" component={FavoritePage} />
+					<Switch>
+						<Route exact path="/" component={About} />
+						<Route exact path="/login" component={LandingPage} />
+						<Route exact path="/dashboard" component={Dashboard} />
+						<Route exact path="/register" component={RegistrationPage} />
+						<Route exact path="/channel/:id" component={Channel} />
+						<Route exact path="/favorites" component={FavoritePage} />
+						<Route component={PageNotFound}/>	
+					</Switch>
+					
 				</main>
 			</div>
 		);
