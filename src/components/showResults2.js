@@ -1,31 +1,26 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 import SearchResults from './searchResults';
-import pages from './makePages';
+// import pages from './makePages';
 import './showResults.css';
+import "react-table/react-table.css";
 
 export default class ShowResults extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			data: ''
+			data: SearchResults
 		};
 	}
 	render() {
-		const data = [{
-			number: 26,
-			title: 'Roy Agasthyan'
-		}, {
-			number: 36,
-			title: 'Sam Thomason'
-		}, {
-			number: 36,
-			title: 'Michael Jackson'
-		}]
-		// const data = { SearchResults }
+		const searchResults = null;
+		// if (this.props.podcasts) {
+		// searchResults = (this.props.podcasts);
+
+		const data = { SearchResults }
 		const columns = [{
-			Header: 'number',
+			Header: '#',
 			accessor: 'number',
 		}, {
 			Header: 'Title',
@@ -44,41 +39,3 @@ export default class ShowResults extends React.Component {
 		)
 	}
 };
-
-/*
-	const columns = [{
-			Header: 'number',
-			accessor: 'number',
-			Footer: (
-				{
-					searchResults && this.state.page > 0 ? (
-						<button
-							className="btn btn-large btn-yellow2 btn-previous"
-							onClick={e => this.handleLess(e)}
-						>
-							Previous Results
-					</button>
-					) : (
-							''
-						)
-				}
-			)
-		}, {
-			Header: 'Title',
-			accessor: 'title',
-			Footer: (
-				{
-					searchResults && this.state.page < searchResults.length - 1 ? (
-						<button
-							className="btn btn-large btn-yellow2 btn-more"
-							onClick={e => this.handleMore(e)}
-						>
-							Show More Results
-						</button>
-					) : (
-							''
-						)
-				}
-			)
-		}]
-		*/

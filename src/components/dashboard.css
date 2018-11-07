@@ -6,20 +6,9 @@
 	/* color */
 	/* text */
 	/* other */
-	.dashboard {
+.dashboard {
 		width: 75%;
-	order: 1;
-	}
-.dashboard-username {
-	margin: 0;
-}
-.user-welcome {
-	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 2rem;
-	line-height: 1.7rem;
-	text-align: center;
-	padding: 2rem;
-	color: #122375;
+		order: 1;
 }
 .search-tagline {
 	font-size: 2rem;
