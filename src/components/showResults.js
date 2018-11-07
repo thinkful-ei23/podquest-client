@@ -43,7 +43,7 @@ export default class ShowResults extends React.Component {
 					? [...Array(searchResults[this.state.page].length).keys()].map(
 						index => (
 							<SearchResults
-								key={searchResults[this.state.page][index].id}
+								key={searchResults[this.state.page][index].xml}
 								resultNumber={index + 1}
 								podcast={searchResults[this.state.page][index]}
 							/>
