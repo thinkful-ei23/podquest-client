@@ -5,6 +5,8 @@ import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
+import { subscribeChannel } from '../actions/subscribe';
+
 import './channel.css';
 
 class Channel extends React.Component {
@@ -54,10 +56,9 @@ class Channel extends React.Component {
 
 	handleSubscribe(e) {
 		let addressArray = document.URL.split('/');
-		console.log(
-			'subscription button clicked',
-			addressArray[addressArray.length - 1]
-		);
+		let channelId = addressArray[addressArray.length - 1];
+		console.log('subscription button clicked', channelId);
+		this.props.dispatch(subscribeChannel(channelId));
 	}
 
 	render() {
@@ -85,7 +86,10 @@ class Channel extends React.Component {
 				<h2 className="title-channel">{podcast.title}</h2>
 				<img src={podcast.image} alt="podcast wallpaper" height={200} />
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button className="btn btn-large btn-blue btn-subscribe">
+				<button
+					className="btn btn-large btn-blue btn-subscribe"
+					onClick={e => this.handleSubscribe(e)}
+				>
 					Subscribe to channel
 				</button>
 				<select
@@ -104,9 +108,10 @@ class Channel extends React.Component {
 }
 
 const mapStateToProps = state => {
-	// console.log('state', state); // to look at state
+	console.log('state', state); // to look at state
 	return {
 		podcast: state.search.currChannel
+		// channel: state.subscribe.channels
 	};
 };
 

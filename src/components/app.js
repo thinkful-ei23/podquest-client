@@ -12,6 +12,7 @@ import FavoritePage from './favorite-page';
 import { refreshAuthToken } from '../actions/auth';
 // import { LoginForm } from './login-form';
 import './app.css';
+import { Subscriptions } from './subscriptions';
 
 export class App extends React.Component {
 	componentDidUpdate(prevProps) {
@@ -54,6 +55,7 @@ export class App extends React.Component {
 					<Route exact path="/register" component={RegistrationPage} />
 					<Route exact path="/channel/:id" component={Channel} />
 					<Route exact path="/favorites" component={FavoritePage} />
+					<Route exact path="/subscriptions" component={Subscriptions} />
 				</main>
 			</div>
 		);
