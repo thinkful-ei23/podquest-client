@@ -22,13 +22,18 @@ describe('podQuest - Searching', function() {
         cy.visit('http://localhost:3000/dashboard')
         cy.get('input#search-input').type('joe').should('have.value','joe').type('{enter}')
     });
+    it('Visits the site and searchs for podcasts with an empty search', function() {
+        cy.visit('http://localhost:3000/dashboard')
+        cy.get('input#search-input').type('{enter}')
+        cy.get('.results-page').should('contain','Nothing to see for now. So...shall we search for a podcast?')
+    });
     it('Selects a podcast and clicks to listen', function() {
         cy.visit('http://localhost:3000/dashboard')
         cy.get('input#search-input').type('code').type('{enter}')
         cy.contains('Code Switch').click()
         cy.get('#episode-select').select('Word Up')
-        cy.get('button.play-button').click()
-        cy.get('button.stop-button').wait(2000).click()
-        cy.get('.btn-logout').click()
+        cy.get('.fa-play-circle').click()
+        cy.get('.fa-pause-circle').wait(2000).click()
+        cy.get('.nav-logout').click()
     });
 })

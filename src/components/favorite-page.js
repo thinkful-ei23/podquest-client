@@ -1,6 +1,6 @@
 import React from "react";
 import requiresLogin from "./requires-login";
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
@@ -23,6 +23,9 @@ export class FavoritePage extends React.Component {
   }
 
   render(){
+    if(!this.props.loggedIn){
+			return <Redirect to='/'/>
+		}
     if (!this.props.favorites) {
       return <div>Loading...</div>
     }
@@ -53,7 +56,8 @@ export class FavoritePage extends React.Component {
 const mapStateToProps = state => {
   // console.log('state', state); // to look at state
   return {
-    favorites: state.favorites.favorites
+    favorites: state.favorites.favorites,
+		loggedIn: state.auth.currentUser !== null
   }
 }
 
