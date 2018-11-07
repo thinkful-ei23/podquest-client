@@ -17,7 +17,7 @@ export class Subscriptions extends React.Component {
 		return (
 			<div className="all-subscriptions">
 				You are subscribed to:
-				{this.props.channel}
+				{/* {this.props.channel} */}
 			</div>
 		);
 	}
