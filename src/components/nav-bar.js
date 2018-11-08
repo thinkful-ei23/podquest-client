@@ -6,6 +6,12 @@ import { NavLink } from 'react-router-dom';
 import './nav-bar.css';
 
 export class NavBar extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			userName: ''
+		};
+	}
 	logOut() {
 		this.props.dispatch(clearAuth());
 		clearAuthToken();
@@ -31,6 +37,12 @@ export class NavBar extends React.Component {
 		}
 		return (
 			<nav className="nav-bar">
+				<div className="dashboard-username">
+					<p className="user-welcome">
+						Glad to have you with us,&nbsp;
+						{this.props.username}!
+					</p>
+				</div>
 				<ul className="nav-ul">
 					<li className="nav-li">	{favoritesLink}</li>
 					<li className="nav-li">	{subscriptionLink}</li>
@@ -42,6 +54,7 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
+	username: state.auth.currentUser.username,
 	loggedIn: state.auth.currentUser !== null
 });
 
