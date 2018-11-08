@@ -4,7 +4,7 @@ import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
 // import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
-import ShowResults from './showResults2';
+import ShowResults from './showResults';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
