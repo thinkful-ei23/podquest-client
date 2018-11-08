@@ -18,3 +18,6 @@ export const matches = field => (value, allValues) =>
         : 'Does not match';
 export const email = value =>
     /^\S+@\S+$/.test(value) ? undefined : "Must be a valid email address";
+
+export const username = value =>
+    /^[a-zA-Z0-9.\-_$@]{3,30}$/.test(value) ? undefined : "No spaces allowed";

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
@@ -58,6 +58,10 @@ class Channel extends React.Component {
 
 	render() {
 
+		if(!this.props.loggedIn){
+			return <Redirect to='/'/>
+		}
+
 		if (!this.props.podcast) {
 			return <div>Loading...</div>
 		}
@@ -94,7 +98,8 @@ class Channel extends React.Component {
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
-		podcast: state.search.currChannel
+		podcast: state.search.currChannel,
+		loggedIn: state.auth.currentUser !== null
 	};
 };
 
