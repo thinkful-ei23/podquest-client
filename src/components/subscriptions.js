@@ -10,13 +10,19 @@ export class Subscriptions extends React.Component {
 	}
 
 	render() {
-		if (!this.props.channel) {
-			return <div>Loading...</div>;
+		console.log('props', this.props);
+		let subTitles = null;
+		if (this.props.subs) {
+			subTitles = this.props.subs.map(sub => sub.title);
+			console.log(subTitles);
+		}
+		if (!this.props.subs) {
+			return <div>You have no subscriptions...yet!</div>;
 		}
 		return (
 			<div className="all-subscriptions">
 				You are subscribed to:
-				{/* {this.props.channel} */}
+				{subTitles ? subTitles.map(title => <div>{title}</div>) : ''}
 			</div>
 		);
 	}
@@ -25,7 +31,8 @@ export class Subscriptions extends React.Component {
 const mapStateToProps = state => {
 	console.log('state', state); // to look at state
 	return {
-		channel: state.subscribe.channels
+		// channel: state.subscribe.channels,
+		subs: state.subscribe.subscriptions
 	};
 };
 

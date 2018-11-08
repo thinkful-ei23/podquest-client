@@ -5,7 +5,7 @@ import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
-import { subscribeChannel, postSubscribe } from '../actions/subscribe';
+import { postSubscribe } from '../actions/subscribe';
 
 import './channel.css';
 
@@ -57,7 +57,7 @@ class Channel extends React.Component {
 	handleSubscribe(e) {
 		let title = this.props.podcast.title;
 		let feedUrl = this.props.podcast.feedUrl;
-		this.props.dispatch(subscribeChannel(title));
+		// this.props.dispatch(subscribeChannel(title));
 		this.props.dispatch(postSubscribe(title, feedUrl));
 	}
 
@@ -111,7 +111,6 @@ const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
 		podcast: state.search.currChannel
-		// channel: state.subscribe.channels
 	};
 };
 

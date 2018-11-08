@@ -1,15 +1,15 @@
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 
-export const SUBSCRIBE_CHANNEL = 'SUBSCRIBE_CHANNEL';
-export const subscribeChannel = subChannel => ({
-	type: SUBSCRIBE_CHANNEL,
-	subChannel
-});
-
 export const SUBSCRIPTION_REQUESTS = 'SUBSCRIPTION_REQUESTS';
 export const subscriptionRequests = () => ({
 	type: SUBSCRIPTION_REQUESTS
+});
+
+export const GET_SUBSCRIPTIONS_SUCCESS = 'GET_SUBSCRIPTIONS_SUCCESS';
+export const getSubscriptionsSuccess = subs => ({
+	type: GET_SUBSCRIPTIONS_SUCCESS,
+	subs
 });
 
 export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
@@ -37,5 +37,11 @@ export const getSubscriptions = () => (dispatch, getState) => {
 	})
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
-		.then(response => console.log(response));
+		.then(response => {
+			console.log(response);
+			let mappedRes = response.map(res => {
+				return { title: res.title, xml: res.feedUrl };
+			});
+			dispatch(getSubscriptionsSuccess(mappedRes));
+		});
 };
