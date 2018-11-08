@@ -9,7 +9,7 @@ export const subscribeChannel = subChannel => ({
 
 export const SUBSCRIPTION_REQUESTS = 'SUBSCRIPTION_REQUESTS';
 export const subscriptionRequests = () => ({
-	type: POST_CHANNEL
+	type: SUBSCRIPTION_REQUESTS
 });
 
 export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
@@ -26,8 +26,8 @@ export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
 };
 
 export const getSubscriptions = () => (dispatch, getState) => {
-	dispatch(subscriptionRequests());
 	const authToken = getState().auth.authToken;
+	dispatch(subscriptionRequests());
 	return fetch(`${API_BASE_URL}/subscribe`, {
 		method: 'GET',
 		headers: {

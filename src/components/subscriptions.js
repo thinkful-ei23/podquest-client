@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import { getSubscriptions } from '../actions/subscribe';
 
 export class Subscriptions extends React.Component {
-	// componentDidMount() {
-	// console.log('componentDidMount', this.props.channel);
-	// this.props.dispatch(checkNewEpisode())
-	// this.props.dispatch(getAlert())
-	// console.log(this.props.channel);
-	// }
+	componentWillMount() {
+		// console.log(this.props);
+		this.props.dispatch(getSubscriptions());
+	}
 
 	render() {
 		if (!this.props.channel) {

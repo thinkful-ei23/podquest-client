@@ -12,7 +12,7 @@ import FavoritePage from './favorite-page';
 import { refreshAuthToken } from '../actions/auth';
 // import { LoginForm } from './login-form';
 import './app.css';
-import { Subscriptions } from './subscriptions';
+import Subscriptions from './subscriptions';
 
 export class App extends React.Component {
 	componentDidUpdate(prevProps) {
