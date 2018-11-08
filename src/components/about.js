@@ -21,9 +21,7 @@ export class About extends React.Component {
 			<div className="about-app box">
 
 				<h2>Are you on a <i id="world" className="fas fa-globe-americas"></i><span>quest</span> to find that specific podcast episode?</h2>
-				<p>Blah &nbsp;&#126; &nbsp;blah&nbsp; ~~blah&nbsp;It's time to put on makeup. It's time to dress up right. It's time to
-				raise the curtain on the Muppet Show tonight. Sunny Days sweepin' the clouds away. On my way to where the air is sweet. Can you tell me how to
-				get how to get to Sesame Street.</p>
+				<p>PodQuest will never give up and never surrender. With this app you will not have to worry about finding your podcasts through the ocean of other audio media out there as we do it for you! It is an app where you can find, listen, favorite, and even subscribe to your personal podcasts.</p>
 				<h3>Look no further!</h3>
 				<p>Well, actually, you'll need to look a little further.&nbsp;<i className="far fa-smile-wink"></i></p>
 				<h4>But, we're here to help!</h4>
