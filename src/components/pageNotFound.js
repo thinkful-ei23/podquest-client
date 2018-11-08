@@ -1,5 +1,6 @@
 import React from 'react'
 import './pageNotFound.css'
+
 export class PageNotFound extends React.Component {
     componentDidMount() {
         this.updateCanvas();
@@ -14,6 +15,8 @@ export class PageNotFound extends React.Component {
                 canvas.getContext('2d').fillStyle = 'rgba(0,0,0,.05)';
                 canvas.getContext('2d').fillRect(0, 0, width, height);
                 canvas.getContext('2d').fillStyle = '#4b6cb7';
+                canvas.getContext('2d').fillText("404 no page Exists here", 20, 200);
+                canvas.getContext('2d').font = '50px Arial';
                 letters.map(function (y_pos, index) {
                     let num = 404;
                     let text = String(num);
@@ -32,9 +35,10 @@ export class PageNotFound extends React.Component {
     render() { 
         return ( 
             <div className="content-canvas">
-                <h3>404<br /> no page Exists here</h3>
-                <h4>Please select one of the options below!</h4>
-                <canvas ref="canvas"></canvas>
+                {/* <h3 className="btn-red">404<br /> no page Exists here</h3>
+                <h4 className="btn-red">Please select one of the options below!</h4> */}
+                <canvas ref="canvas" id="canvas">
+                </canvas>
             </div>
          );
     }
