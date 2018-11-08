@@ -1,5 +1,5 @@
 import { API_BASE_URL } from '../config';
-// import { normalizeResponseErrors } from './utils';
+import { normalizeResponseErrors } from './utils';
 
 export const SUBSCRIBE_CHANNEL = 'SUBSCRIBE_CHANNEL';
 export const subscribeChannel = subChannel => ({
@@ -7,13 +7,13 @@ export const subscribeChannel = subChannel => ({
 	subChannel
 });
 
-export const POST_CHANNEL = 'POST_CHANNEL';
-export const postChannelRequest = () => ({
+export const SUBSCRIPTION_REQUESTS = 'SUBSCRIPTION_REQUESTS';
+export const subscriptionRequests = () => ({
 	type: POST_CHANNEL
 });
 
 export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
-	dispatch(postChannelRequest());
+	dispatch(subscriptionRequests());
 	const authToken = getState().auth.authToken;
 	return fetch(`${API_BASE_URL}/subscribe`, {
 		method: 'POST',
@@ -23,4 +23,19 @@ export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
 		},
 		body: JSON.stringify({ title, feedUrl })
 	}).then(res => console.log(res));
+};
+
+export const getSubscriptions = () => (dispatch, getState) => {
+	dispatch(subscriptionRequests());
+	const authToken = getState().auth.authToken;
+	return fetch(`${API_BASE_URL}/subscribe`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${authToken}`
+		}
+	})
+		.then(res => normalizeResponseErrors(res))
+		.then(res => res.json())
+		.then(response => console.log(response));
 };
