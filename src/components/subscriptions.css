@@ -1,16 +1,10 @@
 @import "buttons.css";
 @import "text.css";
-
 	/* positioning */
 	/* display + box model */
 	/* color */
-	/* text */
 	/* other */
-.dashboard {
-		width: 75%;
-		order: 1;
-}
-.search-tagline {
-	font-size: 2rem;
-	padding: 1rem;
+.all-subscriptions {
+width: 75%
+
 }
