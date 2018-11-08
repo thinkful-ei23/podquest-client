@@ -55,11 +55,16 @@ class Channel extends React.Component {
 	}
 
 	handleSubscribe(e) {
-		let addressArray = document.URL.split('/');
-		let channelId = addressArray[addressArray.length - 1];
-		console.log('subscription button clicked');
-		this.props.dispatch(subscribeChannel(channelId));
-		this.props.dispatch(postSubscribe(channelId));
+		// console.log(
+		// 	'subscription button clicked',
+		// 	this.props.podcast,
+		// 	this.props.podcast.title,
+		// 	this.props.podcast.feedUrl
+		// );
+		let title = this.props.podcast.title;
+		let feedUrl = this.props.podcast.feedUrl;
+		// this.props.dispatch(subscribeChannel(channelId));
+		this.props.dispatch(postSubscribe(title, feedUrl));
 	}
 
 	render() {

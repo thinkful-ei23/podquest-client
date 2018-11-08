@@ -12,8 +12,8 @@ export const postChannelRequest = () => ({
 	type: POST_CHANNEL
 });
 
-export const postSubscribe = subChannel => (dispatch, getState) => {
-	dispatch(postChannelRequest(subChannel));
+export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
+	dispatch(postChannelRequest());
 	const authToken = getState().auth.authToken;
 	return fetch(`${API_BASE_URL}/subscribe`, {
 		method: 'POST',
@@ -21,6 +21,6 @@ export const postSubscribe = subChannel => (dispatch, getState) => {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${authToken}`
 		},
-		body: JSON.stringify({ subChannel })
+		body: JSON.stringify({ title, feedUrl })
 	}).then(res => console.log(res));
 };
