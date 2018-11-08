@@ -10,7 +10,7 @@ function SearchResults(props) {
             <Link
                 onClick={() => localStorage.setItem('podcastChannel', props.podcast.xml)}
                 to={{
-                    pathname: `/channel/${props.podcast.id}`
+                    pathname: `/channel`
                 }}>
                 {props.podcast.collection}
             </Link>

@@ -62,7 +62,7 @@ export class App extends React.Component {
 						<Route exact path="/login" component={LandingPage} />
 						<Route exact path="/dashboard" component={Dashboard} />
 						<Route exact path="/register" component={RegistrationPage} />
-						<Route exact path="/channel/:id" component={Channel} />
+						<Route exact path="/channel" component={Channel} />
 						<Route exact path="/favorites" component={FavoritePage} />
 						<Route component={PageNotFound}/>	
 					</Switch>
