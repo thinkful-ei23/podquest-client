@@ -126,7 +126,7 @@ export const getChannel = feedUrl => (dispatch, getState) => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(channelInfo => {
-			// console.log(channelInfo);
+			console.log(channelInfo);
 			dispatch(getChannelSuccess(channelInfo));
 		})
 		.catch(err => {
