@@ -37,7 +37,7 @@ export const getPostcastSuccess = podcast => ({
 export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 	dispatch(getPodcastRequest());
 	let proxy = 'https://cors-anywhere.herokuapp.com';
-	
+
 	function itunesFetch() {
 		return fetch(
 			`${proxy}/${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
@@ -48,33 +48,28 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 					'X-Content-Type-Options': 'nosniff'
 				}
 			}
-		)
+		);
 	}
 
 	function gpodderFetch() {
-		return fetch(
-			`${proxy}/${GPODDER_API}/search.json?q=${searchTerm}`,
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					'X-Content-Type-Options': 'nosniff'
-				}
+		return fetch(`${proxy}/${GPODDER_API}/search.json?q=${searchTerm}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-Content-Type-Options': 'nosniff'
 			}
-		)
+		});
 	}
 
-	Promise.all([
-		itunesFetch(),
-		gpodderFetch()
-	])
+	Promise.all([itunesFetch(), gpodderFetch()])
 		.then(res => {
-			return Promise.all(res.map(res => res.json()))
+			return Promise.all(res.map(res => res.json()));
 		})
 		.then(res => {
 			const itunesRes = res[0].results;
 			// console.log('itunesRes', itunesRes);
 			const normalizedRes = itunesRes
+				.filter(channel => channel.feedUrl)
 				.map(channel => {
 					return {
 						collection: channel.collectionName,
