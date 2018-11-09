@@ -14,10 +14,10 @@ export class Subscriptions extends React.Component {
 
 	render() {
 		console.log('props', this.props);
-		let subTitles = null;
+		let allSubs = null;
 		if (this.props.subs) {
-			subTitles = this.props.subs.map(sub => sub.title);
-			console.log(this.props.subs.xml);
+			allSubs = this.props.subs.map(sub => sub.title);
+			// console.log(this.props.subs.xml);
 		}
 		if (!this.props.subs) {
 			return <div>You have no subscriptions...yet!</div>;
@@ -32,8 +32,8 @@ export class Subscriptions extends React.Component {
 				</NavLink>
 				<div className="all-subscriptions">
 					You are subscribed to:
-					{subTitles
-						? subTitles.map(title => (
+					{allSubs
+						? allSubs.map(title => (
 								<div className="each-sub" key={title}>
 									<Link
 										onClick={() =>

@@ -95,7 +95,10 @@ class Channel extends React.Component {
 					height={200}
 				/>
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button className="btn btn-large btn-blue btn-subscribe">
+				<button
+					className="btn btn-large btn-blue btn-subscribe"
+					onClick={e => this.handleSubscribe(e)}
+				>
 					Subscribe to channel
 				</button>
 				<select
