@@ -44,7 +44,7 @@ export const getSubscriptions = () => (dispatch, getState) => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(response => {
-			console.log(response);
+			// console.log(response);
 			let mappedRes = response.map(res => {
 				return { title: res.title, xml: res.feedUrl };
 			});
