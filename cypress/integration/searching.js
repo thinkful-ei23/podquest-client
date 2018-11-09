@@ -7,7 +7,7 @@ describe('podQuest - Searching', function() {
             headers: {
                 'Content-Type': 'application/json'
             }, 
-            body: JSON.stringify({ username:"there you2", password:"password123"})
+            body: JSON.stringify({ username:"thereyou2", password:"password123"})
         })
         .then((resp) => {
             localStorage.setItem('authToken', resp.body.authToken)
@@ -36,4 +36,4 @@ describe('podQuest - Searching', function() {
         cy.get('.fa-pause-circle').wait(2000).click()
         cy.get('.nav-logout').click()
     });
-})
+});
