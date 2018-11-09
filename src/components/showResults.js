@@ -7,7 +7,7 @@ export default class ShowResults extends React.Component {
 		let searchResults = null;
 		if (this.props.podcasts) {
 			searchResults = this.props.podcasts;
-			console.log('podcasts', searchResults);
+			// console.log('podcasts', searchResults);
 		}
 
 		return (
