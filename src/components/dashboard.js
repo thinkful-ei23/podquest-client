@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom'
 import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
 // import { fetchProtectedData } from '../actions/protected-data';
@@ -43,14 +44,12 @@ export class Dashboard extends React.Component {
 	}
 
 	render() {
+
+		if(!this.props.loggedIn){
+			return <Redirect to='/'/>
+		}
 		return (
 			<div className="dashboard box">
-				<div className="dashboard-username">
-					<p className="user-welcome">
-						Glad to have you with us,&nbsp;
-						{this.props.username}!
-					</p>
-				</div>
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
@@ -70,7 +69,9 @@ const mapStateToProps = state => {
 		username: state.auth.currentUser.username,
 		name: `${currentUser.name} `,
 		protectedData: state.protectedData.data,
-		podcasts: state.search.podcasts
+		podcasts: state.search.podcasts,
+		loggedIn: state.auth.currentUser !== null
+
 	};
 };
 

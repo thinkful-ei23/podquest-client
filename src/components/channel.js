@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
@@ -62,6 +62,10 @@ class Channel extends React.Component {
 	}
 
 	render() {
+		if (!this.props.loggedIn) {
+			return <Redirect to="/" />;
+		}
+
 		if (!this.props.podcast) {
 			return <div>Loading...</div>;
 		}
@@ -75,7 +79,7 @@ class Channel extends React.Component {
 			});
 		}
 		return (
-			<div className="box channel-box">
+			<div className="channel-box box">
 				<NavLink to="/dashboard">
 					<button className="btn btn-small btn-blue btn-back">
 						<i className="fas fa-angle-left" />
@@ -84,12 +88,14 @@ class Channel extends React.Component {
 				</NavLink>
 
 				<h2 className="title-channel">{podcast.title}</h2>
-				<img src={podcast.image} alt="podcast wallpaper" height={200} />
+				<img
+					className="channel-pod-img"
+					src={podcast.image}
+					alt="podcast wallpaper"
+					height={200}
+				/>
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button
-					className="btn btn-large btn-blue btn-subscribe"
-					onClick={e => this.handleSubscribe(e)}
-				>
+				<button className="btn btn-large btn-blue btn-subscribe">
 					Subscribe to channel
 				</button>
 				<select
@@ -110,7 +116,8 @@ class Channel extends React.Component {
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
-		podcast: state.search.currChannel
+		podcast: state.search.currChannel,
+		loggedIn: state.auth.currentUser !== null
 	};
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 import './searchForm.css';
+
 export default function SearchForm(props) {
 	let input;
 	return (
@@ -11,7 +12,6 @@ export default function SearchForm(props) {
 				props.onSubmit(input.value);
 			}}
 		>
-
 			<h2 className="title-search" htmlFor="search-input">Search by keyword: </h2>
 			<div className="input-label-div">
 				<label className="input-label input-label-search" htmlFor="search-input">Type in search terms here...</label>
@@ -78,6 +78,7 @@ export default function SearchForm(props) {
 			>
 				Search
 			</button>
+
 		</form>
 	);
 }

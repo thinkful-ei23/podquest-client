@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { getSubscriptions } from '../actions/subscribe';
+import { Link, NavLink } from 'react-router-dom';
 
 export class Subscriptions extends React.Component {
 	componentWillMount() {
@@ -14,15 +15,41 @@ export class Subscriptions extends React.Component {
 		let subTitles = null;
 		if (this.props.subs) {
 			subTitles = this.props.subs.map(sub => sub.title);
-			console.log(subTitles);
+			// console.log(subTitles);
 		}
 		if (!this.props.subs) {
 			return <div>You have no subscriptions...yet!</div>;
 		}
 		return (
-			<div className="all-subscriptions">
-				You are subscribed to:
-				{subTitles ? subTitles.map(title => <div>{title}</div>) : ''}
+			<div className="subscriptions-page">
+				<NavLink to="/dashboard">
+					<button className="btn btn-small btn-blue btn-back">
+						<i className="fas fa-angle-left" />
+						&nbsp;Back
+					</button>
+				</NavLink>
+				<div className="all-subscriptions">
+					You are subscribed to:
+					{subTitles
+						? subTitles.map(title => (
+								<div className="each-sub" key={title}>
+									<Link
+										onClick={() =>
+											localStorage.setItem(
+												'podcastChannel',
+												this.props.subs.xml
+											)
+										}
+										to={{
+											pathname: `/channel`
+										}}
+									>
+										{title}
+									</Link>
+								</div>
+						  ))
+						: ''}
+				</div>
 			</div>
 		);
 	}
@@ -31,8 +58,8 @@ export class Subscriptions extends React.Component {
 const mapStateToProps = state => {
 	console.log('state', state); // to look at state
 	return {
-		// channel: state.subscribe.channels,
-		subs: state.subscribe.subscriptions
+		subs: state.subscribe.subscriptions,
+		loggedIn: state.auth.currentUser !== null
 	};
 };
 

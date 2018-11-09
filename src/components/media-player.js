@@ -136,7 +136,7 @@ export class MediaPlayer extends React.Component {
     let date = '';
     let favButton = (
       <button className="btn-round btn-fav" onClick={() => this.handleAddFav()}>
-        <i className="fab fa-gratipay"></i>
+        <i className="fas fa-heart"></i>
         {/* Favorite */}
       </button>
     );
@@ -146,7 +146,7 @@ export class MediaPlayer extends React.Component {
         if (favorite.title === this.props.episodeTitle) {
           favButton = (
             <button className="btn-round btn-fav" onClick={() => this.handleDeleteFav()}>
-              <i className="fas fa-ban"></i>
+              <i className="far fa-heart"></i>
               {/* Remove, or Unfavorite */}
             </button>
           );
@@ -243,13 +243,13 @@ export class MediaPlayer extends React.Component {
           <div className="btn-row">
             <button className="btn-round" onClick={this.handleToggle} disabled={!this.state.loaded}>
               {/* <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} </span> */}
-              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-play-circle"></i> : <i className="far fa-pause-circle"></i>} </span>
+              <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-pause-circle"></i> : <i className="far fa-play-circle"></i>} </span>
             </button>
             <button className="btn-round" onClick={this.handleStop} disabled={!this.state.loaded}>
               <i className="far fa-stop-circle"></i>
             </button>
-
             {favButton}
+
           </div>
         </React.Fragment>
       );

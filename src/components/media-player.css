@@ -9,6 +9,8 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
+	width: 75%;
+	order: 1;
 }
 .btn-row {
 	display: flex;
@@ -50,16 +52,12 @@
 .fa-play-circle,
 .fa-pause-circle,
 .fa-stop-circle,
-.fa-circle,
-.fa-ban,
-.fa-pause,
-.fa-gratipay {
-	/* <i class="fas fa-pause"></i> */
-	/* <i className="fab fa-gratipay"></i><i className="far fa-circle"></i><i className="fas fa-ban"></i> */
+.fa-heart,
+.fa-pause {
 	font-size: 3rem;
 	color: #000;
 	padding: 1rem;
 }
-.fa-gratipay {
+.fa-heart {
 	color: red;
 }
