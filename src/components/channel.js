@@ -5,6 +5,8 @@ import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
+import { postSubscribe } from '../actions/subscribe';
+
 import './channel.css';
 
 class Channel extends React.Component {
@@ -53,45 +55,64 @@ class Channel extends React.Component {
 	}
 
 	handleSubscribe(e) {
-		console.log('subscription button clicked', document.URL);
+		let title = this.props.podcast.title;
+		let feedUrl = this.props.podcast.feedUrl;
+		// this.props.dispatch(subscribeChannel(title));
+		this.props.dispatch(postSubscribe(title, feedUrl));
 	}
 
 	render() {
-
-		if(!this.props.loggedIn){
-			return <Redirect to='/'/>
+		if (!this.props.loggedIn) {
+			return <Redirect to="/" />;
 		}
 
 		if (!this.props.podcast) {
-			return <div>Loading...</div>
+			return <div>Loading...</div>;
 		}
 		// console.log('props', this.props); // see podcasts
-		const podcast = this.props.podcast
+		const podcast = this.props.podcast;
 		// loops through episodes
 		let optionEpisode = [];
 		if (podcast.episodes) {
 			optionEpisode = podcast.episodes.map((episode, index) => {
-				return <option key={index}>{episode.title}</option>
+				return <option key={index}>{episode.title}</option>;
 			});
 		}
 		return (
 			<div className="channel-box box">
-				<NavLink to="/dashboard"><button className="btn btn-small btn-blue btn-back"><i className="fas fa-angle-left"></i>&nbsp;Back</button></NavLink>
+				<NavLink to="/dashboard">
+					<button className="btn btn-small btn-blue btn-back">
+						<i className="fas fa-angle-left" />
+						&nbsp;Back
+					</button>
+				</NavLink>
 
 				<h2 className="title-channel">{podcast.title}</h2>
-				<img className="channel-pod-img" src={podcast.image} alt="podcast wallpaper" height={200} />
-				<p dangerouslySetInnerHTML={{ __html: podcast.description }}></p>
-				<button className="btn btn-large btn-blue btn-subscribe">Subscribe to channel</button>
-				<select className="episode-select styled-select green rounded"
-					id='episode-select'
+				<img
+					className="channel-pod-img"
+					src={podcast.image}
+					alt="podcast wallpaper"
+					height={200}
+				/>
+				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
+				<button
+					className="btn btn-large btn-blue btn-subscribe"
+					onClick={e => this.handleSubscribe(e)}
+				>
+					Subscribe to channel
+				</button>
+				<select
+					className="episode-select styled-select green rounded"
+					id="episode-select"
 					defaultValue="Select episode"
-					onChange={(e) => this.handleSelectEpisode(e)}>
+					onChange={e => this.handleSelectEpisode(e)}
+				>
 					<option>Select episode</option>
 					{optionEpisode}
 				</select>
 				<MediaPlayer />
 			</div>
-		)
+		);
 	}
 }
 

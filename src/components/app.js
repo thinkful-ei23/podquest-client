@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter,Switch } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 
 import HeaderBar from './header-bar';
 import NavBar from './nav-bar';
@@ -45,12 +45,10 @@ export class App extends React.Component {
 		clearInterval(this.refreshInterval);
 	}
 
-
 	render() {
-
 		let navBar;
 		if (this.props.loggedIn) {
-			navBar = <NavBar />
+			navBar = <NavBar />;
 		}
 		return (
 			<div className="app">
@@ -66,11 +64,9 @@ export class App extends React.Component {
 						<Route exact path="/register" component={RegistrationPage} />
 						<Route exact path="/channel" component={Channel} />
 						<Route exact path="/favorites" component={FavoritePage} />
-      <Route exact path="/subscriptions" component={Subscriptions} />
-						<Route component={PageNotFound}/>	
+						<Route exact path="/subscriptions" component={Subscriptions} />
+						<Route component={PageNotFound} />
 					</Switch>
-					
-
 				</main>
 			</div>
 		);
