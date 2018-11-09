@@ -55,8 +55,6 @@ export class App extends React.Component {
 				<HeaderBar />
 
 				<main id="app-main-body">
-					{navBar}
-
 					<Switch>
 						<Route exact path="/" component={About} />
 						<Route exact path="/login" component={LandingPage} />
@@ -67,6 +65,8 @@ export class App extends React.Component {
 						<Route exact path="/subscriptions" component={Subscriptions} />
 						<Route component={PageNotFound} />
 					</Switch>
+					{navBar}
+					
 				</main>
 			</div>
 		);
