@@ -8,6 +8,8 @@ export class Subscriptions extends React.Component {
 	componentWillMount() {
 		// console.log(this.props);
 		this.props.dispatch(getSubscriptions());
+		let currDate = new Date();
+		console.log(currDate);
 	}
 
 	render() {
@@ -59,6 +61,7 @@ const mapStateToProps = state => {
 	console.log('state', state); // to look at state
 	return {
 		subs: state.subscribe.subscriptions,
+		subError: state.subscribe.error,
 		loggedIn: state.auth.currentUser !== null
 	};
 };

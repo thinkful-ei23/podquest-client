@@ -12,6 +12,12 @@ export const getSubscriptionsSuccess = subs => ({
 	subs
 });
 
+export const GET_SUBSCRIPTIONS_FAIL = 'GET_SUBSCRIPTIONS_FAIL';
+export const getSubscriptionFail = error => ({
+	type: GET_SUBSCRIPTIONS_FAIL,
+	error
+});
+
 export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
 	dispatch(subscriptionRequests());
 	const authToken = getState().auth.authToken;
@@ -43,5 +49,6 @@ export const getSubscriptions = () => (dispatch, getState) => {
 				return { title: res.title, xml: res.feedUrl };
 			});
 			dispatch(getSubscriptionsSuccess(mappedRes));
-		});
+		})
+		.catch(err => dispatch(getSubscriptionFail(err)));
 };
