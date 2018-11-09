@@ -18,7 +18,7 @@ export class PageNotFound extends React.Component {
 				canvas.getContext('2d').fillRect(0, 0, width, height);
 				canvas.getContext('2d').fillStyle = '#4b6cb7';
 				canvas.getContext('2d').fillText('404 no page Exists here', 20, 200);
-				canvas.getContext('2d').font = '50px Arial';
+				canvas.getContext('2d').font = '20px Arial';
 				letters.map(function(y_pos, index) {
 					let num = 404;
 					let text = String(num);
@@ -36,9 +36,7 @@ export class PageNotFound extends React.Component {
 
 	render() {
 		return (
-			<div className="content-canvas">
 				<canvas ref="canvas" id="canvas" />
-			</div>
 		);
 	}
 }
