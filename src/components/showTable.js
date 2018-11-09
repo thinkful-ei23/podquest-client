@@ -34,7 +34,7 @@ export default class ResultTable extends React.Component {
 		];
 
 		return (
-			<div>
+			<div className="search-results">
 				<ReactTable data={data} columns={columns} />
 			</div>
 		);
