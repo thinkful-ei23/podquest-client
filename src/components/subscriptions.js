@@ -17,7 +17,7 @@ export class Subscriptions extends React.Component {
 		let subTitles = null;
 		if (this.props.subs) {
 			subTitles = this.props.subs.map(sub => sub.title);
-			// console.log(subTitles);
+			console.log(this.props.subs.xml);
 		}
 		if (!this.props.subs) {
 			return <div>You have no subscriptions...yet!</div>;
