@@ -14,3 +14,20 @@
 	font-size: 2rem;
 	padding: 1rem;
 }
+.search-results{
+	/* border-top: 1px solid #122375; */
+	/* border-right: 1px solid #122375; */
+	/* border-bottom: none; */
+	/* border-left: 1px solid #122375; */
+	padding: 1rem;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	}
+
+	.results-page {
+	padding: 2rem 4rem;
+	margin-top: 1rem;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	}
