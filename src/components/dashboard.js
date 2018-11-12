@@ -65,7 +65,7 @@ export class Dashboard extends React.Component {
 					{searchResults ? (
 						<ResultTable podcasts={searchResults} />
 					) : (
-						'You have no search results. So...care to search?'
+						''
 					)}
 				</section>
 			</div>
