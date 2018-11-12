@@ -104,4 +104,11 @@ html{
 .disabled {
 	opacity: 0.6;
 	cursor: not-allowed;
+	background-color: gray;
+	color: black;
+}
+
+.disabled:hover{
+	background-color: gray;
+	color: black;
 }

@@ -4,6 +4,26 @@ import './searchForm.css';
 
 export default function SearchForm(props) {
 	let input;
+	let submitButton;
+
+	if(!props.search){
+		submitButton =			
+		<button
+			className="btn btn-med btn-yellow2 btn-search search-button disabled"
+			disabled={!props.search}
+		>
+		Search
+		</button>
+	}else{
+		submitButton =			
+		<button
+			className="btn btn-med btn-yellow2 btn-search search-button"
+			disabled={!props.search}
+		>
+		Search
+		</button>
+			}
+
 	return (
 		<form
 			id="form-search"
@@ -71,13 +91,13 @@ export default function SearchForm(props) {
 
 				</label>
 			</div>
-			<button
+			{/* <button
 				className="btn btn-med btn-yellow2 btn-search search-button"
 				disabled={!props.search}
 			>
 				Search
-			</button>
-
+			</button> */}
+			{submitButton}
 		</form>
 	);
 }

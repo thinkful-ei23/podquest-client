@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
+import Spinner from './spinner';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
 import { postSubscribe } from '../actions/subscribe';
@@ -67,7 +68,11 @@ class Channel extends React.Component {
 		}
 
 		if (!this.props.podcast) {
-			return <div>Loading...</div>;
+			return (
+				<div className="channel-box box">
+					<Spinner />
+				</div>
+			);
 		}
 		// console.log('props', this.props); // see podcasts
 		const podcast = this.props.podcast;
