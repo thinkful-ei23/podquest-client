@@ -12,9 +12,8 @@ export default function SearchForm(props) {
 				props.onSubmit(input.value);
 			}}
 		>
-			<h2 className="title-search" htmlFor="search-input">Search by keyword: </h2>
 			<div className="input-label-div">
-				<label className="input-label input-label-search" htmlFor="search-input">Type in search terms here...</label>
+				<label className="input-label input-label-search" htmlFor="search-input">Search by keyword:</label>
 				<input
 					className="input-box"
 					id="search-input"
