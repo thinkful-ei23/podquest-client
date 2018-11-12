@@ -1,20 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import './about.css';
 
 export class About extends React.Component {
 	render() {
 		if (this.props.loggedIn) {
 			return (
-				<div className="go-to-dashboard box">
-					<h2 className="go-to-h2">Nananana&nbsp;~~ &nbsp;Podcast!</h2>
-					<p className="go-to-p">You know what we do. Let's keep searching, shall we?</p>
-					<p className="go-to-p">
-						Take me back to &nbsp;<NavLink to="/dashboard">My Dashboard</NavLink>
-					</p>
-				</div>
+				// <div className="go-to-dashboard box">
+				// 	<h2 className="go-to-h2">Nananana&nbsp;~~ &nbsp;Podcast!</h2>
+				// 	<p className="go-to-p">You know what we do. Let's keep searching, shall we?</p>
+				// 	<p className="go-to-p">
+				// 		Take me back to &nbsp;<NavLink to="/dashboard">My Dashboard</NavLink>
+				// 	</p>
+				// </div>
+				<Redirect to='/dashboard'/>
 			);
 		}
 		return (
