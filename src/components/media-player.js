@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
+import Spinner from './spinner';
 import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
 
 import './media-player.css';
@@ -166,9 +167,7 @@ export class MediaPlayer extends React.Component {
       date += this.props.episodeDate;
     }
     if (this.props.episodeUrl && !this.state.loaded) {
-      player = (
-        <p>Loading...</p>
-      )
+      player = <Spinner />;
     } else if (this.props.episodeUrl && this.state.loaded) {
       player = (
         <React.Fragment>
