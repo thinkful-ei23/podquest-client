@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
+import Spinner from './spinner';
 // import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 import ResultTable from './showTable';
@@ -80,7 +81,8 @@ const mapStateToProps = state => {
 		name: `${currentUser.name} `,
 		protectedData: state.protectedData.data,
 		podcasts: state.search.podcasts,
-		loggedIn: state.auth.currentUser !== null
+		loggedIn: state.auth.currentUser !== null,
+		loading: state.search.loading
 	};
 };
 
