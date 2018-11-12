@@ -5,6 +5,24 @@ import { Link } from 'react-router-dom';
 import 'react-table/react-table.css';
 
 export default class ResultTable extends React.Component {
+	constructor(props) {
+    super(props)
+    this.state = {
+			page: 0
+		}
+	}
+	componentDidUpdate(prevProps) {
+		if (this.props.podcasts !== prevProps.podcasts) {
+			this.setState({
+				page: 0
+			});
+		}
+	}
+	handlePageChange(pageIndex) {
+		this.setState({
+			page: pageIndex
+		});
+	}
 	render() {
 		const data = this.props.podcasts.map(result => ({
 			collection: {
@@ -35,7 +53,11 @@ export default class ResultTable extends React.Component {
 
 		return (
 			<div className="search-results">
-				<ReactTable data={data} columns={columns} />
+				<ReactTable
+					data={data}
+					columns={columns}
+					page={this.state.page}
+					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)}/>
 			</div>
 		);
 	}
