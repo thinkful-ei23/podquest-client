@@ -136,7 +136,7 @@ export class MediaPlayer extends React.Component {
     let date = '';
     let favButton = (
       <button className="btn-round btn-fav"  title ='favorite-button' onClick={() => this.handleAddFav()}>
-        <i className="fas fa-heart"></i>
+        <i className="far fa-heart"></i>
         {/* Favorite */}
       </button>
     );
@@ -146,7 +146,7 @@ export class MediaPlayer extends React.Component {
         if (favorite.title === this.props.episodeTitle) {
           favButton = (
             <button className="btn-round btn-fav" title='unFavorite-button' onClick={() => this.handleDeleteFav()}>
-              <i className="far fa-heart"></i>
+              <i className=" fas fa-heart"></i>
               {/* Remove, or Unfavorite */}
             </button>
           );
