@@ -25,33 +25,37 @@ export class RegistrationForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <label className="input-label input-label-reg" htmlFor="email">Email</label>
+                {/* <label className="input-label input-label-reg" htmlFor="email">Email</label> */}
                 <Field
                     id="email"
+                    label = 'Email'
                     component={Input}
                     type="text"
                     name="email"
                     validate={[email, required, nonEmpty]}
                 />
-                <label className="input-label input-label-reg" htmlFor="username">Username</label>
+                {/* <label className="input-label input-label-reg" htmlFor="username">Username</label> */}
                 <Field
                     id="username"
+                    label ='Username'
                     component={Input}
                     type="text"
                     name="username"
                     validate={[required, nonEmpty, isTrimmed, username]}
                 />
-                <label className="input-label input-label-reg" htmlFor="password">Password</label>
+                {/* <label className="input-label input-label-reg" htmlFor="password">Password</label> */}
                 <Field
                     id="password"
+                    label ='Password'
                     component={Input}
                     type="password"
                     name="password"
                     validate={[required, passwordLength, isTrimmed]}
                 />
-                <label className="input-label input-label-reg" htmlFor="passwordConfirm">Confirm password</label>
+                {/* <label className="input-label input-label-reg" htmlFor="passwordConfirm">Confirm password</label> */}
                 <Field
                     id="passwordConfirm"
+                    label ='Confirm password'
                     component={Input}
                     type="password"
                     name="passwordConfirm"

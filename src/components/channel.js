@@ -101,6 +101,7 @@ class Channel extends React.Component {
 				>
 					Subscribe to channel
 				</button>
+				<label htmlFor ='episode-select'>Episode select</label>
 				<select
 					className="episode-select styled-select green rounded"
 					id="episode-select"
