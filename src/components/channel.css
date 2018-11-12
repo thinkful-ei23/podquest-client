@@ -17,7 +17,10 @@
 	padding: 2rem;
 	width: 75%;
 	order: 1;
-	}
+}
+.channel-box p {
+	text-align: center;
+}
 .channel-pod-img {
 	width: 20rem;
 	height: auto;

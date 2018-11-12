@@ -81,33 +81,36 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 
 			const gpodderRes = res[1];
 			// console.log('gpodderRes', gpodderRes);
-			gpodderRes.forEach(channel => {
-				let dupe = false;
-				const gTitle = channel.title;
-				const gXml = channel.url;
-				const gImage = channel.logo_url;
-				for (let i = 0; i < normalizedRes.length; i++) {
-					const existTitle = normalizedRes[i].collection;
-					const existXml = normalizedRes[i].xml;
-					if (gTitle === existTitle || gXml === existXml) {
-						// console.log('dupe found');
-						dupe = true;
-						break;
+			gpodderRes
+				.filter(channel => channel.url)
+				.forEach(channel => {
+					let dupe = false;
+					const gTitle = channel.title;
+					const gXml = channel.url;
+					const gImage = channel.logo_url;
+					for (let i = 0; i < normalizedRes.length; i++) {
+						const existTitle = normalizedRes[i].collection;
+						const existXml = normalizedRes[i].xml;
+						if (gTitle === existTitle || gXml === existXml) {
+							// console.log('dupe found');
+							dupe = true;
+							break;
+						}
 					}
-				}
-				if (!dupe) {
-					// console.log('adding new podcast');
-					normalizedRes.push({
-						collection: gTitle,
-						xml: gXml,
-						image: gImage
-					});
-				}
-			});
+					if (!dupe) {
+						// console.log('adding new podcast');
+						normalizedRes.push({
+							collection: gTitle,
+							xml: gXml,
+							image: gImage
+						});
+					}
+				});
 			// console.log('normalizedRes', normalizedRes);
 			dispatch(getPostcastSuccess(normalizedRes));
 		})
 		.catch(err => {
+			// console.log(err);
 			dispatch(getPodcastError(err));
 		});
 };
@@ -126,10 +129,11 @@ export const getChannel = feedUrl => (dispatch, getState) => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(channelInfo => {
-			console.log(channelInfo);
+			// console.log(channelInfo);
 			dispatch(getChannelSuccess(channelInfo));
 		})
 		.catch(err => {
+			// console.log('err', err);
 			dispatch(getChannelError(err));
 		});
 };
