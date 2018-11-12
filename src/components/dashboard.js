@@ -53,6 +53,20 @@ export class Dashboard extends React.Component {
 		if (this.props.podcasts) {
 			searchResults = this.props.podcasts;
 		}
+
+		let renderedResults = (
+			<section className="results-page">
+				{searchResults ? (
+					<ResultTable podcasts={searchResults} />
+				) : (
+					''
+				)}
+			</section>
+		);
+		if (this.props.loading) {
+			renderedResults = <Spinner />;
+		}
+
 		return (
 			<div className="dashboard box">
 				<SearchForm
@@ -62,13 +76,7 @@ export class Dashboard extends React.Component {
 					handleInput={e => this.handleInput(e)}
 					search={this.state.search}
 				/>
-				<section className="results-page">
-					{searchResults ? (
-						<ResultTable podcasts={searchResults} />
-					) : (
-						''
-					)}
-				</section>
+				{renderedResults}
 			</div>
 		);
 	}
