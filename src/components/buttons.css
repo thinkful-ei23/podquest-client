@@ -47,6 +47,7 @@ html{
 	background-color: rgba(18, 35, 117, .7);
 	color: #FCFCFC;
 	height: 45px;
+	margin-left: 0;
 }
 .btn-blue:hover,
 .btn-blue:active {

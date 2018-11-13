@@ -36,14 +36,14 @@ export class Subscriptions extends React.Component {
 		}else {
 			return (
 				<div className="subscriptions-page box">
-					<NavLink to="/dashboard">
 						<button className="btn btn-small btn-blue btn-back">
+					<NavLink className="back-to-dash" to="/dashboard">
 							<i className="fas fa-angle-left" />
 							&nbsp;Back
-						</button>
 					</NavLink>
+						</button>
+						<h6>You are subscribed to:</h6>
 					<ul className="all-subscriptions">
-						You are subscribed to:
 						{allSubs ? allSubs : ''}
 					</ul>
 				</div>

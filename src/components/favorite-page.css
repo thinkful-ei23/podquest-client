@@ -19,14 +19,13 @@
 	width: 90%;
 }
 .favorite-li {
-	border: 1px solid #122375;
+	border-bottom: 1px solid #122375;
 	border-collapse: collapse;
 	padding: 1rem;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
 	line-height: 1.7rem;
 	list-style-type: none;
-	text-decoration: underline;
 }
 .favorite-li:hover {
 	background-color: #DDCB34;
