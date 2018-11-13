@@ -8,13 +8,11 @@
 .favorite-page {
 	width: 75%;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
-
 	justify-content: center;
-	align-content: center;
-	padding: 0 2rem 4rem;
-
+	align-content: space-around;
+	padding: 2rem;
 }
 
 .favorite-page > a {
@@ -24,7 +22,6 @@
 
 .favorite-ul {
 	background-color: #FCFCFC;
-	width: 90%;
 }
 
 .favorite-li {
