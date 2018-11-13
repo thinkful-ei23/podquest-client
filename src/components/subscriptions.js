@@ -17,34 +17,28 @@ export class Subscriptions extends React.Component {
 		// console.log('props', this.props);
 		let allSubs = null;
 		if (this.props.subs) {
-			allSubs = this.props.subs.map(sub => (
-				<li className="each-sub" key={sub.title}>
-					<Link
-						onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
-						to={{
-							pathname: `/channel`
-						}}
-					>
-						{sub.title}
-					</Link>
-				</li>
-			));
-		}
-		// console.log(this.props.subs.xml);
-		if (this.props.subs.length <1) {
-			return(
-				<div className="subscriptions-page box">
-				<button className="btn btn-small btn-blue btn-back">
-			<NavLink className="back-to-dash" to="/dashboard">
-					<i className="fas fa-angle-left" />
-					&nbsp;Back
-			</NavLink>
-				</button>
-				<p className="no-sub">You have no subscriptions...yet!</p>;			
-			</div>
-			) 
+			if(this.props.subs.length <1){
+				allSubs = 
+					<div>
+						<p>You have no subscriptions...yet!</p>			
+					</div>
+			}else{
+				allSubs = this.props.subs.map(sub => (
+					<li className="each-sub" key={sub.title}>
+						<Link
+							onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
+							to={{
+								pathname: `/channel`
+							}}
+						>
+							{sub.title}
+						</Link>
+					</li>
+				));
+			}
 			
-		}else {
+		}
+
 			return (
 				<div className="subscriptions-page box">
 						<button className="btn btn-small btn-blue btn-back">
@@ -62,7 +56,6 @@ export class Subscriptions extends React.Component {
 		}
 		
 	}
-}
 
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
