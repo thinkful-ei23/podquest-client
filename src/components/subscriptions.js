@@ -18,7 +18,7 @@ export class Subscriptions extends React.Component {
 		let allSubs = null;
 		if (this.props.subs) {
 			allSubs = this.props.subs.map(sub => (
-				<div className="each-sub" key={sub.title}>
+				<li className="each-sub" key={sub.title}>
 					<Link
 						onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
 						to={{
@@ -27,27 +27,29 @@ export class Subscriptions extends React.Component {
 					>
 						{sub.title}
 					</Link>
-				</div>
+				</li>
 			));
 		}
 		// console.log(this.props.subs.xml);
-		if (!this.props.subs) {
+		if (this.props.subs.length <1) {
 			return <div className="no-sub">You have no subscriptions...yet!</div>;
-		}
-		return (
-			<div className="subscriptions-page box">
-				<NavLink to="/dashboard">
-					<button className="btn btn-small btn-blue btn-back">
-						<i className="fas fa-angle-left" />
-						&nbsp;Back
-					</button>
-				</NavLink>
-				<div className="all-subscriptions">
-					You are subscribed to:
-					{allSubs ? allSubs : ''}
+		}else {
+			return (
+				<div className="subscriptions-page box">
+					<NavLink to="/dashboard">
+						<button className="btn btn-small btn-blue btn-back">
+							<i className="fas fa-angle-left" />
+							&nbsp;Back
+						</button>
+					</NavLink>
+					<ul className="all-subscriptions">
+						You are subscribed to:
+						{allSubs ? allSubs : ''}
+					</ul>
 				</div>
-			</div>
-		);
+			);
+		}
+		
 	}
 }
 
