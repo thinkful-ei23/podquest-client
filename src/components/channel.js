@@ -23,10 +23,11 @@ export class Channel extends React.Component {
 	}
 
 	handleSelectEpisode(e) {
-		const episodeTitle = e.target.value.trim();
+		// Remove extra whitespace on ends and in middle of Title
+		const episodeTitle = e.target.value.trim().replace(/\s+/g,' ');
 		let episodeData = {};
 		this.props.podcast.episodes.forEach(episode => {
-			if (episode.title[0].trim() === episodeTitle) {
+			if (episode.title[0].trim().replace(/\s+/g,' ') === episodeTitle) {
 				// console.log(episode);
 				if (episode.title) {
 					episodeData.episodeTitle = episode.title[0];
