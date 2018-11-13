@@ -40,7 +40,7 @@ export default class ResultTable extends React.Component {
 				Header: 'Your Search Yielded...',
 				accessor: 'collection',
 				Cell: ({ row }) => (
-					<Link
+					<Link className='search-font'
 						onClick={() =>
 							localStorage.setItem('podcastChannel', row.collection.xml)
 						}
@@ -61,6 +61,7 @@ export default class ResultTable extends React.Component {
 					columns={columns}
 					page={this.state.page}
 					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)}
+					defaultPageSize={10}
 					className="-striped -highlight"
 				/>
 			</div>

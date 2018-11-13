@@ -17,11 +17,13 @@ color: #122375;
   background-color: #122375;
   color: #fff;
 }
-.ReactTable .-pagination .data {
+.ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+	background: rgba(0, 0, 0, 0.05);
+	background: #DBBC34;
+}
+.search-font {
 	text-decoration: none;
 	font-family: 'Bai Jamjuree', sans-serif;
-	text-transform: uppercase;
 	letter-spacing: .2rem;
 	color: #122375;
-
 }
