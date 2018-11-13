@@ -125,12 +125,12 @@ class Channel extends React.Component {
 		}
 		return (
 			<div className="channel-box box">
-				<NavLink to="/dashboard">
 					<button className="btn btn-small btn-blue btn-back">
+				<NavLink className="back-to-dash" to="/dashboard">
 						<i className="fas fa-angle-left" />
 						&nbsp;Back
-					</button>
 				</NavLink>
+					</button>
 				{channel}
 			</div>
 		);
