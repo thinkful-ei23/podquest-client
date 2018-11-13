@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import 'react-table/react-table.css';
 import './showTable.css';
+import { ReactTableDefaults } from 'react-table';
+
 export default class ResultTable extends React.Component {
 	constructor(props) {
 		super(props)
@@ -23,6 +25,7 @@ export default class ResultTable extends React.Component {
 			page: pageIndex
 		});
 	}
+
 	render() {
 		const data = this.props.podcasts.map(result => ({
 			collection: {
@@ -34,7 +37,7 @@ export default class ResultTable extends React.Component {
 
 		const columns = [
 			{
-				Header: 'Your search yielded',
+				Header: 'Your Search Yielded...',
 				accessor: 'collection',
 				Cell: ({ row }) => (
 					<Link
@@ -57,7 +60,9 @@ export default class ResultTable extends React.Component {
 					data={data}
 					columns={columns}
 					page={this.state.page}
-					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)} />
+					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)}
+					className="-striped -highlight"
+				/>
 			</div>
 		);
 	}

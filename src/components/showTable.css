@@ -9,3 +9,19 @@ background-color: #FCFCFC;
 color: #122375;
 
 }
+.ReactTable .-pagination .-btn:not([disabled]) {
+  background-color:#DBBC34;;
+  color: #122375;
+}
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+  background-color: #122375;
+  color: #fff;
+}
+.ReactTable .-pagination .data {
+	text-decoration: none;
+	font-family: 'Bai Jamjuree', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .2rem;
+	color: #122375;
+
+}
