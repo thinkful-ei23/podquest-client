@@ -1,6 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import './searchForm.css';
+import './searchForm.css'
+
 
 export default function SearchForm(props) {
 	let input;
@@ -102,4 +102,3 @@ export default function SearchForm(props) {
 	);
 }
 
-// export default connect()(SearchForm);

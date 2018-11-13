@@ -10,7 +10,8 @@ import { postSubscribe } from '../actions/subscribe';
 
 import './channel.css';
 
-class Channel extends React.Component {
+export class Channel extends React.Component{
+
 	componentDidMount() {
 		const channelUrl = localStorage.getItem('podcastChannel');
 		// console.log('channelUrl', channelUrl);
