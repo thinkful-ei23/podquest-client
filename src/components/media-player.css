@@ -9,8 +9,6 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-	width: 75%;
-	order: 1;
 }
 .btn-row {
 	display: flex;
@@ -32,6 +30,10 @@
 	font-size: 2rem;
 	padding: 1rem;
 	margin: 1rem 0;
+}
+.slider-container {
+padding: 1rem;
+
 }
 .radio-loop,
 .radio-mute {

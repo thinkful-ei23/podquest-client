@@ -138,7 +138,7 @@ export class MediaPlayer extends React.Component {
     let episode = '';
     let date = '';
     let favButton = (
-      <button className="btn-round btn-fav"  title ='favorite-button' onClick={() => this.handleAddFav()}>
+      <button className="btn-round btn-fav" title='favorite-button' onClick={() => this.handleAddFav()}>
         <i className="far fa-heart"></i>
         {/* Favorite */}
       </button>
@@ -217,8 +217,9 @@ export class MediaPlayer extends React.Component {
                   onChange={e => this.setState({ volume: parseFloat(e.target.value) })}
                   style={{ verticalAlign: 'bottom' }}
                 />
-              </span>
+              </span>&nbsp;
               {(this.state.volume * 100).toFixed(0)}
+              &nbsp;&nbsp;&nbsp;&nbsp;
             </label>
           </div>
 
@@ -242,11 +243,11 @@ export class MediaPlayer extends React.Component {
             </label>
           </div>
           <div className="btn-row">
-            <button className="btn-round" title ='play' onClick={this.handleToggle} disabled={!this.state.loaded}>
+            <button className="btn-round" title='play' onClick={this.handleToggle} disabled={!this.state.loaded}>
               {/* <span className="play-btn-symbol"> {(this.state.playing) ? "\u23F8" : "\u25B6"} </span> */}
               <span className="play-btn-symbol"> {(this.state.playing) ? <i className="far fa-pause-circle"></i> : <i className="far fa-play-circle"></i>} </span>
             </button>
-            <button className="btn-round" title ='stop' onClick={this.handleStop} disabled={!this.state.loaded}>
+            <button className="btn-round" title='stop' onClick={this.handleStop} disabled={!this.state.loaded}>
               <i className="far fa-stop-circle"></i>
             </button>
             {favButton}
