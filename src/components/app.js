@@ -68,7 +68,7 @@ export class App extends React.Component {
 						<Route component={PageNotFound} />
 					</Switch>
 				</main>
-					<Footer />
+					{/* <Footer /> */}
 			</div>
 		);
 	}
