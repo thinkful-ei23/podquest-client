@@ -3,11 +3,11 @@ import ReactTable from 'react-table';
 import { Link } from 'react-router-dom';
 
 import 'react-table/react-table.css';
-
+import './showTable.css';
 export default class ResultTable extends React.Component {
 	constructor(props) {
-    super(props)
-    this.state = {
+		super(props)
+		this.state = {
 			page: 0
 		}
 	}
@@ -57,7 +57,7 @@ export default class ResultTable extends React.Component {
 					data={data}
 					columns={columns}
 					page={this.state.page}
-					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)}/>
+					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)} />
 			</div>
 		);
 	}
