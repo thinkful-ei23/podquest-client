@@ -36,6 +36,9 @@
 	line-height: 1.7rem;
 	list-style-type: none;
 }
+.each-sub:hover {
+	background-color: #DBBC34;
+}
 
 li, a {
 	text-decoration: none;

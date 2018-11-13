@@ -17,12 +17,12 @@ export class Subscriptions extends React.Component {
 		// console.log('props', this.props);
 		let allSubs = null;
 		if (this.props.subs) {
-			if(this.props.subs.length <1){
-				allSubs = 
+			if (this.props.subs.length < 1) {
+				allSubs =
 					<div>
-						<p>You have no subscriptions...yet!</p>			
+						<p>You have no subscriptions...yet!</p>
 					</div>
-			}else{
+			} else {
 				allSubs = this.props.subs.map(sub => (
 					<li className="each-sub" key={sub.title}>
 						<Link
@@ -36,26 +36,26 @@ export class Subscriptions extends React.Component {
 					</li>
 				));
 			}
-			
+
 		}
 
-			return (
-				<div className="subscriptions-page box">
-						<button className="btn btn-small btn-blue btn-back">
+		return (
+			<div className="subscriptions-page box">
+				<button className="btn btn-small btn-blue btn-back">
 					<NavLink className="back-to-dash" to="/dashboard">
-							<i className="fas fa-angle-left" />
-							&nbsp;Back
+						<i className="fas fa-angle-left" />
+						&nbsp;Back
 					</NavLink>
-						</button>
-						<h6>You are subscribed to:</h6>
-					<ul className="all-subscriptions">
-						{allSubs ? allSubs : ''}
-					</ul>
-				</div>
-			);
-		}
-		
+				</button>
+				<h6>You are subscribed to:</h6>
+				<ul className="all-subscriptions">
+					{allSubs ? allSubs : ''}
+				</ul>
+			</div>
+		);
 	}
+
+}
 
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
