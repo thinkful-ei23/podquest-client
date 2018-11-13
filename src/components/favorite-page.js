@@ -60,7 +60,7 @@ export class FavoritePage extends React.Component {
 
     return (
       <div className="favorite-page box">
-        <NavLink to="/dashboard"><button className="btn btn-small btn-blue btn-back">Back</button></NavLink>
+        <button className="btn btn-small btn-blue btn-back"><NavLink className="back-to-dash" to="/dashboard">Back</NavLink></button >
         <ul className="favorite-ul">
           {listFavorite}
         </ul>

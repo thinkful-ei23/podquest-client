@@ -11,7 +11,7 @@
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-content: space-around;
-	padding: 0 2rem;
+	padding: 2rem;
 }
 .favorite-ul {
 	/* align-items: center; */
@@ -31,4 +31,14 @@
 .favorite-li:hover {
 	background-color: #DDCB34;
 	cursor: pointer;
+}
+
+.back-to-dash {
+	display: block;
+	width: 100px;
+	height: 51px;
+	margin-top: -12px;
+	text-decoration: none;
+	color: white;
+	padding-top: 10px;
 }
