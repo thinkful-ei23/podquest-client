@@ -9,6 +9,7 @@
 .dashboard {
 		width: 75%;
 		order: 1;
+		min-height: 650px;
 }
 .search-tagline {
 	font-size: 2rem;

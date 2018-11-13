@@ -10,9 +10,15 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+<<<<<<< HEAD
 	justify-content: center;
 	align-content: center;
 	padding: 0 2rem 4rem;
+=======
+	justify-content: flex-start;
+	align-content: space-around;
+	padding: 2rem;
+>>>>>>> small-css-fix
 }
 
 .favorite-page > a {
@@ -26,17 +32,26 @@
 }
 
 .favorite-li {
-	border: 1px solid #122375;
+	border-bottom: 1px solid #122375;
 	border-collapse: collapse;
 	padding: 1rem;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
 	line-height: 1.7rem;
 	list-style-type: none;
-	text-decoration: underline;
 }
 
 .favorite-li:hover {
 	background-color: #DDCB34;
 	cursor: pointer;
+}
+
+.back-to-dash {
+	display: block;
+	width: 100px;
+	height: 51px;
+	margin-top: -12px;
+	text-decoration: none;
+	color: white;
+	padding-top: 10px;
 }

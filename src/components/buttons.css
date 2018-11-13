@@ -30,6 +30,7 @@ html{
 }
 .btn-small {
 	width: 10rem;
+	margin-left: 0;
 }
 .btn-med {
 	width: 15rem;
@@ -46,6 +47,7 @@ html{
 	background-color:#122375;
 	background-color: rgba(18, 35, 117, .7);
 	color: #FCFCFC;
+	height: 45px;
 }
 .btn-blue:hover,
 .btn-blue:active {
