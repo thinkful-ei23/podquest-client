@@ -27,24 +27,35 @@ export class FavoritePage extends React.Component {
 
 
   render(){
+    let listFavorite;
     if(!this.props.loggedIn){
 			return <Redirect to='/'/>
 		}
     if (!this.props.favorites) {
       return <div>Loading...</div>
     }
-    const listFavorite = this.props.favorites.map((favorite, index) => {
-      return (
-        <li
-          className="favorite-li"
-          key={index}
-          onClick={() =>
-            this.handleSelectEpisode(favorite)
-          }
-        >
-          {favorite.title}</li>
-      )
-    })
+
+    if(this.props.favorites.length <1){
+      listFavorite = 
+        <div>
+          <p>You have no favorite episodes.<br/> try adding a episode!</p>
+        </div>
+      
+    }else{
+      listFavorite = this.props.favorites.map((favorite, index) => {
+        return (
+          <li
+            className="favorite-li"
+            key={index}
+            onClick={() =>
+              this.handleSelectEpisode(favorite)
+            }
+          >
+            {favorite.title}</li>
+        )
+      })
+    }
+
 
     return (
       <div className="favorite-page box">
