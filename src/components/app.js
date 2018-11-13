@@ -14,7 +14,7 @@ import Subscriptions from './subscriptions';
 import { refreshAuthToken } from '../actions/auth';
 import './app.css';
 import PageNotFound from './pageNotFound';
-import Footer from './footer';
+// import Footer from './footer';
 
 export class App extends React.Component {
 	componentDidUpdate(prevProps) {

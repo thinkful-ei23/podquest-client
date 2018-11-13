@@ -41,6 +41,7 @@ html{
 	padding: 1rem 2rem;
 	width: 75%;
 	order: 1;
+	min-height: 700px;
 }
 .about-app >h2 {
 	font-size: 2rem;
