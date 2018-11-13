@@ -18,12 +18,12 @@ export class Subscriptions extends React.Component {
 		// console.log('props', this.props);
 		let allSubs = null;
 		if (this.props.subs) {
-			if(this.props.subs.length <1){
-				allSubs = 
+			if (this.props.subs.length < 1) {
+				allSubs =
 					<div>
-						<p>You have no subscriptions...yet!</p>			
+						<p>You have no subscriptions...yet!</p>
 					</div>
-			}else{
+			} else {
 				allSubs = this.props.subs.map(sub => (
 					<li className="each-sub" key={sub.title}>
 						<Link
@@ -37,7 +37,7 @@ export class Subscriptions extends React.Component {
 					</li>
 				));
 			}
-			
+
 		}
 
 			return (
@@ -52,6 +52,8 @@ export class Subscriptions extends React.Component {
 		}
 		
 	}
+
+}
 
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state

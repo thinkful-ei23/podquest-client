@@ -59,8 +59,8 @@ export class Dashboard extends React.Component {
 				{searchResults ? (
 					<ResultTable podcasts={searchResults} />
 				) : (
-					''
-				)}
+						''
+					)}
 			</section>
 		);
 		if (this.props.loading) {

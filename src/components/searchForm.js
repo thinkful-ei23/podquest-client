@@ -6,23 +6,23 @@ export default function SearchForm(props) {
 	let input;
 	let submitButton;
 
-	if(!props.search){
-		submitButton =			
-		<button
-			className="btn btn-med btn-yellow2 btn-search search-button disabled"
-			disabled={!props.search}
-		>
-		Search
+	if (!props.search) {
+		submitButton =
+			<button
+				className="btn btn-med btn-yellow2 btn-search search-button disabled"
+				disabled={!props.search}
+			>
+				Search
 		</button>
-	}else{
-		submitButton =			
-		<button
-			className="btn btn-med btn-yellow2 btn-search search-button"
-			disabled={!props.search}
-		>
-		Search
+	} else {
+		submitButton =
+			<button
+				className="btn btn-med btn-yellow2 btn-search search-button"
+				disabled={!props.search}
+			>
+				Search
 		</button>
-			}
+	}
 
 	return (
 		<form
@@ -46,6 +46,7 @@ export default function SearchForm(props) {
 
 			<div className="radio-row">
 				<p className="search-narrow">Narrow your search by...</p>
+
 				<label className="container">
 					<input
 						type="radio"
@@ -60,8 +61,6 @@ export default function SearchForm(props) {
 
 					<span className="checkmark"></span>
 					<p className="search-by-terms">Title </p>
-
-
 				</label>
 
 				<label className="container">

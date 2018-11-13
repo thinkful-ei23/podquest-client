@@ -113,7 +113,6 @@ max width - 760 for iPad
 		padding: 0;
 	}
 }
-
 @media only screen and (max-width: 650px) {
 	.user-welcome  {
 		padding: .7rem;
@@ -121,5 +120,13 @@ max width - 760 for iPad
 		font-size: 1rem;
 		line-height: 1.5rem;
 		letter-spacing: .3rem;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.nav-li {
+		font-size: 1.4rem;
+		line-height: 1.6rem;
+		margin: 0 1rem ;
 	}
 }
