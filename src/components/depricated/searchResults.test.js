@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchResults from '../searchResults';
+import { SearchResults } from './searchResults';
 
 describe.only('<SearchResults />', () => {
     it('Should render without crashing', () => {

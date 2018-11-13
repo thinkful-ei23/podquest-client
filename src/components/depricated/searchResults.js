@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './searchResults.css';
 
-function SearchResults(props) {
+export function SearchResults(props) {
 	return (
 		<div className="search-results">
 			{props.resultNumber + ': \u00a0 '}

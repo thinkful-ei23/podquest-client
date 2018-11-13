@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultTable from './showTable';
+import ResultTable from '../showTable';
 import './showResults.css';
 
 export default class ShowResults extends React.Component {
