@@ -23,7 +23,6 @@
 .channel-pod-img {
 	width: 20rem;
 	height: auto;
-<<<<<<< HEAD
 }
 	.fa-angle-left,
 	.fa-angle-right {
@@ -40,6 +39,7 @@
 		padding: 1rem;
 		border-radius: 1rem;
 		margin-left: 0;
+		align-self: center;
 	}
 	/* .episode-select {
 		height: 2rem;
@@ -47,11 +47,6 @@
 		width: 50%;
 		margin-bottom:6rem;
 	} */
-=======
-	align-self: center;
->>>>>>> master
-
-}
 .channel-desc {
 	align-self: center;
 	margin: 2rem 0;
