@@ -26,8 +26,9 @@
 	margin: 2rem 0 0 0;
 }
 .nav-ul {
+	margin: 0;
+	padding: 0;
 	align-items: center;
-	/* margin-top: 0rem; */
 }
 .nav-li {
 	display: inline-block;
@@ -98,12 +99,27 @@ max width - 760 for iPad
 
 */
 
+
+@media only screen and (max-width: 720px) {
+	.user-welcome  {
+	padding: .7rem;
+	margin: 1rem 0 0 0;
+	font-size: 1rem;
+	line-height: 1.5rem;		letter-spacing: .3rem;
+	}
+	.nav-li {
+		font-size: 1.5rem;
+		line-height: 1.7rem;
+		padding: 0;
+	}
+}
+
 @media only screen and (max-width: 650px) {
 	.user-welcome  {
 		padding: .7rem;
 		margin: 1rem 0 0 0;
 		font-size: 1rem;
 		line-height: 1.5rem;
-		letter-spacing: .4rem;
+		letter-spacing: .3rem;
 	}
 }
