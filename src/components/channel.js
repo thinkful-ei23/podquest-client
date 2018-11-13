@@ -5,7 +5,7 @@ import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
-import { postSubscribe, unsubscribe } from '../actions/subscribe';
+import { postSubscribe, unsubscribe, getSubscriptions } from '../actions/subscribe';
 
 import './channel.css';
 
@@ -21,6 +21,7 @@ class Channel extends React.Component {
 		const channelUrl = localStorage.getItem('podcastChannel');
 		// console.log('channelUrl', channelUrl);
 		this.props.dispatch(getChannel(channelUrl));
+		this.props.dispatch(getSubscriptions());
 	}
 
 	componentWillUnmount() {
@@ -87,6 +88,29 @@ class Channel extends React.Component {
 		if (!this.props.podcast) {
 			return <div>Loading...</div>;
 		}
+
+		let subButton = 
+		<button
+			className="btn btn-large btn-blue btn-subscribe"
+			onClick={e => this.handleSubscribe(e)}
+	>
+		'Subscribe to this Channel'
+	</button>
+		if (this.props.subs) {
+			this.props.subs.forEach(sub => {
+				if (sub.title === this.props.podcast.title) {
+					subButton = (
+						<button
+							className="btn btn-large btn-blue btn-subscribe"
+							onClick={e => this.handleUnsubscribe(e)}
+						>
+						'Unsubscribe from this Channel'
+						</button>
+					);
+				}
+			});
+		}
+
 		// console.log('props', this.props); // see podcasts
 		const podcast = this.props.podcast;
 		// loops through episodes
@@ -113,7 +137,7 @@ class Channel extends React.Component {
 					height={200}
 				/>
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				{this.state.subscribe ? (
+				{/* {this.state.subscribe ? (
 					<button
 						className="btn btn-large btn-blue btn-subscribe"
 						onClick={e => this.handleUnsubscribe(e)}
@@ -127,7 +151,8 @@ class Channel extends React.Component {
 					>
 						'Subscribe to this Channel'
 					</button>
-				)}
+				)} */}
+				{subButton}
 				<select
 					className="episode-select styled-select green rounded"
 					id="episode-select"
@@ -146,6 +171,7 @@ class Channel extends React.Component {
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
+		subs: state.subscribe.subscriptions,
 		podcast: state.search.currChannel,
 		loggedIn: state.auth.currentUser !== null
 	};

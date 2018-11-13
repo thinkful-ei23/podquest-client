@@ -55,7 +55,6 @@ export class Subscriptions extends React.Component {
 }
 
 const mapStateToProps = state => {
-	console.log('state', state); // to look at state
 	return {
 		subs: state.subscribe.subscriptions,
 		subError: state.subscribe.error,

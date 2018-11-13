@@ -28,7 +28,7 @@ export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
 			Authorization: `Bearer ${authToken}`
 		},
 		body: JSON.stringify({ title, feedUrl })
-	}).then(res => console.log(res));
+	}).then(dispatch(getSubscriptions()));
 };
 
 export const getSubscriptions = () => (dispatch, getState) => {
@@ -61,6 +61,7 @@ export const unsubscribe = title => (dispatch, getState) => {
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${authToken}`
-		}
-	}).then(res => console.log(res));
+		},
+		body: JSON.stringify({ title})
+	}).then(dispatch(getSubscriptions()));
 };
