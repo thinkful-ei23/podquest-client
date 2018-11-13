@@ -6,6 +6,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
+import BackButton from "./back-button";
 import { setEpisode, clearEpisode } from "../actions/media-player";
 import './favorite-page.css';
 
@@ -74,7 +75,7 @@ export class FavoritePage extends React.Component {
 
     return (
       <div className="favorite-page box">
-        <button className="btn btn-small btn-blue btn-back"><NavLink className="back-to-dash" to="/dashboard"><i className="fas fa-angle-left" />&nbsp;Back</NavLink></button >
+        <BackButton />
         <h6>Your Favorited:</h6>
         <ul className="favorite-ul">
           {listFavorite}

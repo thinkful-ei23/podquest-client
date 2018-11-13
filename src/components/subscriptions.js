@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import BackButton from './back-button'
 import { getSubscriptions } from '../actions/subscribe';
 import { Link, NavLink } from 'react-router-dom';
 import './subscriptions.css';
@@ -39,20 +40,17 @@ export class Subscriptions extends React.Component {
 
 		}
 
-		return (
-			<div className="subscriptions-page box">
-				<button className="btn btn-small btn-blue btn-back">
-					<NavLink className="back-to-dash" to="/dashboard">
-						<i className="fas fa-angle-left" />
-						&nbsp;Back
-					</NavLink>
-				</button>
-				<h6>You are subscribed to:</h6>
-				<ul className="all-subscriptions">
-					{allSubs ? allSubs : ''}
-				</ul>
-			</div>
-		);
+			return (
+				<div className="subscriptions-page box">
+					<BackButton />
+					<h6>You are subscribed to:</h6>
+					<ul className="all-subscriptions">
+						{allSubs ? allSubs : ''}
+					</ul>
+				</div>
+			);
+		}
+		
 	}
 
 }

@@ -4,6 +4,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import Spinner from './spinner';
+import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
 import { postSubscribe } from '../actions/subscribe';
@@ -23,10 +24,11 @@ export class Channel extends React.Component {
 	}
 
 	handleSelectEpisode(e) {
-		const episodeTitle = e.target.value.trim();
+		// Remove extra whitespace on ends and in middle of Title
+		const episodeTitle = e.target.value.trim().replace(/\s+/g,' ');
 		let episodeData = {};
 		this.props.podcast.episodes.forEach(episode => {
-			if (episode.title[0].trim() === episodeTitle) {
+			if (episode.title[0].trim().replace(/\s+/g,' ') === episodeTitle) {
 				// console.log(episode);
 				if (episode.title) {
 					episodeData.episodeTitle = episode.title[0];
@@ -126,12 +128,7 @@ export class Channel extends React.Component {
 		}
 		return (
 			<div className="channel-box box">
-				<button className="btn btn-small btn-blue btn-back">
-					<NavLink className="back-to-dash" to="/dashboard">
-						<i className="fas fa-angle-left" />
-						&nbsp;Back
-				</NavLink>
-				</button>
+				<BackButton />
 				{channel}
 			</div>
 		);

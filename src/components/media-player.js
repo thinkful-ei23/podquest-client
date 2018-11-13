@@ -17,7 +17,7 @@ export class MediaPlayer extends React.Component {
       loaded: false,
       loop: false,
       mute: false,
-      volume: 1.0
+      volume: 0.5
     }
     this.handleToggle = this.handleToggle.bind(this)
     this.handleOnLoad = this.handleOnLoad.bind(this)
