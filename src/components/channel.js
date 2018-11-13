@@ -10,12 +10,6 @@ import { postSubscribe, unsubscribe, getSubscriptions } from '../actions/subscri
 import './channel.css';
 
 class Channel extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			subscribe: false
-		};
-	}
 
 	componentDidMount() {
 		const channelUrl = localStorage.getItem('podcastChannel');
@@ -65,20 +59,12 @@ class Channel extends React.Component {
 	handleSubscribe(e) {
 		let title = this.props.podcast.title;
 		let feedUrl = this.props.podcast.feedUrl;
-		// this.props.dispatch(subscribeChannel(title));
 		this.props.dispatch(postSubscribe(title, feedUrl));
-		this.setState({
-			subscribe: true
-		});
 	}
 
 	handleUnsubscribe(e) {
-		console.log('delete subscription');
 		let title = this.props.podcast.title;
 		this.props.dispatch(unsubscribe(title));
-		this.setState({
-			subscribe: false
-		});
 	}
 	render() {
 		if (!this.props.loggedIn) {
@@ -111,7 +97,6 @@ class Channel extends React.Component {
 			});
 		}
 
-		// console.log('props', this.props); // see podcasts
 		const podcast = this.props.podcast;
 		// loops through episodes
 		let optionEpisode = [];
@@ -137,21 +122,7 @@ class Channel extends React.Component {
 					height={200}
 				/>
 				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				{/* {this.state.subscribe ? (
-					<button
-						className="btn btn-large btn-blue btn-subscribe"
-						onClick={e => this.handleUnsubscribe(e)}
-					>
-						'Unsubscribe from this Channel'
-					</button>
-				) : (
-					<button
-						className="btn btn-large btn-blue btn-subscribe"
-						onClick={e => this.handleSubscribe(e)}
-					>
-						'Subscribe to this Channel'
-					</button>
-				)} */}
+
 				{subButton}
 				<select
 					className="episode-select styled-select green rounded"
