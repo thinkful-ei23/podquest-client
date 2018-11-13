@@ -40,19 +40,16 @@ export class Subscriptions extends React.Component {
 
 		}
 
-			return (
-				<div className="subscriptions-page box">
-					<BackButton />
-					<h6>You are subscribed to:</h6>
-					<ul className="all-subscriptions">
-						{allSubs ? allSubs : ''}
-					</ul>
-				</div>
-			);
-		}
-		
+		return (
+			<div className="subscriptions-page box">
+				<BackButton />
+				<h6>You are subscribed to:</h6>
+				<ul className="all-subscriptions">
+					{allSubs ? allSubs : ''}
+				</ul>
+			</div>
+		);
 	}
-
 }
 
 const mapStateToProps = state => {
