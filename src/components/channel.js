@@ -4,6 +4,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import Spinner from './spinner';
+import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
 import { postSubscribe } from '../actions/subscribe';
@@ -127,12 +128,7 @@ export class Channel extends React.Component {
 		}
 		return (
 			<div className="channel-box box">
-				<button className="btn btn-small btn-blue btn-back">
-					<NavLink className="back-to-dash" to="/dashboard">
-						<i className="fas fa-angle-left" />
-						&nbsp;Back
-				</NavLink>
-				</button>
+				<BackButton />
 				{channel}
 			</div>
 		);
