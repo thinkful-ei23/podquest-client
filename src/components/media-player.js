@@ -134,9 +134,7 @@ export class MediaPlayer extends React.Component {
 
   render() {
     let player;
-    let season = '';
-    let episode = '';
-    let date = '';
+    let episodeDate = '';
     let favButton = (
       <button className="btn-round btn-fav"  title ='favorite-button' onClick={() => this.handleAddFav()}>
         <i className="far fa-heart"></i>
@@ -156,17 +154,15 @@ export class MediaPlayer extends React.Component {
         }
       });
     }
-    if (this.props.episodeSeason) {
-      season = `Season ${this.props.episodeSeason}`;
-    }
-    if (this.props.episodeNumber) {
-      episode = ` : Episode ${this.props.episodeNumber}`;
-    }
-    if (this.props.episodeSeason && this.props.episodeDate) {
-      date += ` - `
-    }
     if (this.props.episodeDate) {
-      date += this.props.episodeDate;
+      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      episodeDate = new Date(this.props.episodeDate);
+      const day = weekdays[episodeDate.getDay()];
+      const date = episodeDate.getDate();
+      const month = months[episodeDate.getMonth()];
+      const year = episodeDate.getFullYear();
+      episodeDate = `${day}, ${month} ${date}, ${year}`;
     }
     if (this.props.episodeUrl && !this.state.loaded) {
       player = <Spinner />;
@@ -174,7 +170,7 @@ export class MediaPlayer extends React.Component {
       player = (
         <React.Fragment>
           <p className="player-p"><strong>{this.props.episodeTitle}</strong></p>
-          <p className="player-p"> {season}{episode}<em>{date}</em></p>
+          <p className="player-p"> <em>{episodeDate}</em></p>
           <div className='toggles'>
             <label className="player-label">
               Loop:&nbsp;
