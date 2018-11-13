@@ -219,7 +219,7 @@ export class MediaPlayer extends React.Component {
                 />
               </span>&nbsp;
               {(this.state.volume * 100).toFixed(0)}
-              &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
             </label>
           </div>
 
