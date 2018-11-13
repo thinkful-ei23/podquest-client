@@ -6,27 +6,41 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
-import { setEpisode } from "../actions/media-player";
+import { setEpisode, clearEpisode } from "../actions/media-player";
 import './favorite-page.css';
 
 export class FavoritePage extends React.Component {
   componentWillMount() {
     this.props.dispatch(getFavorite());
   }
+
   handleSelectEpisode(episode) {
     let episodeData = {
       episodeTitle: episode.title,
       episodeUrl: episode.mediaUrl,
       episodeGuid: episode.guid,
-      // feedUrl: episode.feedUrl
     };
     if (episodeData) {
       this.props.dispatch(setEpisode(episodeData));
     }
   }
 
-
   render(){
+    // Close media player if episode not in favorites
+    if (this.props.playerEpisode) {
+      let inFavorites = false;
+      let favorites = this.props.favorites
+      for (let i=0; i < favorites.length; i++) {
+        if (favorites[i].mediaUrl === this.props.playerEpisode.episodeUrl) {
+          inFavorites = true;
+          break;
+        }
+      }
+      if (!inFavorites) {
+        this.props.dispatch(clearEpisode());
+      }
+    }
+
     let listFavorite;
     if(!this.props.loggedIn){
 			return <Redirect to='/'/>
@@ -74,7 +88,8 @@ const mapStateToProps = state => {
   // console.log('state', state); // to look at state
   return {
     favorites: state.favorites.favorites,
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    playerEpisode: state.mediaPlayer.episodeData
   }
 }
 
