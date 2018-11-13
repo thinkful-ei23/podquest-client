@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
+import Spinner from './spinner';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
 import { postSubscribe } from '../actions/subscribe';
@@ -62,21 +63,64 @@ class Channel extends React.Component {
 	}
 
 	render() {
+		let channel = '';
 		if (!this.props.loggedIn) {
-			return <Redirect to="/" />;
+			channel = <Redirect to="/" />;
 		}
 
-		if (!this.props.podcast) {
-			return <div>Loading...</div>;
+		if (this.props.loading) {
+			channel = (
+				<React.Fragment>
+					<Spinner />
+				</React.Fragment>
+			);
 		}
-		// console.log('props', this.props); // see podcasts
+
+		if (this.props.error) {
+			channel = (
+				<p>Error. {this.props.error.message}.</p>
+			);
+		}
+
 		const podcast = this.props.podcast;
-		// loops through episodes
-		let optionEpisode = [];
-		if (podcast.episodes) {
-			optionEpisode = podcast.episodes.map((episode, index) => {
-				return <option key={index}>{episode.title}</option>;
-			});
+		if (podcast) {
+			let optionEpisode = [];
+			if (podcast.episodes) {
+				// loops through episodes
+				optionEpisode = podcast.episodes.map((episode, index) => {
+					return <option key={index}>{episode.title}</option>;
+				});
+			}
+
+			channel = (
+				<React.Fragment>
+					<h2 className="title-channel">{podcast.title}</h2>
+					<img
+						className="channel-pod-img"
+						src={podcast.image}
+						alt="podcast wallpaper"
+						height={200}
+					/>
+					<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
+					<button
+						className="btn btn-large btn-blue btn-subscribe"
+						onClick={e => this.handleSubscribe(e)}
+					>
+						Subscribe to channel
+					</button>
+					<label htmlFor ='episode-select'>Episode select</label>
+					<select
+						className="episode-select styled-select green rounded"
+						id="episode-select"
+						defaultValue="Select episode"
+						onChange={e => this.handleSelectEpisode(e)}
+					>
+						<option>Select episode</option>
+						{optionEpisode}
+					</select>
+					<MediaPlayer />
+				</React.Fragment>
+			);
 		}
 		return (
 			<div className="channel-box box">
@@ -86,32 +130,7 @@ class Channel extends React.Component {
 						&nbsp;Back
 					</button>
 				</NavLink>
-
-				<h2 className="title-channel">{podcast.title}</h2>
-				<img
-					className="channel-pod-img"
-					src={podcast.image}
-					alt="podcast wallpaper"
-					height={200}
-				/>
-				<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
-				<button
-					className="btn btn-large btn-blue btn-subscribe"
-					onClick={e => this.handleSubscribe(e)}
-				>
-					Subscribe to channel
-				</button>
-				<label htmlFor ='episode-select'>Episode select</label>
-				<select
-					className="episode-select styled-select green rounded"
-					id="episode-select"
-					defaultValue="Select episode"
-					onChange={e => this.handleSelectEpisode(e)}
-				>
-					<option>Select episode</option>
-					{optionEpisode}
-				</select>
-				<MediaPlayer />
+				{channel}
 			</div>
 		);
 	}
@@ -121,7 +140,9 @@ const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
 		podcast: state.search.currChannel,
-		loggedIn: state.auth.currentUser !== null
+		loggedIn: state.auth.currentUser !== null,
+		error: state.search.error,
+		loading: state.search.loading,
 	};
 };
 

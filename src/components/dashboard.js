@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
+import Spinner from './spinner';
 // import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
 import ResultTable from './showTable';
@@ -52,6 +53,20 @@ export class Dashboard extends React.Component {
 		if (this.props.podcasts) {
 			searchResults = this.props.podcasts;
 		}
+
+		let renderedResults = (
+			<section className="results-page">
+				{searchResults ? (
+					<ResultTable podcasts={searchResults} />
+				) : (
+					''
+				)}
+			</section>
+		);
+		if (this.props.loading) {
+			renderedResults = <Spinner />;
+		}
+
 		return (
 			<div className="dashboard box">
 				<SearchForm
@@ -61,13 +76,7 @@ export class Dashboard extends React.Component {
 					handleInput={e => this.handleInput(e)}
 					search={this.state.search}
 				/>
-				<section className="results-page">
-					{searchResults ? (
-						<ResultTable podcasts={searchResults} />
-					) : (
-						'You have no search results. So...care to search?'
-					)}
-				</section>
+				{renderedResults}
 			</div>
 		);
 	}
@@ -80,7 +89,8 @@ const mapStateToProps = state => {
 		name: `${currentUser.name} `,
 		protectedData: state.protectedData.data,
 		podcasts: state.search.podcasts,
-		loggedIn: state.auth.currentUser !== null
+		loggedIn: state.auth.currentUser !== null,
+		loading: state.search.loading
 	};
 };
 
