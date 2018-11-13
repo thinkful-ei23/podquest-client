@@ -10,7 +10,7 @@ import { postSubscribe } from '../actions/subscribe';
 
 import './channel.css';
 
-export class Channel extends React.Component{
+export class Channel extends React.Component {
 
 	componentDidMount() {
 		const channelUrl = localStorage.getItem('podcastChannel');
@@ -126,12 +126,12 @@ export class Channel extends React.Component{
 		}
 		return (
 			<div className="channel-box box">
-					<button className="btn btn-small btn-blue btn-back">
-				<NavLink className="back-to-dash" to="/dashboard">
+				<button className="btn btn-small btn-blue btn-back">
+					<NavLink className="back-to-dash" to="/dashboard">
 						<i className="fas fa-angle-left" />
 						&nbsp;Back
 				</NavLink>
-					</button>
+				</button>
 				{channel}
 			</div>
 		);

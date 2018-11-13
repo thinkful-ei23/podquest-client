@@ -17,6 +17,7 @@ html{
 }
 /* BELOW, basic body attributes used throughout, */
 body {
+	margin-top: 1rem;
 	font-family: "Bai Jamjuree", sans-serif; /*body font*/
 	font-weight: 400;
 	line-height: 1.7;

@@ -56,6 +56,7 @@ background-color: #122375;
 	-webkit-border-radius: 1.5rem;
 		-moz-border-radius: 1.5rem;
 	border-radius: 1.5rem;
+	margin-top: 5rem;
 }
 .styled-select {
 	align-self: center;

@@ -9,8 +9,6 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-	width: 75%;
-	order: 1;
 }
 .btn-row {
 	display: flex;
@@ -24,7 +22,6 @@
 	font-size: 1.8rem;
 	line-height: 1.7rem;
 	padding: 1rem;
-	margin: 1rem 0;
 }
 .player-label {
 	color: #122375;
@@ -32,6 +29,10 @@
 	font-size: 2rem;
 	padding: 1rem;
 	margin: 1rem 0;
+}
+.slider-container {
+padding: 1rem;
+
 }
 .radio-loop,
 .radio-mute {
@@ -70,3 +71,7 @@
 .fa-heart:hover {
 	color: white;
 }
+
+/* @media only screen 	and (max-width: 670px) { */
+
+/* } */
