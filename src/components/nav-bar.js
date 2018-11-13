@@ -39,7 +39,7 @@ export class NavBar extends React.Component {
 			<nav className="nav-bar fof">
 				<div className="dashboard-username">
 					<p className="user-welcome">
-						Glad to have you with us,&nbsp;
+						Welcome,&nbsp;
 						{this.props.username}!
 					</p>
 				</div>

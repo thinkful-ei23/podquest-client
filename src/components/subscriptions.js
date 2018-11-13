@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { getSubscriptions } from '../actions/subscribe';
 import { Link, NavLink } from 'react-router-dom';
+import './subscriptions.css';
 
 export class Subscriptions extends React.Component {
 	componentWillMount() {
@@ -31,10 +32,10 @@ export class Subscriptions extends React.Component {
 		}
 		// console.log(this.props.subs.xml);
 		if (!this.props.subs) {
-			return <div>You have no subscriptions...yet!</div>;
+			return <div className="no-sub">You have no subscriptions...yet!</div>;
 		}
 		return (
-			<div className="subscriptions-page">
+			<div className="subscriptions-page box">
 				<NavLink to="/dashboard">
 					<button className="btn btn-small btn-blue btn-back">
 						<i className="fas fa-angle-left" />
