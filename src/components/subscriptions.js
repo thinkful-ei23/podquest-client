@@ -1,9 +1,65 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import requiresLogin from './requires-login';
+import { getSubscriptions } from '../actions/subscribe';
+import { Link, NavLink } from 'react-router-dom';
+import './subscriptions.css';
 
-export default class Subscriptions extends React.Component {
+export class Subscriptions extends React.Component {
+	componentWillMount() {
+		// console.log(this.props);
+		this.props.dispatch(getSubscriptions());
+		let currDate = new Date();
+		console.log(currDate);
+	}
+
 	render() {
-		return <div className="all-subscriptions">
-			You are subscribed to:
-		</div>
+		// console.log('props', this.props);
+		let allSubs = null;
+		if (this.props.subs) {
+			allSubs = this.props.subs.map(sub => (
+				<li className="each-sub" key={sub.title}>
+					<Link
+						onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
+						to={{
+							pathname: `/channel`
+						}}
+					>
+						{sub.title}
+					</Link>
+				</li>
+			));
+		}
+		// console.log(this.props.subs.xml);
+		if (this.props.subs.length <1) {
+			return <div className="no-sub">You have no subscriptions...yet!</div>;
+		}else {
+			return (
+				<div className="subscriptions-page box">
+					<NavLink to="/dashboard">
+						<button className="btn btn-small btn-blue btn-back">
+							<i className="fas fa-angle-left" />
+							&nbsp;Back
+						</button>
+					</NavLink>
+					<ul className="all-subscriptions">
+						You are subscribed to:
+						{allSubs ? allSubs : ''}
+					</ul>
+				</div>
+			);
+		}
+		
 	}
 }
+
+const mapStateToProps = state => {
+	// console.log('state', state); // to look at state
+	return {
+		subs: state.subscribe.subscriptions,
+		subError: state.subscribe.error,
+		loggedIn: state.auth.currentUser !== null
+	};
+};
+
+export default requiresLogin()(connect(mapStateToProps)(Subscriptions));

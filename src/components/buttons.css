@@ -87,6 +87,8 @@ html{
 .btn-white:hover,
 .btn-white:active {
 	background-color: #122375;
+	background-color: #737373;
+
 	color: #FCFCFC;
 }
 .btn-red {
@@ -102,4 +104,11 @@ html{
 .disabled {
 	opacity: 0.6;
 	cursor: not-allowed;
+	background-color: gray;
+	color: black;
+}
+
+.disabled:hover{
+	background-color: gray;
+	color: black;
 }

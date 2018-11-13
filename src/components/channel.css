@@ -5,46 +5,71 @@
 	/* color */
 	/* other */
 
-	.title-channel {
-		font-size: 3rem;
-		margin: 3rem 0;
-	}
-	.channel-box {
-		margin: 3rem;
-		padding: 3rem;
-	}
+.title-channel {
+	font-size: 3rem;
+	margin: 3rem 0;
+	text-align: center;
+}
+.channel-box {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	padding: 2rem;
+	width: 75%;
+	order: 1;
+}
+.channel-pod-img {
+	width: 20rem;
+	height: auto;
+	align-self: center;
 
-	.fa-angle-left,
-	.fa-angle-right {
-		font-size: 2rem;
-		color: #fcfcfc;
-	}
-	.btn-back:hover,
-	.btn-back:active {
-	color: #FCFCFC;
-	background-color: #122375;
-	}
-	.btn-subscribe {
-		font-size: 1.7rem;
-		padding: 1rem;
-		border-radius: 1rem;
-	}
-	/* .episode-select {
-		height: 2rem;
-		padding: 2rem;
-		width: 50%;
-		margin-bottom:6rem;
-	} */
-
+}
+.channel-desc {
+	align-self: center;
+	margin: 2rem 0;
+	max-width: 48rem;
+	text-align: justify;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+.fa-angle-left,
+.fa-angle-right {
+	font-size: 2rem;
+	color: #fcfcfc;
+}
+.btn-back:hover,
+.btn-back:active {
+color: #FCFCFC;
+background-color: #122375;
+}
+.btn-subscribe {
+	font-size: 1.7rem;
+	padding: .8rem;
+	border-radius: .5rem;
+	align-self: center;
+}
+.episode-select {
+	/* -webkit-appearance: none; */
+    -webkit-border-radius: 0px;
+	-webkit-border-radius: 1.5rem;
+		-moz-border-radius: 1.5rem;
+	border-radius: 1.5rem;
+}
 .styled-select {
-	background-color:#DBBC34;
-	color: #122375;
+	align-self: center;
 	height: 4rem;
 	overflow: hidden;
-	width: 24rem;
+	width: 30rem;
+	background-color:#DBBC34;
+	color: #122375;
+	text-transform: uppercase;
 	font-size: 1.7rem;
 	padding: 1rem;
-	-webkit-border-radius: 1rem;
-		-moz-border-radius: 1rem;
-		border-radius: 1rem;
+	/* -webkit-border-radius: 1.5rem;
+		-moz-border-radius: 1.5rem;
+	border-radius: 1.5rem;
+*/
 }

@@ -4,6 +4,26 @@ import './searchForm.css'
 
 export default function SearchForm(props) {
 	let input;
+	let submitButton;
+
+	if(!props.search){
+		submitButton =			
+		<button
+			className="btn btn-med btn-yellow2 btn-search search-button disabled"
+			disabled={!props.search}
+		>
+		Search
+		</button>
+	}else{
+		submitButton =			
+		<button
+			className="btn btn-med btn-yellow2 btn-search search-button"
+			disabled={!props.search}
+		>
+		Search
+		</button>
+			}
+
 	return (
 		<form
 			id="form-search"
@@ -12,10 +32,8 @@ export default function SearchForm(props) {
 				props.onSubmit(input.value);
 			}}
 		>
-
-			<h2 className="title-search" htmlFor="search-input">Search by keyword: </h2>
 			<div className="input-label-div">
-				<label className="input-label input-label-search" htmlFor="search-input">Type in search terms here...</label>
+				<label className="input-label input-label-search" htmlFor="search-input">Search by keyword:</label>
 				<input
 					className="input-box"
 					id="search-input"
@@ -73,12 +91,13 @@ export default function SearchForm(props) {
 
 				</label>
 			</div>
-			<button
+			{/* <button
 				className="btn btn-med btn-yellow2 btn-search search-button"
 				disabled={!props.search}
 			>
 				Search
-			</button>
+			</button> */}
+			{submitButton}
 		</form>
 	);
 }

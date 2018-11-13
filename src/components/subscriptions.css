@@ -1,0 +1,30 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* other */
+
+.subscriptions-page {
+	width: 100%;
+	padding: 1rem;
+}
+.no-sub{
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 3rem;
+	line-height: 1.7rem;
+}
+.all-subscriptions {
+	/* width: 75%; */
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	background-color: #FCFCFC;
+	color: #000;
+}
+.each-sub {
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	padding: 1rem;
+}

@@ -1,0 +1,125 @@
+@import "buttons.css";
+@import "text.css";
+
+.nav-bar {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* align-content: space-evenly; */
+	width: 100%;
+	height: auto;
+	background-color: rgba(18, 35, 117, .7);
+	/* order: 0; */
+}
+.user-welcome {
+	width: 100%;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	letter-spacing: .5rem;
+	text-align: center;
+	padding: 1rem;
+	color: #DBBC34;
+	text-transform: uppercase;
+	/* height: 3rem; */
+	margin: 2rem 0 0 0;
+}
+.nav-ul {
+	margin: 0;
+	padding: 0;
+	align-items: center;
+}
+.nav-li {
+	display: inline-block;
+	background-color: transparent;
+	list-style-type: none;
+	/* text-decoration: none; */
+	text-align: center;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	text-transform: capitalize;
+	padding: 1rem;
+	margin: 0 1rem ;
+	/* height: 2rem; */
+	background-color: transparent;
+	color: #FCFCFC;
+}
+.nav-li:hover,
+.nav-li:active {
+	color: #DBBC34;
+}
+.nav-subscrip,
+.nav-fav {
+	padding: 0;
+	background-color: transparent;
+	color: #FCFCFC;
+	text-decoration: none;
+}
+.nav-logout{
+	width: auto;
+	height: auto;
+	padding: .9rem;
+	border-radius: 2px;
+	margin: 1rem 0 0 0;
+	border: transparent;
+	border-radius: 0;
+	background-color: transparent;
+}
+.nav-logout-p{
+	text-align: center;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	text-transform: capitalize;
+	padding: 0;
+	background-color: transparent;
+	color: #FCFCFC;
+}
+.nav-logout-p:hover,
+.nav-logout-p:active {
+	background-color: transparent;
+	color: #DBBC34;
+}
+.nav-subscrip:hover,
+.nav-subscrip:active,
+.nav-fav:hover,
+.nav-fav:active {
+	background-color: transparent;
+	color: #DBBC34;
+}
+
+
+/* 450 - navbar breaks
+650 - sub-title breaks
+780 - search buttons break
+
+main max-width - 960
+max width - 760 for iPad
+
+*/
+
+
+@media only screen and (max-width: 720px) {
+	.user-welcome  {
+	padding: .7rem;
+	margin: 1rem 0 0 0;
+	font-size: 1rem;
+	line-height: 1.5rem;		letter-spacing: .3rem;
+	}
+	.nav-li {
+		font-size: 1.5rem;
+		line-height: 1.7rem;
+		padding: 0;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.user-welcome  {
+		padding: .7rem;
+		margin: 1rem 0 0 0;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		letter-spacing: .3rem;
+	}
+}

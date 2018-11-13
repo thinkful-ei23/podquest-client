@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import SearchForm from './searchForm';
+import Spinner from './spinner';
 // import { fetchProtectedData } from '../actions/protected-data';
 import { getPodcasts } from '../actions/search';
-import ShowResults from './showResults';
+import ResultTable from './showTable';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -43,14 +45,30 @@ export class Dashboard extends React.Component {
 	}
 
 	render() {
+		if (!this.props.loggedIn) {
+			return <Redirect to="/" />;
+		}
+
+		let searchResults = null;
+		if (this.props.podcasts) {
+			searchResults = this.props.podcasts;
+		}
+
+		let renderedResults = (
+			<section className="results-page">
+				{searchResults ? (
+					<ResultTable podcasts={searchResults} />
+				) : (
+					''
+				)}
+			</section>
+		);
+		if (this.props.loading) {
+			renderedResults = <Spinner />;
+		}
+
 		return (
 			<div className="dashboard box">
-				<div className="dashboard-username">
-					<p className="user-welcome">
-						Glad to have you with us,&nbsp;
-						{this.props.username}!
-					</p>
-				</div>
 				<SearchForm
 					handleOptionChange={e => this.handleOptionChange(e)}
 					onSubmit={e => this.onSubmit(e)}
@@ -58,7 +76,7 @@ export class Dashboard extends React.Component {
 					handleInput={e => this.handleInput(e)}
 					search={this.state.search}
 				/>
-				<ShowResults podcasts={this.props.podcasts} />
+				{renderedResults}
 			</div>
 		);
 	}
@@ -70,7 +88,9 @@ const mapStateToProps = state => {
 		username: state.auth.currentUser.username,
 		name: `${currentUser.name} `,
 		protectedData: state.protectedData.data,
-		podcasts: state.search.podcasts
+		podcasts: state.search.podcasts,
+		loggedIn: state.auth.currentUser !== null,
+		loading: state.search.loading
 	};
 };
 

@@ -6,14 +6,6 @@
 	/* color */
 	/* text */
 	/* other */
-.dashboard {
-		width: 75%;
-		order: 1;
-}
-.search-tagline {
-	font-size: 2rem;
-	padding: 1rem;
-}
 .search-results{
 	/* border-top: 1px solid #122375; */
 	/* border-right: 1px solid #122375; */
@@ -24,10 +16,6 @@
 	font-size: 1.5rem;
 	line-height: 1.7rem;
 	}
-
-	.results-page {
-	padding: 2rem 4rem;
-	margin-top: 1rem;
-	font-family: 'Bai Jamjuree', sans-serif;
-	font-size: 1.5rem;
-	}
+	/* .search-results:last-child { */
+		/* border-bottom: 1px solid #122375; */
+	/* } */

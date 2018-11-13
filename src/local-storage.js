@@ -1,15 +1,15 @@
 export const loadAuthToken = () => {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('(╯°Д°)╯ ┻━┻');
 };
 
 export const saveAuthToken = authToken => {
     try {
-        localStorage.setItem('authToken', authToken);
+        localStorage.setItem('(╯°Д°)╯ ┻━┻', authToken);
     } catch (e) {}
 };
 
 export const clearAuthToken = () => {
     try {
-        localStorage.removeItem('authToken');
+        localStorage.removeItem('(╯°Д°)╯ ┻━┻');
     } catch (e) {}
 };

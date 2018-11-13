@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
+import Spinner from './spinner';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
+import { postSubscribe } from '../actions/subscribe';
+
 import './channel.css';
 
 export class Channel extends React.Component{
@@ -54,48 +57,94 @@ export class Channel extends React.Component{
 	}
 
 	handleSubscribe(e) {
-		console.log('subscription button clicked', document.URL);
+		let title = this.props.podcast.title;
+		let feedUrl = this.props.podcast.feedUrl;
+		// this.props.dispatch(subscribeChannel(title));
+		this.props.dispatch(postSubscribe(title, feedUrl));
 	}
 
 	render() {
-
-		if (!this.props.podcast) {
-			return <div>Loading...</div>
+		let channel = '';
+		if (!this.props.loggedIn) {
+			channel = <Redirect to="/" />;
 		}
-		// console.log('props', this.props); // see podcasts
-		const podcast = this.props.podcast
-		// loops through episodes
-		let optionEpisode = [];
-		if (podcast.episodes) {
-			optionEpisode = podcast.episodes.map((episode, index) => {
-				return <option key={index}>{episode.title}</option>
-			});
+
+		if (this.props.loading) {
+			channel = (
+				<React.Fragment>
+					<Spinner />
+				</React.Fragment>
+			);
+		}
+
+		if (this.props.error) {
+			channel = (
+				<p>Error. {this.props.error.message}.</p>
+			);
+		}
+
+		const podcast = this.props.podcast;
+		if (podcast) {
+			let optionEpisode = [];
+			if (podcast.episodes) {
+				// loops through episodes
+				optionEpisode = podcast.episodes.map((episode, index) => {
+					return <option key={index}>{episode.title}</option>;
+				});
+			}
+
+			channel = (
+				<React.Fragment>
+					<h2 className="title-channel">{podcast.title}</h2>
+					<img
+						className="channel-pod-img"
+						src={podcast.image}
+						alt="podcast wallpaper"
+						height={200}
+					/>
+					<p className="channel-desc" dangerouslySetInnerHTML={{ __html: podcast.description }} />
+					<button
+						className="btn btn-large btn-blue btn-subscribe"
+						onClick={e => this.handleSubscribe(e)}
+					>
+						Subscribe to channel
+					</button>
+					<label htmlFor='episode-select'></label>
+					{/* //TODO */}
+					<select
+						className="episode-select styled-select green rounded"
+						id="episode-select"
+						defaultValue="Select episode"
+						onChange={e => this.handleSelectEpisode(e)}
+					>
+						<option>Select episode</option>
+						{optionEpisode}
+					</select>
+					<MediaPlayer />
+				</React.Fragment>
+			);
 		}
 		return (
-			<div className="box channel-box">
-				<NavLink to="/dashboard"><button className="btn btn-small btn-blue btn-back"><i className="fas fa-angle-left"></i>&nbsp;Back</button></NavLink>
-
-				<h2 className="title-channel">{podcast.title}</h2>
-				<img src={podcast.image} alt="podcast wallpaper" height={200} />
-				<p dangerouslySetInnerHTML={{ __html: podcast.description }}></p>
-				<button className="btn btn-large btn-blue btn-subscribe">Subscribe to channel</button>
-				<select className="episode-select styled-select green rounded"
-					id='episode-select'
-					defaultValue="Select episode"
-					onChange={(e) => this.handleSelectEpisode(e)}>
-					<option>Select episode</option>
-					{optionEpisode}
-				</select>
-				<MediaPlayer />
+			<div className="channel-box box">
+				<NavLink to="/dashboard">
+					<button className="btn btn-small btn-blue btn-back">
+						<i className="fas fa-angle-left" />
+						&nbsp;Back
+					</button>
+				</NavLink>
+				{channel}
 			</div>
-		)
+		);
 	}
 }
 
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
-		podcast: state.search.currChannel
+		podcast: state.search.currChannel,
+		loggedIn: state.auth.currentUser !== null,
+		error: state.search.error,
+		loading: state.search.loading,
 	};
 };
 

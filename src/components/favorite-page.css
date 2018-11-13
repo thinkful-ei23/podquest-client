@@ -1,0 +1,42 @@
+@import "buttons.css";
+@import "text.css";
+	/* positioning */
+	/* display + box model */
+	/* color */
+	/* other */
+	
+.favorite-page {
+	width: 75%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	padding: 0 2rem 4rem;
+}
+
+.favorite-page > a {
+	flex: 1;
+	align-self: flex-start;
+}
+
+.favorite-ul {
+	background-color: #FCFCFC;
+	width: 90%;
+}
+
+.favorite-li {
+	border: 1px solid #122375;
+	border-collapse: collapse;
+	padding: 1rem;
+	font-family: 'Bai Jamjuree', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	list-style-type: none;
+	text-decoration: underline;
+}
+
+.favorite-li:hover {
+	background-color: #DDCB34;
+	cursor: pointer;
+}

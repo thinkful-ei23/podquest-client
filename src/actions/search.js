@@ -1,4 +1,4 @@
-import { API_BASE_URL, ITUNES_API } from '../config';
+import { API_BASE_URL, ITUNES_API, GPODDER_API } from '../config';
 import { normalizeResponseErrors } from './utils';
 
 export const GET_CHANNEL_REQUEST = 'GET_CHANNEL_REQUEST';
@@ -37,34 +37,80 @@ export const getPostcastSuccess = podcast => ({
 export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 	dispatch(getPodcastRequest());
 	let proxy = 'https://cors-anywhere.herokuapp.com';
-	return fetch(
-		`${proxy}/${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
-		{
+
+	function itunesFetch() {
+		return fetch(
+			`${proxy}/${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
+			{
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Content-Type-Options': 'nosniff'
+				}
+			}
+		);
+	}
+
+	function gpodderFetch() {
+		return fetch(`${proxy}/${GPODDER_API}/search.json?q=${searchTerm}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'X-Content-Type-Options': 'nosniff'
 			}
-		}
-	)
-		.then(res => normalizeResponseErrors(res))
-		.then(res => res.json())
-		.then(response => {
-			// console.log(response);
-			let filteredResponse = response.results
-				.filter(index => index.feedUrl)
-				.map(result => {
+		});
+	}
+
+	Promise.all([itunesFetch(), gpodderFetch()])
+		.then(res => {
+			return Promise.all(res.map(res => res.json()));
+		})
+		.then(res => {
+			const itunesRes = res[0].results;
+			// console.log('itunesRes', itunesRes);
+			const normalizedRes = itunesRes
+				.filter(channel => channel.feedUrl)
+				.map(channel => {
 					return {
-						id: result.collectionId,
-						collection: result.collectionName,
-						xml: result.feedUrl,
-						image: result.artworkUrl100
+						collection: channel.collectionName,
+						xml: channel.feedUrl,
+						image: channel.artworkUrl100
 					};
 				});
-			// console.log(filteredResponse);
-			dispatch(getPostcastSuccess(filteredResponse));
+			// console.log('normalizedRes', normalizedRes);
+
+			const gpodderRes = res[1];
+			// console.log('gpodderRes', gpodderRes);
+			gpodderRes
+				.filter(channel => channel.url)
+				.forEach(channel => {
+					let dupe = false;
+					const gTitle = channel.title;
+					const gXml = channel.url;
+					const gImage = channel.logo_url;
+					for (let i = 0; i < normalizedRes.length; i++) {
+						const existTitle = normalizedRes[i].collection;
+						const existXml = normalizedRes[i].xml;
+						if (gTitle === existTitle || gXml === existXml) {
+							// console.log('dupe found');
+							dupe = true;
+							break;
+						}
+					}
+					if (!dupe) {
+						// console.log('adding new podcast');
+						normalizedRes.push({
+							collection: gTitle,
+							xml: gXml,
+							image: gImage
+						});
+					}
+				});
+			// console.log('normalizedRes', normalizedRes);
+			dispatch(getPostcastSuccess(normalizedRes));
 		})
 		.catch(err => {
+			// console.log(err);
 			dispatch(getPodcastError(err));
 		});
 };
@@ -87,6 +133,7 @@ export const getChannel = feedUrl => (dispatch, getState) => {
 			dispatch(getChannelSuccess(channelInfo));
 		})
 		.catch(err => {
+			// console.log('err', err);
 			dispatch(getChannelError(err));
 		});
 };
