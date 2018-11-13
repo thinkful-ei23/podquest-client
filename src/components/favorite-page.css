@@ -10,15 +10,11 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-<<<<<<< HEAD
+
 	justify-content: center;
 	align-content: center;
 	padding: 0 2rem 4rem;
-=======
-	justify-content: flex-start;
-	align-content: space-around;
-	padding: 2rem;
->>>>>>> small-css-fix
+
 }
 
 .favorite-page > a {
