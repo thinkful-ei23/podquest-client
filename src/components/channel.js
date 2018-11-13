@@ -101,14 +101,15 @@ class Channel extends React.Component {
 						alt="podcast wallpaper"
 						height={200}
 					/>
-					<p dangerouslySetInnerHTML={{ __html: podcast.description }} />
+					<p className="channel-desc" dangerouslySetInnerHTML={{ __html: podcast.description }} />
 					<button
 						className="btn btn-large btn-blue btn-subscribe"
 						onClick={e => this.handleSubscribe(e)}
 					>
 						Subscribe to channel
 					</button>
-					<label htmlFor ='episode-select'>Episode select</label>
+					<label htmlFor='episode-select'></label>
+					{/* //TODO */}
 					<select
 						className="episode-select styled-select green rounded"
 						id="episode-select"
