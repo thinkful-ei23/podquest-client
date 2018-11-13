@@ -52,3 +52,16 @@ export const getSubscriptions = () => (dispatch, getState) => {
 		})
 		.catch(err => dispatch(getSubscriptionFail(err)));
 };
+
+export const deleteSubscription = (title) => (dispatch, getState) => {
+	dispatch(subscriptionRequests());
+	const authToken = getState().auth.authToken;
+	return fetch(`${API_BASE_URL}/subscribe`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${authToken}`
+		},
+		body: JSON.stringify({ title })
+	}).then(res => console.log(res));
+};

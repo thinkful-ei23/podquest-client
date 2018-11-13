@@ -32,7 +32,18 @@ export class Subscriptions extends React.Component {
 		}
 		// console.log(this.props.subs.xml);
 		if (this.props.subs.length <1) {
-			return <div className="no-sub">You have no subscriptions...yet!</div>;
+			return(
+				<div className="subscriptions-page box">
+				<button className="btn btn-small btn-blue btn-back">
+			<NavLink className="back-to-dash" to="/dashboard">
+					<i className="fas fa-angle-left" />
+					&nbsp;Back
+			</NavLink>
+				</button>
+				<p className="no-sub">You have no subscriptions...yet!</p>;			
+			</div>
+			) 
+			
 		}else {
 			return (
 				<div className="subscriptions-page box">
