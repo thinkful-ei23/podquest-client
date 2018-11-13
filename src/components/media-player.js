@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import ReactHowler from 'react-howler';
 import raf from 'raf';
 import Spinner from './spinner';
-import { userFavoriteInfo, deleteFavorite, getFavorite } from "../actions/favorite";
+import { userFavoriteInfo, deleteFavorite, getFavorite } from '../actions/favorite';
+import { clearEpisode } from '../actions/media-player'
 
 import './media-player.css';
 
@@ -48,7 +49,8 @@ export class MediaPlayer extends React.Component {
   }
 
   componentWillUnmount() {
-    this.clearRAF()
+    this.clearRAF();
+    this.props.dispatch(clearEpisode());
   }
 
   handleToggle() {
