@@ -28,8 +28,8 @@ export class LoginForm extends React.Component {
                 {error}
                 {/* <label className="input-label input-label-login" htmlFor="username">Username</label> */}
                 <Field
-                    label = 'Username'
-                    className = 'input-label input-label-login'
+                    label='Username'
+                    className='input-label input-label-login'
                     component={Input}
                     type="text"
                     name="username"
@@ -38,8 +38,8 @@ export class LoginForm extends React.Component {
                 />
                 {/* <label className="input-label input-label-login" htmlFor="password">Password</label> */}
                 <Field
-                    label ='Password'
-                    className ='input-label input-label-login'
+                    label='Password'
+                    className='input-label input-label-login'
                     component={Input}
                     type="password"
                     name="password"

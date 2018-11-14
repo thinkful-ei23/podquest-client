@@ -13,10 +13,10 @@
 	justify-content: space-around;
 	width: auto;
 	border: transparent;
-	padding: 2rem;
+	padding: .5rem;
 }
 .input-label-reg {
-	margin-top: 3rem;
+	margin-top: 2rem;
 }
 #email,
 #username,
@@ -25,5 +25,14 @@
 	width: 100%;
 	line-height: 3rem;
 	padding: .5rem;
-	/* justify-content: center; */
+}
+
+@media only screen and (min-width: 700px) {
+	.input-label-reg {
+		margin-top: 3rem;
+	}
+	.register-form {
+		padding: 1rem;
+	}
+
 }

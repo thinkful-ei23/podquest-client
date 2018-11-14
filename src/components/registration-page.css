@@ -2,13 +2,26 @@
 @import "text.css";
 
 .register-page {
-	/* padding: 3rem; */
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
-	padding: 2rem;
-	width: 75%;
-	order: 1;
+	padding: .5rem;
+}
+.reg-title {
+	font-size: 3rem;
+	text-align: center;
+	letter-spacing: .2rem;
+}
+@media only screen and (min-width: 700px) {
+	.register-page {
+		width: 75%;
+		padding: 2rem;
+	}
+	.reg-title {
+		font-size: 3.5rem;
+		letter-spacing: .15rem;
+	}
 }
