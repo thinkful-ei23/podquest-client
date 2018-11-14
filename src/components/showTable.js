@@ -49,7 +49,9 @@ export default class ResultTable extends React.Component {
 					>
 						<p
 							style={{
-								padding: "5px"
+								padding: "5px",
+								overflow: "hidden",
+								textOverflow: "ellipsis"
 							}}
 						>
 							{row.collection.collectionName}

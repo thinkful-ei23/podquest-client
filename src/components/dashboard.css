@@ -8,6 +8,8 @@
 	/* other */
 .dashboard {
 		min-height: 650px;
+		width: 100%;
+
 }
 .search-tagline {
 	font-size: 2rem;
@@ -29,4 +31,10 @@
 	margin-top: 1rem;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
+	}
+
+	@media only screen and (min-width: 700px) {
+		.dashboard {
+			width: 75%;
+		}
 	}

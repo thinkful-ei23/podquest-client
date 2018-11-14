@@ -6,7 +6,10 @@
 	/* other */
 
 .subscriptions-page {
-	width: 750px;
+
+	width: 100%;
+
+
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -43,4 +46,11 @@
 li, a {
 	text-decoration: none;
 	color: #122375;
+}
+
+
+@media only screen and (min-width: 700px) {
+	.subscriptions-page {
+		width: 75%;
+	}
 }

@@ -3,12 +3,6 @@
 @import "radio_btn.css";
 @import "form.css";
 
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* text */
-	/* other */
-
 #form-search {
 	display: flex;
 	flex-direction: column;
@@ -20,58 +14,50 @@
 	width: 100%;
 }
 .input-label-div{
+	width: 90%;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 }
-#search-input {
-	width: 700px;
+.input-label-search {
+	margin-bottom: 1rem;
 }
-.search-by-terms,
+#search-input {
+	width: 95%;
+	margin: 1rem 0;
+}
 .search-narrow {
-	/* align-content: center; */
+	margin: 1rem 0;
+	padding: .5rem 0 0 .4rem;
+}
+.search-by-terms {
+	align-self: flex-start;
+	margin-left: -1rem;
 	padding: .5rem 0 0 .4rem;
 }
 .radio-row {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
 	margin: 1rem 0;
 	color: #122375;
 }
-.search-by-terms {
-	align-self: flex-start;
-	margin-left: -1rem;
-}
 
-@media only screen and (max-width: 790px) {
+
+@media only screen and (min-width: 700px) {
 	.radio-row {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
 		align-content: center;
 		margin: 1rem 0;
 	}
-	#search-input {
-		width: 600px;
-	}
-}
-@media only screen and (max-width: 600px) {
-	#search-input {
-		width: 500px;
-		margin: 0 1rem;
-	}
 	.search-narrow {
-		margin-bottom: 1rem;
-	}
-}
-@media only screen and (max-width: 400px) {
-	#search-input {
-		width: 390px;
+		margin: 0;
 	}
 }
