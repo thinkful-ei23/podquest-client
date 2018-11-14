@@ -39,7 +39,7 @@ export default function SearchForm(props) {
 					id="search-input"
 					name="search"
 					// placeholder="Health, Fitness, Finanace, etc."
-				ref={search => (input = search)}
+					ref={search => (input = search)}
 					onChange={e => props.handleInput(e)}
 				/>
 			</div>

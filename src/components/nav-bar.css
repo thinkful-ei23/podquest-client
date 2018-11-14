@@ -6,11 +6,9 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	/* align-content: space-evenly; */
 	width: 100%;
 	height: auto;
 	background-color: rgba(18, 35, 117, .7);
-	/* order: 0; */
 }
 .user-welcome {
 	width: 100%;
@@ -22,7 +20,6 @@
 	padding: 1rem;
 	color: #DBBC34;
 	text-transform: uppercase;
-	/* height: 3rem; */
 	margin: 2rem 0 0 0;
 }
 .nav-ul {
@@ -34,7 +31,6 @@
 	display: inline-block;
 	background-color: transparent;
 	list-style-type: none;
-	/* text-decoration: none; */
 	text-align: center;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
@@ -42,7 +38,6 @@
 	text-transform: capitalize;
 	padding: 1rem;
 	margin: 0 1rem ;
-	/* height: 2rem; */
 	background-color: transparent;
 	color: #FCFCFC;
 }
@@ -89,31 +84,19 @@
 	color: #DBBC34;
 }
 
-
-/* 450 - navbar breaks
-650 - sub-title breaks
-780 - search buttons break
-
-main max-width - 960
-max width - 760 for iPad
-
-*/
-
-
-@media only screen and (max-width: 720px) {
-	.user-welcome  {
-	padding: .7rem;
-	margin: 1rem 0 0 0;
-	font-size: 1rem;
-	line-height: 1.5rem;		letter-spacing: .3rem;
-	}
 	.nav-li {
 		font-size: 1.5rem;
 		line-height: 1.7rem;
 		padding: 0;
 	}
+@media only screen and (max-width: 400px) {
+	.nav-li {
+		font-size: 1.4rem;
+		line-height: 1.6rem;
+		margin: 0 1rem ;
+	}
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (min-width: 600px) {
 	.user-welcome  {
 		padding: .7rem;
 		margin: 1rem 0 0 0;
@@ -122,11 +105,12 @@ max width - 760 for iPad
 		letter-spacing: .3rem;
 	}
 }
-
-@media only screen and (max-width: 450px) {
-	.nav-li {
-		font-size: 1.4rem;
-		line-height: 1.6rem;
-		margin: 0 1rem ;
+@media only screen and (min-width: 700px) {
+	.user-welcome  {
+		padding: .7rem;
+		margin: 1rem 0 0 0;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		letter-spacing: .3rem;
 	}
 }

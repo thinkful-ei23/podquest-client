@@ -1,13 +1,9 @@
 @import "buttons.css";
 @import "text.css";
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* other */
-.search-results {
-background-color: #FCFCFC;
-color: #122375;
 
+.search-results {
+	background-color: #FCFCFC;
+	color: #122375;
 }
 .ReactTable .-pagination .-btn:not([disabled]) {
   background-color:#DBBC34;;
