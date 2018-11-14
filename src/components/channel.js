@@ -154,7 +154,7 @@ export class Channel extends React.Component {
 					/>
 					<p className="channel-desc" dangerouslySetInnerHTML={{ __html: podcast.description }} />
 					{subButton}
-					<label htmlFor="episode-select" for="episode-select"></label>
+					<label htmlFor="episode-select"></label>
 					<select
 						aria-label={"episode - select"}
 						className="episode-select styled-select green rounded"
