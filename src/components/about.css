@@ -30,17 +30,14 @@ html{
 .go-to-p {
 	margin: 2rem 0;
 }
-
 .about-app{
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
-/* align-content: center; */
+	width: 100%;
 	text-align: center;
 	padding: 1rem 2rem;
-	width: 75%;
-	order: 1;
 	min-height: 700px;
 }
 .about-app >h2 {
@@ -90,9 +87,13 @@ html{
 	color: purple;
 }
 
-
 @media only screen and (max-width: 400px){
 	.btn-about {
 	width: 23rem;
+	}
+}
+@media only screen and (min-width: 700px) {
+	.about-app{
+		width: 75%;
 	}
 }

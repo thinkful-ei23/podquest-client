@@ -11,14 +11,15 @@
 	text-align: center;
 }
 .channel-box {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
 	padding: 2rem;
-	width: 75%;
-	order: 1;
+
+
 }
 .channel-pod-img {
 	width: 20rem;
@@ -72,4 +73,11 @@ background-color: #122375;
 		-moz-border-radius: 1.5rem;
 	border-radius: 1.5rem;
 */
+}
+
+
+@media only screen and (min-width: 700px) {
+	.channel-box {
+		width: 75%;
+	}
 }

@@ -2,7 +2,7 @@
 @import "text.css";
 
 .register-page {
-	width: 100vh;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
