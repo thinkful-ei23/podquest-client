@@ -48,7 +48,13 @@ export default class ResultTable extends React.Component {
 							pathname: `/channel`
 						}}
 					>
-						{row.collection.collectionName}
+						<p
+							style={{
+								padding: "5px"
+							}}
+						>
+							{row.collection.collectionName}
+						</p>
 					</Link>
 				)
 			}
@@ -63,6 +69,13 @@ export default class ResultTable extends React.Component {
 					onPageChange={(pageIndex) => this.handlePageChange(pageIndex)}
 					defaultPageSize={10}
 					className="-striped -highlight"
+					getTdProps={() => {
+						return {
+							style: {
+								padding: "0px"
+							}
+						}
+					}}
 				/>
 			</div>
 		);
