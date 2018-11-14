@@ -1,6 +1,6 @@
 # podQuest - CLIENT
 
-[Demo podQuest Here](https://podquest-app.herokuapp.com/)
+[PodQuest Demo](https://podquest-app.herokuapp.com/)
 
 
 ## Summary
