@@ -3,9 +3,6 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
-	/* TODO */
-	/* background-image: linear-gradient(45deg, #182848, #4b6cb7); */
-
 }
 #app-main-body {
 	display: flex;
@@ -13,10 +10,4 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	width: 100%;
-	/* flex: 2; */
-	/* margin-left: 25%; */
-	/* margin-top: 0%; */
-
-	/* TODO  */
-	/* height: 100vh; */
 }

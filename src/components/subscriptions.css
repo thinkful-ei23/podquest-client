@@ -1,15 +1,8 @@
 @import "buttons.css";
 @import "text.css";
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* other */
 
 .subscriptions-page {
-
 	width: 100%;
-
-
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -23,7 +16,6 @@
 	line-height: 1.7rem;
 }
 .all-subscriptions {
-	/* width: 75%; */
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
 	line-height: 1.7rem;
@@ -42,13 +34,10 @@
 .each-sub:hover {
 	background-color: #DBBC34;
 }
-
 li, a {
 	text-decoration: none;
 	color: #122375;
 }
-
-
 @media only screen and (min-width: 700px) {
 	.subscriptions-page {
 		width: 75%;

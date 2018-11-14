@@ -1,15 +1,4 @@
 
-*,
-*::before,
-*::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-/* root font size declared below to allow easier use of rem's */
-html {
-	font-size: 10px;
-}
 .btn {
 	padding: 1rem 0;
 	margin: 2rem;
