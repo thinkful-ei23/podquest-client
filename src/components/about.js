@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink,Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './about.css';
 
@@ -14,7 +14,7 @@ export class About extends React.Component {
 				// 		Take me back to &nbsp;<NavLink to="/dashboard">My Dashboard</NavLink>
 				// 	</p>
 				// </div>
-				<Redirect to='/dashboard'/>
+				<Redirect to='/dashboard' />
 			);
 		}
 		return (

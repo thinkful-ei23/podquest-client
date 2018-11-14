@@ -80,6 +80,7 @@ html{
 }
 .btn-about {
 	margin: 1rem 0 3rem 0;
+	width: 30rem;
 }
 .link-about {
 	color: #fcfcfc;
@@ -87,4 +88,11 @@ html{
 .link-about:hover,
 .link-about:active {
 	color: purple;
+}
+
+
+@media only screen and (max-width: 400px){
+	.btn-about {
+	width: 23rem;
+	}
 }
