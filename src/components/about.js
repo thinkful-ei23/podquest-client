@@ -26,7 +26,7 @@ export class About extends React.Component {
 				<p>
 					PodQuest will never give up and never surrender. With this app you
 					won't have to worry about finding your podcasts through an ocean of
-					other apps out there. We'll do it for you! With this app you can find,
+					other apps out there. We'll do it for you! With PodQuest you can find,
 					listen, favorite, and even subscribe to your podcasts.
 				</p>
 				<h3>So, look no further!</h3>
