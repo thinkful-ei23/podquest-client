@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
 import LoginForm from './login-form';
+import Spinner from './spinner';
 import './landing-page.css';
 
 export function LandingPage(props) {
@@ -11,19 +12,26 @@ export function LandingPage(props) {
         return <Redirect to="/dashboard" />;
     }
 
+    let spinner = '';
+    if (props.loading) {
+        spinner = <Spinner />;
+    }
+
     return (
         <div className="land-home box">
             <h2>Login</h2>
             <p>for your casting pleasure</p>
 
             <LoginForm />
+            {spinner}
             <p className="link link-reg">Don't have an account?&nbsp;Click here to&nbsp;<Link to="/register">Register</Link></p>
         </div>
     );
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    loading: state.auth.loading
 });
 
 export default connect(mapStateToProps)(LandingPage);
