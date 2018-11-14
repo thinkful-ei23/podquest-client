@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import 'react-table/react-table.css';
 import './showTable.css';
-import { ReactTableDefaults } from 'react-table';
 
 export default class ResultTable extends React.Component {
 	constructor(props) {

@@ -1,7 +1,7 @@
 import React from "react";
 import requiresLogin from "./requires-login";
 
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getFavorite } from "../actions/favorite";
