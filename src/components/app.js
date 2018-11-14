@@ -14,9 +14,9 @@ import Subscriptions from './subscriptions';
 import { refreshAuthToken } from '../actions/auth';
 import './app.css';
 import PageNotFound from './pageNotFound';
-// import Footer from './footer';
 
 export class App extends React.Component {
+
 	componentDidUpdate(prevProps) {
 		if (!prevProps.loggedIn && this.props.loggedIn) {
 			// When we are logged in, refresh the auth token periodically
@@ -51,6 +51,7 @@ export class App extends React.Component {
 		if (this.props.loggedIn) {
 			navBar = <NavBar />;
 		}
+
 		return (
 			<div className="app">
 				<HeaderBar />
@@ -68,7 +69,7 @@ export class App extends React.Component {
 						<Route component={PageNotFound} />
 					</Switch>
 				</main>
-					{/* <Footer /> */}
+				{/* <Footer /> */}
 			</div>
 		);
 	}
