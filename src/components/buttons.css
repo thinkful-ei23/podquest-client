@@ -28,6 +28,12 @@ html {
 	border-radius: 1rem;
 	cursor: pointer;
 }
+.btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: gray;
+	color: black;
+}
 .btn-small {
 	width: 10rem;
 	margin-left: 0;
