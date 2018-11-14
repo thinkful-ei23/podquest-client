@@ -11,9 +11,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* root font size declared below to allow use of rem's  62.5% = 10px*/
-html{
-    font-size: 62.5%;
+/* root font size declared below to allow easier use of rem's */
+html {
+	font-size: 10px;
 }
 /* font-family: 'Bai Jamjuree', sans-serif;  body */
 /* font-family: 'Montserrat', sans-serif;  titles and headers*/

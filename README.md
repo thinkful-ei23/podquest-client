@@ -19,7 +19,6 @@ as we do it for you! It is an app where you can find, listen, favorite, and even
 * Redux
 * Redux-Form
 * Redux-Thunk
-* Enzyme
 * JavaScript
 * HTML5
 * RAF
@@ -40,6 +39,11 @@ as we do it for you! It is an app where you can find, listen, favorite, and even
 * Heroku
 * Github
 * MLab
+* Enzyme
+* Mocha
+* Chai
+* Chai-http
+* Cypress
 
 ## Documentation
 [Click to view itunes-API documentation](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)

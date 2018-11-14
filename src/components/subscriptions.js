@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import BackButton from './back-button'
 import { getSubscriptions } from '../actions/subscribe';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './subscriptions.css';
 
 export class Subscriptions extends React.Component {
 	componentWillMount() {
 		// console.log(this.props);
 		this.props.dispatch(getSubscriptions());
-		let currDate = new Date();
-		console.log(currDate);
+		// let currDate = new Date();
 	}
 
 	render() {

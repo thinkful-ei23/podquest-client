@@ -10,7 +10,7 @@ describe('podQuest - Searching', function() {
             body: JSON.stringify({ username:"thereyou2", password:"password123"})
         })
         .then((resp) => {
-            localStorage.setItem('authToken', resp.body.authToken)
+            localStorage.setItem('(╯°Д°)╯ ┻━┻', resp.body.authToken)
         })
     })
     
@@ -25,7 +25,7 @@ describe('podQuest - Searching', function() {
     it('Visits the site and searchs for podcasts with an empty search', function() {
         cy.visit('http://localhost:3000/dashboard')
         cy.get('input#search-input').type('{enter}')
-        cy.get('.results-page').should('contain','Nothing to see for now. So...shall we search for a podcast?')
+        cy.get('.results-page').should('contain','')
     });
     it('Selects a podcast and clicks to listen', function() {
         cy.visit('http://localhost:3000/dashboard')

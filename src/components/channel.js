@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import requiresLogin from './requires-login';
 import MediaPlayer from './media-player';
 import Spinner from './spinner';
