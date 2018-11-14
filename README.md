@@ -5,7 +5,7 @@
 
 ## Summary
 PodQuest will never give up and never surrender.
-Through this you will not have to worry about finding your podcasts through the ocean of other audio media out there
+Through this you will not have to worry about finding your podcasts in the ocean of other audio media out there
 as we do it for you! It is an app where you can find, listen, favorite, and even subscribe to your personal podcasts.
 
 ## Tech Used
