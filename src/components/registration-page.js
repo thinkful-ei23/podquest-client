@@ -13,7 +13,7 @@ export function RegistrationPage(props) {
 	}
 	return (
 		<div className="register-page box">
-			<h2>Register for PodQuest</h2>
+			<h3 className="reg-title">Register for PodQuest</h3>
 			<RegistrationForm />
 			<p className="link link-reg-page">Already have an account?&nbsp;Click here to&nbsp;<Link to="/login">Login</Link></p>
 		</div>

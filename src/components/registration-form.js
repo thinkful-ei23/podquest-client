@@ -28,7 +28,7 @@ export class RegistrationForm extends React.Component {
                 {/* <label className="input-label input-label-reg" htmlFor="email">Email</label> */}
                 <Field
                     id="email"
-                    label = 'Email'
+                    label='Email'
                     component={Input}
                     type="text"
                     name="email"
@@ -37,7 +37,7 @@ export class RegistrationForm extends React.Component {
                 {/* <label className="input-label input-label-reg" htmlFor="username">Username</label> */}
                 <Field
                     id="username"
-                    label ='Username'
+                    label='Username'
                     component={Input}
                     type="text"
                     name="username"
@@ -46,7 +46,7 @@ export class RegistrationForm extends React.Component {
                 {/* <label className="input-label input-label-reg" htmlFor="password">Password</label> */}
                 <Field
                     id="password"
-                    label ='Password'
+                    label='Password'
                     component={Input}
                     type="password"
                     name="password"
@@ -55,7 +55,7 @@ export class RegistrationForm extends React.Component {
                 {/* <label className="input-label input-label-reg" htmlFor="passwordConfirm">Confirm password</label> */}
                 <Field
                     id="passwordConfirm"
-                    label ='Confirm password'
+                    label='Confirm password'
                     component={Input}
                     type="password"
                     name="passwordConfirm"
