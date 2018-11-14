@@ -7,7 +7,7 @@ import Spinner from './spinner';
 import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
-import { postSubscribe,unsubscribe } from '../actions/subscribe';
+import { postSubscribe,unsubscribe, getSubscriptions } from '../actions/subscribe';
 
 import './channel.css';
 
@@ -17,6 +17,7 @@ export class Channel extends React.Component {
 		const channelUrl = localStorage.getItem('podcastChannel');
 		// console.log('channelUrl', channelUrl);
 		this.props.dispatch(getChannel(channelUrl));
+		this.props.dispatch(getSubscriptions());
 	}
 
 	componentWillUnmount() {
