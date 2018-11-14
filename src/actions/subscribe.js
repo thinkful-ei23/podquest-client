@@ -28,7 +28,7 @@ export const postSubscribe = (title, feedUrl) => (dispatch, getState) => {
 			Authorization: `Bearer ${authToken}`
 		},
 		body: JSON.stringify({ title, feedUrl })
-	}).then(res => console.log(res));
+	}).then(dispatch(getSubscriptions()));
 };
 
 export const getSubscriptions = () => (dispatch, getState) => {
@@ -53,15 +53,15 @@ export const getSubscriptions = () => (dispatch, getState) => {
 		.catch(err => dispatch(getSubscriptionFail(err)));
 };
 
-export const deleteSubscription = (title) => (dispatch, getState) => {
-	dispatch(subscriptionRequests());
+export const unsubscribe = title => (dispatch, getState) => {
 	const authToken = getState().auth.authToken;
+	dispatch(subscriptionRequests());
 	return fetch(`${API_BASE_URL}/subscribe`, {
-		method: 'DELETE',
+		method: `DELETE`,
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${authToken}`
 		},
-		body: JSON.stringify({ title })
-	}).then(res => console.log(res));
+		body: JSON.stringify({ title})
+	}).then(dispatch(getSubscriptions()));
 };

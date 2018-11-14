@@ -7,7 +7,7 @@ import Spinner from './spinner';
 import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
-import { postSubscribe } from '../actions/subscribe';
+import { postSubscribe,unsubscribe } from '../actions/subscribe';
 
 import './channel.css';
 
@@ -61,8 +61,12 @@ export class Channel extends React.Component {
 	handleSubscribe(e) {
 		let title = this.props.podcast.title;
 		let feedUrl = this.props.podcast.feedUrl;
-		// this.props.dispatch(subscribeChannel(title));
 		this.props.dispatch(postSubscribe(title, feedUrl));
+	}
+
+	handleUnsubscribe(e) {
+		let title = this.props.podcast.title;
+		this.props.dispatch(unsubscribe(title));
 	}
 
 	render() {
@@ -95,6 +99,28 @@ export class Channel extends React.Component {
 				});
 			}
 
+	let subButton = 
+		<button
+			className="btn btn-large btn-blue btn-subscribe"
+			onClick={e => this.handleSubscribe(e)}
+		>
+		Subscribe to this Channel
+		</button>
+		if (this.props.subs) {
+			this.props.subs.forEach(sub => {
+				if (sub.title === this.props.podcast.title) {
+					subButton = (
+						<button
+							className="btn btn-large btn-blue btn-subscribe"
+							onClick={e => this.handleUnsubscribe(e)}
+						>
+						Unsubscribe from this Channel
+						</button>
+					);
+				}
+			});
+		}
+
 			channel = (
 				<React.Fragment>
 					<h2 className="title-channel">{podcast.title}</h2>
@@ -105,12 +131,7 @@ export class Channel extends React.Component {
 						height={200}
 					/>
 					<p className="channel-desc" dangerouslySetInnerHTML={{ __html: podcast.description }} />
-					<button
-						className="btn btn-large btn-blue btn-subscribe"
-						onClick={e => this.handleSubscribe(e)}
-					>
-						Subscribe to channel
-					</button>
+					{subButton}
 					<label htmlFor='episode-select'></label>
 					{/* //TODO */}
 					<select
@@ -138,6 +159,7 @@ export class Channel extends React.Component {
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
+		subs: state.subscribe.subscriptions,		
 		podcast: state.search.currChannel,
 		loggedIn: state.auth.currentUser !== null,
 		error: state.search.error,

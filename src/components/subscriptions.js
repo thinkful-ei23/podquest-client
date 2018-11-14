@@ -50,7 +50,6 @@ export class Subscriptions extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 
