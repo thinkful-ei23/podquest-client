@@ -18,8 +18,6 @@
 	justify-content: center;
 	align-content: center;
 	padding: 2rem;
-
-
 }
 .channel-pod-img {
 	width: 20rem;
@@ -46,7 +44,7 @@ color: #FCFCFC;
 background-color: #122375;
 }
 .btn-subscribe {
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	padding: .8rem;
 	border-radius: .5rem;
 	align-self: center;
@@ -67,7 +65,7 @@ background-color: #122375;
 	background-color:#DBBC34;
 	color: #122375;
 	text-transform: uppercase;
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	padding: 1rem;
 	/* -webkit-border-radius: 1.5rem;
 		-moz-border-radius: 1.5rem;
