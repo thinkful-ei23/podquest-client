@@ -6,7 +6,7 @@
 	/* other */
 
 .subscriptions-page {
-	width: 75%;
+	width: 750px;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
