@@ -23,7 +23,7 @@ export function RegistrationPage(props) {
 			<h3 className="reg-title">Register for PodQuest</h3>
 			<RegistrationForm />
 			{spinner}
-			<p className="link link-reg-page">Already have an account?&nbsp;Click here to&nbsp;<Link to="/login">Login</Link></p>
+			<p className="link link-reg-page">Already have an&nbsp;account? Click&nbsp;here&nbsp;to&nbsp;<Link to="/login">Login</Link></p>
 		</div>
 	);
 }
