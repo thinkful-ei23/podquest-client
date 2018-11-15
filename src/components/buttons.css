@@ -27,6 +27,7 @@
 }
 .btn-large {
 	width: 30rem;
+	margin: 0 auto;
 }
 .btn-blue {
 	background-color:#122375;
