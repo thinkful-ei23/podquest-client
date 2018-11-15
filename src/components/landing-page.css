@@ -12,6 +12,7 @@
 }
 .link-reg {
 	margin: 3rem 1rem;
+	text-align: center;
 }
 @media only screen and (min-width: 700px){
 	.land-home {
