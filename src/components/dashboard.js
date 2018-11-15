@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
 	}
 
 	handleOptionChange(e) {
-		// console.log(e.target.value);
+		console.log(e.target.value);
 		this.setState({
 			selectedOption: e.target.value
 		});
@@ -33,14 +33,11 @@ export class Dashboard extends React.Component {
 	}
 
 	onSubmit(e) {
-		if (this.state.selectedOption) {
-			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
-		}
-		if (this.state.selectedOption === 'keyword') {
-			this.props.dispatch(getPodcasts(e));
-		} else {
-			this.props.dispatch(getPodcasts(e));
-		}
+		let attr = this.state.selectedOption;
+		// console.log(attr);
+		this.state.selectedOption === 'keyword'
+			? this.props.dispatch(getPodcasts(e))
+			: this.props.dispatch(getPodcasts(e, attr));
 	}
 
 	render() {
