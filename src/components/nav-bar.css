@@ -9,6 +9,7 @@
 	width: 100%;
 	height: auto;
 	background-color: rgba(18, 35, 117, .7);
+	position: relative;
 }
 .dashboard-username {
 	margin: 0;
@@ -50,6 +51,12 @@
 .nav-li:active {
 	color: #DBBC34;
 }
+.nav-li a {
+	color: #FCFCFC;
+}
+.nav-li a:hover {
+	color: #DBBC34;
+}
 .nav-subscrip,
 .nav-fav {
 	margin-bottom: 1rem;
@@ -89,7 +96,25 @@
 	background-color: transparent;
 	color: #DBBC34;
 }
+.nav-menu {
+  right: 10px;
+  top: 5px;
+}
 
+.nav-menu .menu-icon div {
+  height: 2px;
+  margin: 5px 0 2px;
+  width: 22px;
+}
+
+.nav-menu .menu {
+  right: -10px;
+  top: 3px;
+}
+
+.nav-menu .menu li {
+  font-size: 1.2em;
+}
 
 @media only screen and (min-width: 400px) {
 	.nav-li {
@@ -110,6 +135,9 @@
 		font-size: 1rem;
 		line-height: 1.5rem;
 		letter-spacing: .3rem;
+	}
+	.nav-menu .menu li {
+		margin: 12px;
 	}
 }
 @media only screen and (min-width: 700px) {
