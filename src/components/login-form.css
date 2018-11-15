@@ -6,7 +6,9 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-content: center;
 	border: transparent;
+	width: 95%;
 	padding: 2rem;
 	text-align: center;
 }
@@ -27,4 +29,10 @@ Input {
 	line-height: 3rem;
 	padding: .5rem;
 }
+.login-button {
+	margin: 4rem auto 1rem auto;
+	width: 80%;
+	/* text-align: center; */
+	/* align-items: center; */
 
+}

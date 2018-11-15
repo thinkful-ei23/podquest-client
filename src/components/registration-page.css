@@ -11,9 +11,12 @@
 	padding: .5rem;
 }
 .reg-title {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	text-align: center;
 	letter-spacing: .2rem;
+}
+.link-reg-page {
+	text-align: center;
 }
 @media only screen and (min-width: 700px) {
 	.register-page {

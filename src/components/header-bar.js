@@ -22,7 +22,7 @@ export class HeaderBar extends React.Component {
 						</NavLink>
 					</h1>
 					<h2 className="header-sub-title">
-						Bringing you the world, one pod cast at a time
+						Bringing&nbsp;you&nbsp;the&nbsp;world, one&nbsp;pod&nbsp;cast&nbsp;at&nbsp;a&nbsp;time
 					</h2>
 				</div>
 			</header>

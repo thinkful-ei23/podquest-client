@@ -35,9 +35,9 @@ export const getPostcastSuccess = podcast => ({
 });
 
 export const getPodcasts = (searchTerm, attr = '') => dispatch => {
+	// console.log('attribute is', attr);
 	dispatch(getPodcastRequest());
 	let proxy = 'https://cors-anywhere.herokuapp.com';
-
 	function itunesFetch() {
 		return fetch(
 			`${proxy}/${ITUNES_API}/search?term=${searchTerm}&entity=podcast&attribute=${attr}`,
@@ -81,31 +81,29 @@ export const getPodcasts = (searchTerm, attr = '') => dispatch => {
 
 			const gpodderRes = res[1];
 			// console.log('gpodderRes', gpodderRes);
-			gpodderRes
-				.filter(channel => channel.url)
-				.forEach(channel => {
-					let dupe = false;
-					const gTitle = channel.title;
-					const gXml = channel.url;
-					const gImage = channel.logo_url;
-					for (let i = 0; i < normalizedRes.length; i++) {
-						const existTitle = normalizedRes[i].collection;
-						const existXml = normalizedRes[i].xml;
-						if (gTitle === existTitle || gXml === existXml) {
-							// console.log('dupe found');
-							dupe = true;
-							break;
-						}
+			gpodderRes.filter(channel => channel.url).forEach(channel => {
+				let dupe = false;
+				const gTitle = channel.title;
+				const gXml = channel.url;
+				const gImage = channel.logo_url;
+				for (let i = 0; i < normalizedRes.length; i++) {
+					const existTitle = normalizedRes[i].collection;
+					const existXml = normalizedRes[i].xml;
+					if (gTitle === existTitle || gXml === existXml) {
+						// console.log('dupe found');
+						dupe = true;
+						break;
 					}
-					if (!dupe) {
-						// console.log('adding new podcast');
-						normalizedRes.push({
-							collection: gTitle,
-							xml: gXml,
-							image: gImage
-						});
-					}
-				});
+				}
+				if (!dupe) {
+					// console.log('adding new podcast');
+					normalizedRes.push({
+						collection: gTitle,
+						xml: gXml,
+						image: gImage
+					});
+				}
+			});
 			// console.log('normalizedRes', normalizedRes);
 			dispatch(getPostcastSuccess(normalizedRes));
 		})
