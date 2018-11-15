@@ -1,10 +1,5 @@
 @import "buttons.css";
 @import "text.css";
-	/* positioning */
-	/* display + box model */
-	/* color */
-	/* text */
-	/* other */
 
 .register-form {
 	display: flex;
@@ -26,7 +21,6 @@
 	line-height: 3rem;
 	padding: .5rem;
 }
-
 @media only screen and (min-width: 700px) {
 	.input-label-reg {
 		margin-top: 3rem;
@@ -34,5 +28,4 @@
 	.register-form {
 		padding: 1rem;
 	}
-
 }

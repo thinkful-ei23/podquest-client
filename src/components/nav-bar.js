@@ -36,7 +36,7 @@ export class NavBar extends React.Component {
 			subscriptionLink = <NavLink className="nav-subscrip" to="/subscriptions">Subscriptions</NavLink>;
 		}
 		return (
-			<nav className="nav-bar fof">
+			<nav className="nav-bar">
 				<div className="dashboard-username">
 					<p className="user-welcome">
 						Welcome,&nbsp;

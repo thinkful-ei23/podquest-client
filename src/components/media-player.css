@@ -31,8 +31,7 @@
 	margin: 1rem 0;
 }
 .slider-container {
-padding: 1rem;
-
+	padding: 1rem;
 }
 .radio-loop,
 .radio-mute {
@@ -62,7 +61,6 @@ padding: 1rem;
 .fa-heart {
 	color: red;
 }
-
 .fa-play-circle:hover,
 .fa-pause-circle:hover,
 .fa-stop-circle:hover,
@@ -71,7 +69,3 @@ padding: 1rem;
 .fa-heart:hover {
 	color: white;
 }
-
-/* @media only screen 	and (max-width: 670px) { */
-
-/* } */

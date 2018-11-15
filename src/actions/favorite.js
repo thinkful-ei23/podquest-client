@@ -61,6 +61,7 @@ export const deleteFavorite = title => (dispatch, getState) => {
     body: JSON.stringify({title})
   })
     .then(res => normalizeResponseErrors(res))
+    .then(()=> dispatch(getFavorite()))
     // .then(res => res.json())
     .catch(err => console.log(err))
 }

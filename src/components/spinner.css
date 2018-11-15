@@ -2,7 +2,6 @@
   margin: 50px 0px 50px;
   text-align: center;
 }
-
 @keyframes spinner {
   0% {
     opacity: 1;

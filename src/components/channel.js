@@ -7,11 +7,19 @@ import Spinner from './spinner';
 import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
+
 import { postSubscribe,unsubscribe, getSubscriptions } from '../actions/subscribe';
+
 
 import './channel.css';
 
 export class Channel extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			displayImgPlaceholder: 'none'
+		}
+	}
 
 	componentDidMount() {
 		const channelUrl = localStorage.getItem('podcastChannel');
@@ -26,10 +34,10 @@ export class Channel extends React.Component {
 
 	handleSelectEpisode(e) {
 		// Remove extra whitespace on ends and in middle of Title
-		const episodeTitle = e.target.value.trim().replace(/\s+/g,' ');
+		const episodeTitle = e.target.value.trim().replace(/\s+/g, ' ');
 		let episodeData = {};
 		this.props.podcast.episodes.forEach(episode => {
-			if (episode.title[0].trim().replace(/\s+/g,' ') === episodeTitle) {
+			if (episode.title[0].trim().replace(/\s+/g, ' ') === episodeTitle) {
 				// console.log(episode);
 				if (episode.title) {
 					episodeData.episodeTitle = episode.title[0];
@@ -100,27 +108,27 @@ export class Channel extends React.Component {
 				});
 			}
 
-	let subButton = 
-		<button
-			className="btn btn-large btn-blue btn-subscribe"
-			onClick={e => this.handleSubscribe(e)}
-		>
-		Subscribe to this Channel
-		</button>
-		if (this.props.subs) {
-			this.props.subs.forEach(sub => {
-				if (sub.title === this.props.podcast.title) {
-					subButton = (
-						<button
-							className="btn btn-large btn-blue btn-subscribe"
-							onClick={e => this.handleUnsubscribe(e)}
-						>
-						Unsubscribe from this Channel
-						</button>
-					);
-				}
-			});
-		}
+			let subButton =
+				<button
+					className="btn btn-large btn-blue btn-subscribe"
+					onClick={e => this.handleSubscribe(e)}
+				>
+					Subscribe to this Channel
+				</button>
+					if (this.props.subs) {
+						this.props.subs.forEach(sub => {
+							if (sub.title === this.props.podcast.title) {
+								subButton = (
+									<button
+										className="btn btn-large btn-blue btn-subscribe"
+										onClick={e => this.handleUnsubscribe(e)}
+									>
+										Unsubscribe from this Channel
+								</button>
+								);
+							}
+						});
+					}
 
 			channel = (
 				<React.Fragment>
@@ -130,12 +138,25 @@ export class Channel extends React.Component {
 						src={podcast.image}
 						alt="podcast wallpaper"
 						height={200}
+						onError={e => {
+							e.target.style.display = 'none';
+							this.setState({displayImgPlaceholder: 'inline'});
+						}}
+					/>
+					<i
+						style={{
+							fontSize: "60px",
+							textAlign: "center",
+							display: this.state.displayImgPlaceholder,
+							color: "gray"
+						}}
+						className="far fa-file-image"
 					/>
 					<p className="channel-desc" dangerouslySetInnerHTML={{ __html: podcast.description }} />
 					{subButton}
-					<label htmlFor='episode-select'></label>
-					{/* //TODO */}
+					<label htmlFor="episode-select"></label>
 					<select
+						aria-label={"episode - select"}
 						className="episode-select styled-select green rounded"
 						id="episode-select"
 						defaultValue="Select episode"
@@ -148,6 +169,7 @@ export class Channel extends React.Component {
 				</React.Fragment>
 			);
 		}
+
 		return (
 			<div className="channel-box box">
 				<BackButton />
@@ -160,7 +182,7 @@ export class Channel extends React.Component {
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
 	return {
-		subs: state.subscribe.subscriptions,		
+		subs: state.subscribe.subscriptions,
 		podcast: state.search.currChannel,
 		loggedIn: state.auth.currentUser !== null,
 		error: state.search.error,
