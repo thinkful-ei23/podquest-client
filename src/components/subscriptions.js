@@ -24,16 +24,16 @@ export class Subscriptions extends React.Component {
 					</div>
 			} else {
 				allSubs = this.props.subs.map(sub => (
-					<li className="each-sub" key={sub.title}>
 						<Link
 							onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
 							to={{
 								pathname: `/channel`
 							}}
 						>
-							{sub.title}
+							<li className="each-sub" key={sub.title}>
+								{sub.title}
+							</li>
 						</Link>
-					</li>
 				));
 			}
 
