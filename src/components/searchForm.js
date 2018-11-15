@@ -38,7 +38,7 @@ export default function SearchForm(props) {
 					className="input-label input-label-search"
 					htmlFor="search-input"
 				>
-					Search by keyword:
+					Search by:
 				</label>
 				<input
 					className="input-box"
@@ -51,7 +51,7 @@ export default function SearchForm(props) {
 			</div>
 
 			<div className="radio-row">
-				<p className="search-narrow">Narrow your search by...</p>
+				<p className="search-narrow">Category: </p>
 
 				<label className="container">
 					<input
