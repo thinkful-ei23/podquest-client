@@ -5,14 +5,17 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
+	align-content: center;
 	width: auto;
 	border: transparent;
-	padding: .5rem;
+	padding: 1rem;
 }
-.input-label-reg {
+/* .input-label-reg {
 	margin-top: 2rem;
-}
+	margin-left: 2rem;
+	color: red;
+} */
 #email,
 #username,
 #password,
@@ -20,6 +23,13 @@
 	width: 100%;
 	line-height: 3rem;
 	padding: .5rem;
+}
+.submit-button {
+	margin: 4rem auto 1rem auto;
+	width: 80%;
+	/* text-align: center; */
+	/* align-items: center; */
+
 }
 @media only screen and (min-width: 700px) {
 	.input-label-reg {

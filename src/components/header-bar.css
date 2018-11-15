@@ -7,10 +7,11 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	/* margin-bottom: 1rem; */
 	}
 .header-bar {
 	width: 100%;
-	max-height: 11.8rem;
+	/* max-height: 11.8rem; */
 	background: url("/img/Nasa_blue_marble2.jpg") no-repeat center;
 	background-size: fill;
 	background-color: black;
@@ -20,7 +21,7 @@
 	height: 100%;
 	color: #DBBC34;
 	font-family: 'Audiowide', cursive;
-	font-size: 5rem;
+	font-size: 4rem;
 	text-transform: uppercase;
 	background-color: rgba(18, 35, 117, .7);
 	display: flex;

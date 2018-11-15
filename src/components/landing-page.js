@@ -24,7 +24,7 @@ export function LandingPage(props) {
 
             <LoginForm />
             {spinner}
-            <p className="link link-reg">Don't have an account?&nbsp;Click here to&nbsp;<Link to="/register">Register</Link></p>
+            <p className="link link-reg">Don't have an account? Click&nbsp;here&nbsp;to&nbsp;<Link to="/register">Register</Link></p>
         </div>
     );
 }

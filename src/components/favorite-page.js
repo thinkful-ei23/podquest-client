@@ -26,12 +26,12 @@ export class FavoritePage extends React.Component {
     }
   }
 
-  render(){
+  render() {
     // Close media player if episode not in favorites
     if (this.props.playerEpisode) {
       let inFavorites = false;
       let favorites = this.props.favorites
-      for (let i=0; i < favorites.length; i++) {
+      for (let i = 0; i < favorites.length; i++) {
         if (favorites[i].mediaUrl === this.props.playerEpisode.episodeUrl) {
           inFavorites = true;
           break;
@@ -43,24 +43,25 @@ export class FavoritePage extends React.Component {
     }
 
     let listFavorite;
-    if(!this.props.loggedIn){
-			return <Redirect to='/'/>
-		}
+    if (!this.props.loggedIn) {
+      return <Redirect to='/' />
+    }
 
     if (!this.props.favorites) {
       return <div>Loading...</div>
     }
 
-    if(this.props.favorites.length <1){
-      listFavorite = 
+    if (this.props.favorites.length < 1) {
+      listFavorite =
         <div>
-          <p>You have no favorite episodes.<br/> try adding a episode!</p>
+          <p>You have no favorite episodes.<br /> try adding a episode!</p>
         </div>
-      
+
     } else {
       listFavorite = this.props.favorites.map((favorite, index) => {
         return (
           <li className="each-fav" key={index}>
+ 
             <section className="favTitle"
               onClick={() =>
                 this.handleSelectEpisode(favorite)
