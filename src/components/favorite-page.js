@@ -57,37 +57,30 @@ export class FavoritePage extends React.Component {
           <p>You have no favorite episodes.<br/> try adding a episode!</p>
         </div>
       
-    }else{
+    } else {
       listFavorite = this.props.favorites.map((favorite, index) => {
         return (
           <li className="each-fav" key={index}>
-            <ul>
-              <li className="unfav">
-                <button className="btn-unfav" onClick ={()=> this.props.dispatch(deleteFavorite(favorite.title))}>
-                  Unfavorite
-                </button>
-              </li>
+            <section className="favTitle"
+              onClick={() =>
+                this.handleSelectEpisode(favorite)
+              }
+            >
+              <p>{favorite.title}</p>
+            </section>
 
-              <div className="favTitle">
-                <li
-                  onClick={() =>
-                    this.handleSelectEpisode(favorite)
-                  }
-                >
-                  {favorite.title}
-                </li>
-              </div>
-            </ul>
+            <button className="btn-unfav" onClick ={()=> this.props.dispatch(deleteFavorite(favorite.title))}>
+              Unfavorite
+            </button>
           </li>
         )
       })
     }
 
-
     return (
       <div className="favorite-page box">
         <BackButton />
-        <h6>Your Favorited:</h6>
+        <h6>Your Favorites</h6>
         <ul className="all-favorites">
           {listFavorite}
         </ul>
