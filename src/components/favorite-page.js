@@ -4,7 +4,7 @@ import requiresLogin from "./requires-login";
 import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getFavorite } from "../actions/favorite";
+import { getFavorite, deleteFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
 import BackButton from "./back-button";
 import { setEpisode, clearEpisode } from "../actions/media-player";
@@ -60,14 +60,25 @@ export class FavoritePage extends React.Component {
     }else{
       listFavorite = this.props.favorites.map((favorite, index) => {
         return (
-          <li
-            className="favorite-li"
-            key={index}
-            onClick={() =>
-              this.handleSelectEpisode(favorite)
-            }
-          >
-            {favorite.title}</li>
+          <li className="each-fav" key={index}>
+            <ul>
+              <li className="unfav">
+                <button className="btn-unfav" onClick ={()=> this.props.dispatch(deleteFavorite(favorite.title))}>
+                  Unfavorite
+                </button>
+              </li>
+
+              <div className="favTitle">
+                <li
+                  onClick={() =>
+                    this.handleSelectEpisode(favorite)
+                  }
+                >
+                  {favorite.title}
+                </li>
+              </div>
+            </ul>
+          </li>
         )
       })
     }
@@ -77,7 +88,7 @@ export class FavoritePage extends React.Component {
       <div className="favorite-page box">
         <BackButton />
         <h6>Your Favorited:</h6>
-        <ul className="favorite-ul">
+        <ul className="all-favorites">
           {listFavorite}
         </ul>
         <MediaPlayer />

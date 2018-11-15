@@ -12,6 +12,8 @@
     "jwt-decode": "^2.2.0",
     "raf": "^3.4.0",
     "react": "^16.2.0",
+    "react-app-rewire-workbox": "^2.0.1",
+    "react-app-rewired": "^1.6.2",
     "react-dom": "^16.2.0",
     "react-howler": "^3.7.3",
     "react-redux": "^5.0.4",
@@ -19,13 +21,15 @@
     "react-table": "^6.8.6",
     "redux": "^4.0.1",
     "redux-form": "^7.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "workbox": "0.0.0",
+    "workbox-webpack-plugin": "^3.6.3"
   },
   "scripts": {
     "cypress:open": "cypress open",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "browserslist": [
