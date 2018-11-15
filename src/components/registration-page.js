@@ -14,10 +14,10 @@ export function RegistrationPage(props) {
 	}
 
 	let spinner = '';
-  if (props.authLoading || props.userLoading) {
-    spinner = <Spinner />;
+	if (props.authLoading || props.userLoading) {
+		spinner = <Spinner />;
 	}
-	
+
 	return (
 		<div className="register-page box">
 			<h3 className="reg-title">Register for PodQuest</h3>
