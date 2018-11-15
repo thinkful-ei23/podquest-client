@@ -62,6 +62,6 @@ export const unsubscribe = title => (dispatch, getState) => {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${authToken}`
 		},
-		body: JSON.stringify({ title})
+		body: JSON.stringify({ title })
 	}).then(dispatch(getSubscriptions()));
 };

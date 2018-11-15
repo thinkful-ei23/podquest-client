@@ -20,38 +20,35 @@
 	line-height: 1.7rem;
 	color: #000;
 }
-li, a {
-	text-decoration: none;
-	color: #122375;
-}
 .each-fav {
 	background-color: #FCFCFC;
 	border-radius: 4px;
 	border-collapse: collapse;
 	box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.4);
+	color: #122375;
+	display: flex;
 	font-family: 'Bai Jamjuree', sans-serif;
 	font-size: 1.5rem;
+	justify-content: flex-end;
 	line-height: 1.7rem;
 	list-style-type: none;
 	margin-bottom: 10px;
-}
-.each-fav ul li {
-	display: inline-block;
+	overflow: hidden;
 }
 .favTitle {
+	cursor: pointer;
+	flex: 2;
+	max-height: 37px;
+	padding: 1rem;
 	overflow: hidden;
+	white-space: nowrap;
 }
 .favTitle:hover {
 	background-color: #DBBC34;
 }
-.favTitle li {
-	cursor: pointer;
-	padding: 1rem;
-	width: 100%;
-}
-.unfav {
-	float: right;
-	height: 100%;
+.favTitle p {
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .btn-unfav {
 	border: none;
