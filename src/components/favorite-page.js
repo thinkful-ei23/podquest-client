@@ -4,7 +4,7 @@ import requiresLogin from "./requires-login";
 import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getFavorite } from "../actions/favorite";
+import { getFavorite, deleteFavorite } from "../actions/favorite";
 import MediaPlayer from "./media-player";
 import BackButton from "./back-button";
 import { setEpisode, clearEpisode } from "../actions/media-player";
@@ -67,7 +67,7 @@ export class FavoritePage extends React.Component {
               this.handleSelectEpisode(favorite)
             }
           >
-            {favorite.title}</li>
+            {favorite.title}<button  className='btn-unFavorite' onClick ={()=> this.props.dispatch(deleteFavorite(favorite.title))}>X</button></li>
         )
       })
     }
