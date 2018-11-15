@@ -15,6 +15,10 @@ export class FavoritePage extends React.Component {
     this.props.dispatch(getFavorite());
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(clearEpisode());
+  }
+
   handleSelectEpisode(episode) {
     let episodeData = {
       episodeTitle: episode.title,
@@ -43,7 +47,7 @@ export class FavoritePage extends React.Component {
     }
 
     let listFavorite;
-    if(!this.props.loggedIn){
+    if (!this.props.loggedIn) {
 			return <Redirect to='/'/>
 		}
 
@@ -51,7 +55,7 @@ export class FavoritePage extends React.Component {
       return <div>Loading...</div>
     }
 
-    if(this.props.favorites.length <1){
+    if (this.props.favorites.length < 1) {
       listFavorite = 
         <div>
           <p>You have no favorite episodes.<br/> try adding a episode!</p>
@@ -59,20 +63,29 @@ export class FavoritePage extends React.Component {
       
     } else {
       listFavorite = this.props.favorites.map((favorite, index) => {
+        let mediaPlayer = '';
+        if (this.props.playerEpisode && favorite.title === this.props.playerEpisode.episodeTitle) {
+          mediaPlayer = <MediaPlayer noTitle={true}/>;
+        }
         return (
-          <li className="each-fav" key={index}>
-            <section className="favTitle"
-              onClick={() =>
-                this.handleSelectEpisode(favorite)
-              }
-            >
-              <p>{favorite.title}</p>
-            </section>
+          <React.Fragment key={index}>
+            <li className="each-fav">
+              <section className="favTitle"
+                onClick={() =>
+                  this.handleSelectEpisode(favorite)
+                }
+              >
+                <p>{favorite.title}</p>
+              </section>
 
-            <button className="btn-unfav" onClick ={()=> this.props.dispatch(deleteFavorite(favorite.title))}>
-              Unfavorite
-            </button>
-          </li>
+              <button className="btn-unfav" onClick ={()=> this.props.dispatch(deleteFavorite(favorite.title))}>
+                Unfavorite
+              </button>
+            </li>
+            <li>
+              {mediaPlayer}
+            </li>
+          </React.Fragment>
         )
       })
     }
@@ -84,7 +97,7 @@ export class FavoritePage extends React.Component {
         <ul className="all-favorites">
           {listFavorite}
         </ul>
-        <MediaPlayer />
+        {/* <MediaPlayer /> */}
       </div>
     )
   }
