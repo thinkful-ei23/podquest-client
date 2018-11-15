@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
 	}
 
 	handleOptionChange(e) {
-		console.log(e.target.value);
+		// console.log(e.target.value);
 		this.setState({
 			selectedOption: e.target.value
 		});
