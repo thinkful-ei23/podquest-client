@@ -13,7 +13,7 @@ export class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null,
+			selectedOption: 'keyword',
 			search: null
 		};
 	}
