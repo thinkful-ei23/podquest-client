@@ -25,26 +25,20 @@ export class Subscriptions extends React.Component {
 			} else {
 				allSubs = this.props.subs.map(sub => (
 					<li className="each-sub" key={sub.title}>
-						<ul>
-							<li className="unsub">
-								<button  className='btn-unsub' onClick ={()=> this.props.dispatch(unsubscribe(sub.title))}>
-									Unsubscribe
-								</button>
-							</li>
+						<section className="subTitle">
+							<Link
+								onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
+								to={{
+									pathname: `/channel`
+								}}
+							>
+								<p>{sub.title}</p>
+							</Link>
+						</section>
 
-							<div className="subTitle">
-								<Link
-									onClick={() => localStorage.setItem('podcastChannel', sub.xml)}
-									to={{
-										pathname: `/channel`
-									}}
-								>
-									<li>
-										{sub.title}
-									</li>
-								</Link>
-							</div>
-						</ul>
+						<button className='btn-unsub' onClick ={()=> this.props.dispatch(unsubscribe(sub.title))}>
+							Unsubscribe
+						</button>
 					</li>
 					
 				));
@@ -55,7 +49,7 @@ export class Subscriptions extends React.Component {
 		return (
 			<div className="subscriptions-page box">
 				<BackButton />
-				<h6>You are subscribed to:</h6>
+				<h6>Your Subscriptions</h6>
 				<ul className="all-subscriptions">
 					{allSubs ? allSubs : ''}
 				</ul>
