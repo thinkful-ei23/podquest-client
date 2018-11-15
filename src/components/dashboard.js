@@ -18,10 +18,6 @@ export class Dashboard extends React.Component {
 		};
 	}
 
-	// componentDidMount() {
-	// 	this.props.dispatch(fetchProtectedData());
-	// }
-
 	handleOptionChange(e) {
 		// console.log(e.target.value);
 		this.setState({
@@ -39,6 +35,9 @@ export class Dashboard extends React.Component {
 	onSubmit(e) {
 		if (this.state.selectedOption) {
 			this.props.dispatch(getPodcasts(e, this.state.selectedOption));
+		}
+		if (this.state.selectedOption === 'keyword') {
+			this.props.dispatch(getPodcasts(e));
 		} else {
 			this.props.dispatch(getPodcasts(e));
 		}
@@ -56,11 +55,7 @@ export class Dashboard extends React.Component {
 
 		let renderedResults = (
 			<section className="results-page">
-				{searchResults ? (
-					<ResultTable podcasts={searchResults} />
-				) : (
-						''
-					)}
+				{searchResults ? <ResultTable podcasts={searchResults} /> : ''}
 			</section>
 		);
 		if (this.props.loading) {
