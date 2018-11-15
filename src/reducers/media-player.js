@@ -10,13 +10,13 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-	if (action.type === CLEAR_AUTH || action.type === CLEAR_EPISODE) {
-		return Object.assign({}, state, initialState);
-	}
 	if (action.type === SET_EPISODE) {
 		return Object.assign({}, state, {
 			episodeData: action.episodeData
-    });
-  }
+		});
+	}
+	if (action.type === CLEAR_AUTH || action.type === CLEAR_EPISODE) {
+		return Object.assign({}, state, initialState);
+	}
   return state;
 }

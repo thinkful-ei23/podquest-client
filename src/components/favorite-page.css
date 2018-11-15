@@ -20,6 +20,9 @@
 	line-height: 1.7rem;
 	color: #000;
 }
+.all-favorites li {
+	list-style-type: none;
+}
 .each-fav {
 	background-color: #FCFCFC;
 	border-radius: 4px;
@@ -31,7 +34,6 @@
 	font-size: 1.5rem;
 	justify-content: flex-end;
 	line-height: 1.7rem;
-	list-style-type: none;
 	margin-bottom: 10px;
 	overflow: hidden;
 }

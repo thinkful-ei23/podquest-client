@@ -4,7 +4,6 @@ import ReactHowler from 'react-howler';
 import raf from 'raf';
 import Spinner from './spinner';
 import { userFavoriteInfo, deleteFavorite, getFavorite } from '../actions/favorite';
-import { clearEpisode } from '../actions/media-player'
 
 import './media-player.css';
 
@@ -50,7 +49,6 @@ export class MediaPlayer extends React.Component {
 
   componentWillUnmount() {
     this.clearRAF();
-    this.props.dispatch(clearEpisode());
   }
 
   handleToggle() {
@@ -162,15 +160,27 @@ export class MediaPlayer extends React.Component {
       const date = episodeDate.getDate();
       const month = months[episodeDate.getMonth()];
       const year = episodeDate.getFullYear();
-      episodeDate = `${day}, ${month} ${date}, ${year}`;
+      episodeDate = (
+        <p className="player-p">
+          <em>{day}, {month} {date}, {year}</em>
+        </p>
+      );
+    }
+    let title = (
+        <p className="player-p">
+          <strong>{this.props.episodeTitle}</strong>
+        </p>
+      );
+    if (this.props.noTitle) {
+      title = '';
     }
     if (this.props.episodeUrl && !this.state.loaded) {
       player = <Spinner />;
     } else if (this.props.episodeUrl && this.state.loaded) {
       player = (
         <React.Fragment>
-          <p className="player-p"><strong>{this.props.episodeTitle}</strong></p>
-          <p className="player-p"> <em>{episodeDate}</em></p>
+          {title}
+          {episodeDate}
           <div className='toggles'>
             <label className="player-label">
               Loop:&nbsp;
