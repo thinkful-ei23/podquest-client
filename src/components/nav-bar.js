@@ -14,30 +14,34 @@ export class NavBar extends React.Component {
 			showNavMenu: false
 		};
 	}
-	componentDidMount() {
-		document.body.addEventListener('click', e => {
-			if (e.target.id !== "menu-icon") {
-				this.handleHideMenu();
-			}
-		});
+	handleToggleMenu(e) {
+		e.preventDefault();
+		if (!this.state.showNavMenu) {
+			this.setState({
+				showNavMenu: true
+			}, () => {
+				document.addEventListener('click', e => this.handleHideMenuOnOuterClick(e));
+			});
+		} else {
+			this.handleHideMenuOnInnerClick(e);
+		}
+  }
+  handleHideMenuOnOuterClick(e) {
+		if (this.dropdownMenu && !this.dropdownMenu.contains(e.target)) {
+			this.setState({
+				showNavMenu: false
+			}, () => {
+				document.removeEventListener('click', e => this.handleHideMenuOnOuterClick(e));
+			});
+		}
 	}
-	componentWillUnmount() {
-		document.body.removeEventListener('click', e => {
-			if (e.target.id !== "menu-icon") {
-				this.handleHideMenu();
-			}
-		});
-	}
-	handleToggleMenu() {
+  handleHideMenuOnInnerClick(e) {
 		this.setState({
-			showNavMenu: !this.state.showNavMenu
-		});
-  }
-  handleHideMenu() {
-    this.setState({
 			showNavMenu: false
+		}, () => {
+			document.removeEventListener('click', e => this.handleHideMenuOnOuterClick(e));
 		});
-  }
+	}
 	logOut() {
 		this.setState({
 			showNavMenu: false
@@ -51,19 +55,21 @@ export class NavBar extends React.Component {
 			links = (
 				<React.Fragment>
 					<li className="nav-li" key="navlinks-0">
-						<NavLink to="/favorites">
+						<NavLink to="/favorites" onClick={e => this.handleHideMenuOnInnerClick(e)}>
 							<p>My Favorite Episodes!</p>
 						</NavLink>
 					</li>
 					<li className="nav-li" key="navlinks-1">
-						<NavLink to="/subscriptions">
+						<NavLink to="/subscriptions" onClick={e => this.handleHideMenuOnInnerClick(e)}>
 							<p>Subscriptions</p>
 						</NavLink>
 					</li>
 					<li className="nav-li" key="navlinks-2">
-						<NavLink to="" onClick={() => this.logOut()}>
-							<p>Log out</p>
-						</NavLink>
+						<button onClick={() => {
+								this.logOut();
+							}}>
+							Log out
+						</button>
 					</li>
 				</React.Fragment>
 			);
@@ -98,13 +104,17 @@ export class NavBar extends React.Component {
 				<MediaQuery maxWidth={599}>
 					<div
 						className={`menu-container nav-menu`}
+						// id="menu-container"
+						ref={(element) => {
+							this.dropdownMenu = element;
+						}}
 					>
 						<button
 							aria-label="menu"
 							label="menu"
 							className="menu-icon fas fa-bars"
 							id="menu-icon"
-							onClick={() => this.handleToggleMenu()}
+							onClick={e => this.handleToggleMenu(e)}
 						></button>
 						{burgerMenu}
 					</div>

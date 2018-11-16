@@ -48,6 +48,18 @@
 .nav-li:active {
 	color: #DBBC34;
 }
+.nav-li button {
+	border: none;
+	font-size: 1.5rem;
+	display: block;
+	text-align: center;
+	width: 100%;
+	padding: 6px;
+	cursor: pointer;
+}
+.nav-li button:hover {
+	background: #DBBC34;
+}
 
 .menu-container {
   background: none;
@@ -141,6 +153,14 @@
 		color: #FCFCFC;
 	}
 	.nav-li a:hover {
+		color: #DBBC34;
+	}
+	.nav-li button {
+		background: none;
+		color: white;
+	}
+	.nav-li button:hover {
+		background: none;
 		color: #DBBC34;
 	}
 }
