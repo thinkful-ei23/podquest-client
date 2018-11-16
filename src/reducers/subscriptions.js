@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login'
+import requiresLogin from './requires-login';
 import BackButton from './back-button'
 import { getSubscriptions,unsubscribe } from '../actions/subscribe';
 import { Link } from 'react-router-dom';
