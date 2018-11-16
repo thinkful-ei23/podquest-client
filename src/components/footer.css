@@ -1,11 +1,7 @@
 @import './text.css';
 
 .footer-container {
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
   justify-content: baseline;
-  /* align-items: baseline; */
   text-align: center;
   padding: 20px;
   color: #FCFCFC;
@@ -15,5 +11,5 @@
 }
 .footer-text {
   font-size: 1.3rem;
-  line-height: 2rem;;
+  line-height: 2rem;
 }
