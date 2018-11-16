@@ -7,6 +7,7 @@ import Spinner from './spinner';
 import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
+import SubButton from './sub-button';
 
 import {
 	postSubscribe,
@@ -189,7 +190,8 @@ export class Channel extends React.Component {
 						className="channel-desc"
 						dangerouslySetInnerHTML={{ __html: podcast.description }}
 					/>
-					{subButton}
+					<SubButton subs={this.props.subs} title={this.props.podcast.title} />
+					{/* {subButton} */}
 					{loading}
 					<label htmlFor="episode-select" />
 					<select
@@ -210,6 +212,7 @@ export class Channel extends React.Component {
 		return (
 			<div className="channel-box box">
 				<BackButton />
+				{/* <SubButton subs={this.props.subs} />; */}
 				{channel}
 			</div>
 		);
