@@ -46,7 +46,7 @@
 	margin: 1rem 0;
 	color: #122375;
 }
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 760px) {
 	.radio-row {
 		display: flex;
 		flex-direction: row;
@@ -56,9 +56,12 @@
 		margin: 1rem 0;
 	}
 	.search-narrow {
-		margin: 0;
+		margin: 0 1rem 0 0;
 	}
 	#search-input {
 		max-width: 50%;
+	}
+	.container {
+		margin: 0 1rem 1.2rem 1rem;
 	}
 }
