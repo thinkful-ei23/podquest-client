@@ -8,8 +8,11 @@ import BackButton from './back-button';
 import { getChannel } from '../actions/search';
 import { setEpisode, clearEpisode } from '../actions/media-player';
 
-import { postSubscribe,unsubscribe, getSubscriptions } from '../actions/subscribe';
-
+import {
+	postSubscribe,
+	unsubscribe,
+	getSubscriptions
+} from '../actions/subscribe';
 
 import './channel.css';
 
@@ -18,7 +21,7 @@ export class Channel extends React.Component {
 		super(props);
 		this.state = {
 			displayImgPlaceholder: 'none'
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -80,6 +83,7 @@ export class Channel extends React.Component {
 
 	render() {
 		let channel = '';
+		let loading = '';
 		if (!this.props.loggedIn) {
 			channel = <Redirect to="/" />;
 		}
@@ -92,10 +96,16 @@ export class Channel extends React.Component {
 			);
 		}
 
-		if (this.props.error) {
-			channel = (
-				<p>Error. {this.props.error.message}.</p>
+		if (this.props.subLoading) {
+			loading = (
+				<React.Fragment>
+					<Spinner />
+				</React.Fragment>
 			);
+		}
+
+		if (this.props.error) {
+			channel = <p>Error. {this.props.error.message}.</p>;
 		}
 
 		const podcast = this.props.podcast;
@@ -108,27 +118,50 @@ export class Channel extends React.Component {
 				});
 			}
 
-			let subButton =
+			let subButton = (
 				<button
 					className="btn btn-large btn-blue btn-subscribe"
 					onClick={e => this.handleSubscribe(e)}
 				>
 					Subscribe to this Channel
 				</button>
-					if (this.props.subs) {
-						this.props.subs.forEach(sub => {
-							if (sub.title === this.props.podcast.title) {
-								subButton = (
-									<button
-										className="btn btn-large btn-blue btn-subscribe"
-										onClick={e => this.handleUnsubscribe(e)}
-									>
-										Unsubscribe from this Channel
+			);
+			if (this.props.subLoading) {
+				subButton = (
+					<button
+						className="btn btn-large btn-blue btn-subscribe"
+						onClick={e => this.handleSubscribe(e)}
+						disabled={true}
+					>
+						Subscribe to this Channel
+					</button>
+				);
+			}
+			if (this.props.subs) {
+				this.props.subs.forEach(sub => {
+					if (sub.title === this.props.podcast.title) {
+						if (this.props.subLoading) {
+							subButton = (
+								<button
+									className="btn btn-large btn-blue btn-subscribe"
+									onClick={e => this.handleSubscribe(e)}
+									disabled={true}
+								>
+									Unsubscribe to this Channel
 								</button>
-								);
-							}
-						});
+							);
+						}
+						subButton = (
+							<button
+								className="btn btn-large btn-blue btn-subscribe"
+								onClick={e => this.handleUnsubscribe(e)}
+							>
+								Unsubscribe from this Channel
+							</button>
+						);
 					}
+				});
+			}
 
 			channel = (
 				<React.Fragment>
@@ -140,23 +173,27 @@ export class Channel extends React.Component {
 						height={200}
 						onError={e => {
 							e.target.style.display = 'none';
-							this.setState({displayImgPlaceholder: 'inline'});
+							this.setState({ displayImgPlaceholder: 'inline' });
 						}}
 					/>
 					<i
 						style={{
-							fontSize: "60px",
-							textAlign: "center",
+							fontSize: '60px',
+							textAlign: 'center',
 							display: this.state.displayImgPlaceholder,
-							color: "gray"
+							color: 'gray'
 						}}
 						className="far fa-file-image"
 					/>
-					<p className="channel-desc" dangerouslySetInnerHTML={{ __html: podcast.description }} />
+					<p
+						className="channel-desc"
+						dangerouslySetInnerHTML={{ __html: podcast.description }}
+					/>
 					{subButton}
-					<label htmlFor="episode-select"></label>
+					{loading}
+					<label htmlFor="episode-select" />
 					<select
-						aria-label={"episode - select"}
+						aria-label={'episode - select'}
 						className="episode-select styled-select green rounded"
 						id="episode-select"
 						defaultValue="Select episode"
@@ -187,6 +224,7 @@ const mapStateToProps = state => {
 		loggedIn: state.auth.currentUser !== null,
 		error: state.search.error,
 		loading: state.search.loading,
+		subLoading: state.subscribe.loading
 	};
 };
 

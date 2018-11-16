@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login'
-import BackButton from './back-button'
-import { getSubscriptions,unsubscribe } from '../actions/subscribe';
+import requiresLogin from './requires-login';
+import BackButton from './back-button';
+import { getSubscriptions, unsubscribe } from '../actions/subscribe';
 import { Link } from 'react-router-dom';
 import './subscriptions.css';
 
@@ -18,10 +18,11 @@ export class Subscriptions extends React.Component {
 		let allSubs = null;
 		if (this.props.subs) {
 			if (this.props.subs.length < 1) {
-				allSubs =
+				allSubs = (
 					<div>
 						<p>You have no subscriptions...yet!</p>
 					</div>
+				);
 			} else {
 				allSubs = this.props.subs.map(sub => (
 					<li className="each-sub" key={sub.title}>
@@ -36,29 +37,26 @@ export class Subscriptions extends React.Component {
 							</Link>
 						</section>
 
-						<button className='btn-unsub' onClick ={()=> this.props.dispatch(unsubscribe(sub.title))}>
+						<button
+							className="btn-unsub"
+							onClick={() => this.props.dispatch(unsubscribe(sub.title))}
+						>
 							Unsubscribe
 						</button>
 					</li>
-					
 				));
 			}
-
 		}
 
 		return (
 			<div className="subscriptions-page box">
 				<BackButton />
 				<h6>Your Subscriptions</h6>
-				<ul className="all-subscriptions">
-					{allSubs ? allSubs : ''}
-				</ul>
+				<ul className="all-subscriptions">{allSubs ? allSubs : ''}</ul>
 			</div>
 		);
 	}
 }
-
-
 
 const mapStateToProps = state => {
 	// console.log('state', state); // to look at state
