@@ -4,7 +4,6 @@ import MediaQuery from 'react-responsive';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 import { NavLink, withRouter } from 'react-router-dom';
-import { BurgerMenu } from './burger-menu';
 import './nav-bar.css';
 
 export class NavBar extends React.Component {
@@ -47,46 +46,41 @@ export class NavBar extends React.Component {
 		clearAuthToken();
 	}
 	render() {
-		// Only render the log out button if we are logged in
-		// let logOutButton;
-		// let favoritesLink;
-		// let subscriptionLink;
 		let links;
 		if (this.props.loggedIn) {
-			// logOutButton = (
-
-			// 	<button
-			// 		className="nav-logout"
-			// 		onClick={() => this.logOut()}
-			// 	>
-			// 		<p className="nav-logout-p">Log out</p>
-			// 	</button>
-
-			// );
-			// favoritesLink = <NavLink className="nav-fav" to="/favorites">My Favorite Episodes!</NavLink>;
-			// subscriptionLink = <NavLink className="nav-subscrip" to="/subscriptions">Subscriptions</NavLink>;
-			links = [
-				{
-					onClick: () => this.handleHideMenu(),
-					text: 'My Favorite Episodes!',
-					href: '/favorites',
-					// classes: 'nav-fav',
-					isLink: true
-				},
-				{
-					onClick: () => this.handleHideMenu(),
-					text: 'Subscriptions',
-					href: '/subscriptions',
-					// classes: 'nav-subscrip',
-					isLink: true
-				},
-				{
-					onClick: () => this.logOut(),
-					text: 'Log out',
-					href: '',
-					// classes: 'nav-logout'
-				}
-			];
+			links = (
+				<React.Fragment>
+					<li className="nav-li" key="navlinks-0">
+						<NavLink to="/favorites">
+							<p>My Favorite Episodes!</p>
+						</NavLink>
+					</li>
+					<li className="nav-li" key="navlinks-1">
+						<NavLink to="/subscriptions">
+							<p>Subscriptions</p>
+						</NavLink>
+					</li>
+					<li className="nav-li" key="navlinks-2">
+						<NavLink to="" onClick={() => this.logOut()}>
+							<p>Log out</p>
+						</NavLink>
+					</li>
+				</React.Fragment>
+			);
+		}
+		let burgerMenu = '';
+		if (this.state.showNavMenu) {
+			burgerMenu = (
+				<div
+					aria-live="polite"
+					aria-atomic="true"
+					aria-relevant="additions"
+				>
+					<ul className="burger-menu">
+						{links}
+					</ul>
+				</div>
+			);
 		}
 		return (
 			<nav className="nav-bar">
@@ -98,27 +92,22 @@ export class NavBar extends React.Component {
 				</div>
 				<MediaQuery minWidth={600}>
 					<ul className="nav-ul">
-						{links.map((link, i) => {
-							return (
-								<li className={`nav-li ${link.classes}`} key={`navlinks-${i}`}>
-									<NavLink to={link.href} onClick={() => link.onClick()}>
-										{link.text}
-									</NavLink>
-								</li>
-							);
-						})}
-						{/* <li className="nav-li">	{favoritesLink}</li>
-						<li className="nav-li">	{subscriptionLink}</li>
-						<li className="nav-li nav-logout-li">	{logOutButton}</li> */}
+						{links}
 					</ul>
 				</MediaQuery>
 				<MediaQuery maxWidth={599}>
-					<BurgerMenu
-						classes="nav-menu"
-						showMenu={this.state.showNavMenu}
-						toggleMenu={() => this.handleToggleMenu()}
-						links={links}
-					/>
+					<div
+						className={`menu-container nav-menu`}
+					>
+						<button
+							aria-label="menu"
+							label="menu"
+							className="menu-icon fas fa-bars"
+							id="menu-icon"
+							onClick={() => this.handleToggleMenu()}
+						></button>
+						{burgerMenu}
+					</div>
 				</MediaQuery>
 			</nav>
 		);
