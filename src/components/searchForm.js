@@ -56,7 +56,7 @@ export default function SearchForm(props) {
 				<label className="container">
 					<input
 						type="radio"
-						id="radio-search"
+						id="radio-keyword"
 						name="keyword"
 						value="keyword"
 						checked={props.selectedOption === 'keyword'}
