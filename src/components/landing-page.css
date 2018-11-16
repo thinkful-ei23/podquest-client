@@ -14,6 +14,9 @@
 	margin: 3rem 1rem;
 	text-align: center;
 }
+Link {
+	text-decoration: line;
+}
 @media only screen and (min-width: 700px){
 	.land-home {
 		width: 75%;
