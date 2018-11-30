@@ -1,6 +1,15 @@
-footer {
+@import './text.css';
+
+.footer-container {
+  justify-content: baseline;
   text-align: center;
   padding: 20px;
-  background-color: #aaa;
+  color: #FCFCFC;
   width: 100%;
+  height: auto;
+  background-image: linear-gradient(45deg, #182848, #4b6cb7);
+}
+.footer-text {
+  font-size: 1.3rem;
+  line-height: 2rem;
 }
