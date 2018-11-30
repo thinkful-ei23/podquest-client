@@ -1,9 +1,14 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { login } from '../actions/auth';
 import './about.css';
 
 export class About extends React.Component {
+	handleDemo(e) {
+		this.props.dispatch(login('demo_user', 'password123'));
+	}
+
 	render() {
 		if (this.props.loggedIn) {
 			return (
@@ -55,6 +60,16 @@ export class About extends React.Component {
 							</button>
 						</NavLink>
 					</div>
+
+					<div className="about-demo">
+						<p>If you want to try our demo account, go to</p>
+						<button
+							className="btn btn-large btn-green btn-about"
+							onClick={e => this.handleDemo(e)}
+						>
+							<span className="about-span">Demo</span>
+						</button>
+					</div>
 				</section>
 			</div>
 		);
@@ -62,7 +77,8 @@ export class About extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	loggedIn: state.auth.currentUser !== null
+	loggedIn: state.auth.currentUser !== null,
+	loading: state.auth.loading
 });
 
 export default connect(mapStateToProps)(About);
