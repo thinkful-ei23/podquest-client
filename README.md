@@ -8,6 +8,10 @@ PodQuest will never give up and never surrender.
 Through this you will not have to worry about finding your podcasts in the ocean of other audio media out there
 as we do it for you! It is an app where you can find, listen, favorite, and even subscribe to your personal podcasts.
 
+![search for podcast](podq.png)
+![click to see podcast channel](podcast-channel.png)
+![my subscribed channels](subscriptions.png)
+
 ## Tech Used
 
 ### Front-End
